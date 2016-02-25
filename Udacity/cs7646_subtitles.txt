@@ -1,0 +1,4840 @@
+Tyson
+
+
+Search Drive
+
+Drive
+.
+Folder Path
+My Drive
+eBooks
+text_versions
+ml_4t
+NEW 
+Folders and views
+My Drive
+Shared with me
+Google Photos
+Recent
+Starred
+Trash
+28 GB of 115 GB used
+Upgrade storage
+Name
+Owner
+Last modified
+File size
+
+01-04.txt
+me
+Feb 21, 2016me
+18 KB
+
+01-06.txt
+me
+Feb 21, 2016me
+20 KB
+
+01-05.txt
+me
+Feb 21, 2016me
+11 KB
+
+01-03.txt
+me
+Feb 21, 2016me
+30 KB
+
+01-02.txt
+me
+Feb 21, 2016me
+23 KB
+
+01-01.txt
+me
+Feb 21, 2016me
+15 KB
+
+00-00.txt
+me
+Feb 21, 2016me
+4 KB
+Text
+00-00.txt
+Details
+Activity
+00-00.txt
+Sharing Info
+
+General Info
+Type
+Text
+Size
+4 KB (4,098 bytes)
+Storage used
+4 KB (4,098 bytes)
+Location
+ml_4t
+Owner
+me
+Modified
+Feb 21, 2016 by me
+Created
+Feb 21, 2016
+Description
+Add a description
+Download permissions
+Viewers can download
+All selections cleared 
+
+
+Hi there, I'm Tucker Balch.
+I'm a professor at Georgia Tech and
+I'm the instructor for this course.
+>> Hi, I'm Devpriya Dave,
+a graduate student at Georgia Tech.
+You can call me Dev.
+>> My original research was about
+machine learning for robotics,
+but in 2007 I became interested in using
+these same algorithms for investing.
+Since that time I've shifted my
+research and teaching towards finance.
+I also cofounded a financial technology
+company called Lucena Research.
+>> I'm a graduate student who's
+been working with Professor to
+built up predictive system for
+stock market.
+I'm also working on the software
+to support this course.
+>> You're going to see a lot
+of Dev in this course.
+She makes a lot of things
+happen behind the scenes.
+Now Dev,
+I'm thinking about buying Apple stock.
+Do you think I should do it?
+>> Mm, well,
+it depends on a lot of factors.
+What are the other stocks
+in your portfolio?
+What do you think will
+predict stock prices?
+Also, how much risk do you
+think you can take it on?
+>> So those are all good questions,
+and Dev is exactly right.
+We need to consider all of those
+things before we make an investment.
+Now in this course we're going
+to cover a lot of these issues.
+We're going to show you how information
+influences the movement of a stock
+price, how to build software to analyze
+and visualize these relationships, and
+details about how
+the stock exchanges work.
+Finally, in the last section
+of this course we're going to
+show you how to build
+machine learning algorithms
+that you can use to build
+real trading strategies.
+Now let's get started.
+>> Let's do it.
+
+The overall course is broken
+into three mini courses.
+>> The first one is
+Manipulating Financial Data in Python.
+>> In this first mini course, we show
+you how to read historical financial
+data into Python and manipulate it
+using powerful statistical algorithms.
+>> The second one is
+Computational Investing.
+>> In the second mini course,
+we show you the algorithms, methods and
+models used by hedge funds and
+investment banks to manipulate and
+work with financial data.
+>> And the last one is
+Learning Algorithms for Trading.
+>> In this last mini course,
+we pull everything together.
+We take what you learned in the first
+two mini courses, show you how to take
+that data and use it with machine
+learning algorithms like Q learning and
+random forests to build
+trading algorithms.
+Now, our goal is that after you complete
+this course you'll be equipped to
+join a trading system development team.
+Say a hedge fund or an investment bank.
+But I want to emphasize that you
+shouldn't immediately begin automatic
+trading.
+This course is just a starting point to
+teach you some of the things that you
+need to do that well.
+But, again, it's just a starting point.
+
+We will be using three different
+text books in this course.
+For the first mini course, we will be
+using Python for Finance by Hilpish.
+>> In the second mini course, we will be
+using a book I wrote with Philip Romero
+titled What Hedge Funds Really Do.
+It's a thin book, but
+it covers a lot of important material
+that I think you will enjoy.
+Finally, in the last mini course,
+we will be using
+Mitchell's Machine Learning.
+>> The good news is if you're
+taking the Machine Learning course,
+you'll already have that book.
+So you don't have to buy it again.
+I also wanted to mention that we're not
+going to cover all the material in these
+books, so you don't need to
+worry about being overwhelmed.
+
+[MUSIC]
+Hi, Dave.
+>> Hi, Professor.
+>> Now, you took this course recently,
+didn't you?
+>> Yes.
+>> Do you think you have to be a stock
+market whiz to pass this course?
+>> No, not really.
+I got interested in the finance
+only after I took your course.
+>> [LAUGH] The main prerequisite for
+this course, is that you
+should be a strong programmer.
+We have a lot of assignments and
+projects, and we move at a quick pace.
+We also use Python which may be new to
+some of you, so you should prepare for
+that challenge.
+[MUSIC]
+>> Oh, Professor,
+can I ask you what you are doing?
+>> This is my Monty Python impression.
+You know, the Ministry of Silly Walks.
+>> No.
+Tyson
+
+
+Search Drive
+
+Drive
+.
+Folder Path
+My Drive
+eBooks
+text_versions
+ml_4t
+NEW 
+Folders and views
+My Drive
+Shared with me
+Google Photos
+Recent
+Starred
+Trash
+28 GB of 115 GB used
+Upgrade storage
+Name
+Owner
+Last modified
+File size
+
+01-04.txt
+me
+Feb 21, 2016me
+18 KB
+
+01-06.txt
+me
+Feb 21, 2016me
+20 KB
+
+01-05.txt
+me
+Feb 21, 2016me
+11 KB
+
+01-03.txt
+me
+Feb 21, 2016me
+30 KB
+
+01-02.txt
+me
+Feb 21, 2016me
+23 KB
+
+01-01.txt
+me
+Feb 21, 2016me
+15 KB
+
+00-00.txt
+me
+Feb 21, 2016me
+4 KB
+Text
+01-01.txt
+Details
+Activity
+01-01.txt
+Sharing Info
+
+General Info
+Type
+Text
+Size
+15 KB (15,188 bytes)
+Storage used
+15 KB (15,188 bytes)
+Location
+ml_4t
+Owner
+me
+Modified
+Feb 21, 2016 by me
+Opened
+4:33 PM by me
+Created
+Feb 21, 2016
+Description
+Add a description
+Download permissions
+Viewers can download
+All selections cleared 
+
+
+Hi I'm Tucker.
+>> And I'm Dev.
+>> Welcome to this mini course,
+Manipulating Financial Data in Python.
+Our goal is to give you
+a quick introduction to
+the skills you'll need to work
+with financial data in Python.
+Now, some people complain
+about our choice of Python for
+financial applications.
+>> I don't agree with those people.
+Python allows you to quickly
+prototype algorithms
+while also providing
+computational speed.
+It has a number of features.
+Firstly, it has strong
+scientific libraries.
+Second, it is strongly maintained.
+It is also fast if you can stick to
+metrics notation because lower levels
+are returned in C.
+>> Some other potential languages
+that might have made sense for
+this course include R and MATLAB.
+Which are themselves also great
+languages for financial data.
+But we've chosen Python and
+we'll be using this book Python for
+Finance in the course.
+Look for
+readings assigned in the course outline.
+
+Our objective in this class is to get
+you up and running quickly, to show you
+some real data, and some code you can
+use to view it and manipulate it.
+And just give you a feeling
+that you know what's going on.
+So we're going to take you
+from examples of raw data
+all the way to visualization.
+Now let's get started with the data.
+In this class we're going to
+work almost entirely with
+data that comes from CSV files.
+CSV files are plain text.
+The C stands for comma, S stands for
+separated, V is values.
+So comma-separated values.
+Let me show you an example of
+what might be in a CSV file.
+Most CVS files start with a header line.
+In this example,
+this is a CSV file that's telling
+us about weather conditions.
+So we've got temperature,
+pressure and humidity and
+that tells us what information is
+in the columns that are to follow.
+Following our header line we
+have lines or rows of data.
+So these numbers here make up our data.
+Again, header row and
+rows of data, where each data
+element is separated by a comma.
+Now the files that we're going to be
+working with, the stock data files,
+have thousands of lines and
+many more columns as well.
+Our objective for this lesson is to
+show you how to read in data like this,
+focus, say, on one column or another,
+and create a plot from that data.
+Okay, so
+now you've seen an example with weather.
+Let's start thinking about stocks.
+
+Which fields or items in a header row,
+would you expect to see in a comma
+separated value file of stock data?
+So here are the options.
+Number of employees for
+the company, date/time,
+company name, price of the stock,
+company's hometown.
+Good luck.
+
+The correct answers are date/time and
+price of the stock.
+Let me mention a couple of
+reasons why some of these others
+aren't correct answers.
+Sure, the company name is important to
+know, but it doesn't change over time,
+so there's no need to allocate space for
+this information every day over time.
+Company's home town, same thing.
+Number of employees can be
+important data and actually it's
+Information that is sometimes provided
+via proprietary data feeds, but
+it's not something you typically find in
+a historical data file of stock prices.
+
+Okay.
+So, let's take a look at some real
+stock data.
+We provide for
+you in this class hundreds of CSV files
+that represent the prices
+of stocks over time.
+Here's an example from one of
+those files that you provided.
+This is data from the file HCP.csv.
+So, here is our header row and
+here is the information that
+you'll find in one of these files.
+So, Date,
+which date is the information for?
+Open, this is the price
+that the stock opened at.
+In other words, in the morning,
+when trading on the exchange began,
+that was the first price of the day for
+that stock.
+High, throughout the day,
+what was the very high price,
+what was the very low price, and
+at which price did the stock close?
+So when we reached 4 o'clock,
+what was the final price?
+Volume, that's how many shares of
+the stock traded altogether on that day.
+And finally, this value, adjusted close,
+which is a little bit
+different from close.
+And this is something we cover in the
+next course where we talk about finance.
+I'll talk about it a little bit here,
+as well.
+But let me delay talking about it for
+a moment.
+Okay.
+I fleshed out this data a little bit.
+First thing I want you to notice is that
+the dates start with most recent dates,
+and then as you go forward into
+the file, you find older dates.
+So, what that means, more or
+less, is that we sort of go backwards
+through time in these files.
+Now, this is a feature, if you will,
+of data from Yahoo, and that's where
+we got our data for this class.
+Thanks very much, Yahoo.
+And this is just what a real
+one of those files look like.
+Now later when we read the data in,
+we managed to get it in the right order,
+and Dave will tell you
+a little bit more about that.
+Now, I had talked a little bit earlier
+about Adjusted Close and Close.
+Let me tell you a bit more
+about what that means.
+Now Close in this data
+is the actual price
+that was reported at the exchange
+when the stock closed for that day.
+Adjusted Close is a number that
+the data provider generates for us.
+And it's adjusted,
+as the name implies, for
+certain things like stocks,
+splits, and dividend payments.
+Now, on the current day, let's pretend
+for the moment that we're in 2012,
+adjusted close and
+close are always the same.
+However, as we go back in time,
+we eventually see that adjusted
+close and close differ.
+So if we go all the way
+back to the year 2000,
+we'll note that the actual price
+the stock closed at was $25,
+but this adjusted price was only $5.36.
+Now, what you can observe from
+that is as we go forward in time,
+if we had purchased this
+stock back in 2000 and
+held it to 2012,
+what are we looking at there?
+About eight or
+nine time return over those
+12 years, so 800 to 900% return.
+If you looked only at just
+the actual price on the market,
+it's only a factor of about two, but
+this adjusted close reflects things like
+I said, like dividend payments,
+and splits, and so on.
+So that's what is in
+an actual stock CSV file.
+And this is the data that we're going to
+be working with throughout this course
+and the next two parts of the course.
+
+We're going to make heavy use
+of a library called Pandas.
+This library was created by
+Wes McKinney at a hedge fund call AQR.
+It's used at many hedge funds and
+by many people in the finance industry.
+One of the key components of Pandas
+is something called the dataframe.
+And I'm going to show you a little
+bit about what that looks like.
+So this is the basic
+layout of a dataframe.
+We have our symbols along the top, so
+our columns represent
+symbols in the stock market.
+Like, SPY which is an ETF
+representing the S&P 500,
+AAPL the symbol for Apple,
+GOOG for Google, GLD for Gold.
+And the rows are the dates over time, so
+we go back as far as 2000,
+then come all the way up to 2015.
+So again, symbols from left to right,
+one column for each symbol,
+and time coming down like this.
+So here's our dataframe fleshed
+out with a little bit of data.
+I made up some of these numbers,
+so it's not intended to be
+gospel truth, but notice how we have,
+let's say this is closing prices.
+So we see these numbers for
+SPY, Apple, Google, and GLD.
+Now, there are some special or
+unusual values here.
+NaN, that stands for
+not a number, and that's
+Python's way of saying hey, I don't
+know, I don't have information for this.
+The reason you see those values here is,
+back in 2000, Google
+did not exist as a publicly traded
+company, and neither did the ETF GLD.
+Now these NaN values can cause problems,
+and
+we'll be talking about
+those in a later session.
+Now as I said,
+this might represent closing prices, but
+Pandas can also handle additional data
+in a sort of three dimensional sense.
+So you can have a dataframe that
+represents, again in columns,
+our particular symbols,
+and in rows, dates.
+This one can be close,
+we can have another one that has, for
+the same stocks and the same dates,
+volume on those dates, and
+adjusted close, and so on.
+So Pandas is a very flexible way to
+read in, manipulate, and plot data.
+Now I've shown you,
+kind of at a high level,
+what this data looks like and
+what Pandas looks like.
+I'm going to hand it over to Dave now,
+and
+she's going to show you some
+real live examples with Pandas.
+She's going to show you how to read
+this data in, and plot it and so on.
+So here's over to you, Dave.
+
+Thank you, Professor.
+Hey, everyone, this is Davia.
+So here's an example of
+what the data looks like
+that Professor was talking about.
+This is basically a comma
+separated file, as you can see.
+And as you observe that the CSV
+is in the reverse order, but
+soon we will teach you how to fix that.
+
+Pandas provide a number of
+functions that makes it easy
+to read in data like the .csv
+file we just had a look at.
+Here's a code that reads in
+AAPL.csv into a data frame.
+So, first of all we will have
+to import the pandas library.
+To avoid writing pandas every time
+we use a functionality of it,
+we rename it as PD.
+So, this is the main function,
+which will call the test run function.
+Let's have a look what's there in it.
+Pd.read_csv, as the name suggests,
+will read AAPL.csv into a data frame,
+which we name it as df.
+As of now, imagine dataframe as
+a structure similar to the 2D arracy.
+That is, with rows and columns.
+Let's go ahead and print this.
+So here's the entire csv
+file on your console.
+As you can see, the entire data
+is loaded in your console, but
+just to have an idea of the .csv file,
+you can just print the top
+five rows of the data frame.
+This is how you do it.
+Data frame dot head.
+Dot head is the functionality provided
+by the pandas for the data frame
+that would help you to view just
+the top five lines of the .csv.
+That will give you a rough idea of
+what the .csv actually contains.
+Let's go ahead and print this.
+So here it is.
+Just the top five lines
+of your data frame.
+You can observe that all the columns
+of the .csv can be viewed here.
+You will also observe there is
+a column that is not named and
+has values 0, 1, 2, 3.
+And this is not from the .csv.
+These are called index for the data
+frame, which help you to access rows.
+Similarly, you can view last
+five values using the df.tail.
+
+So now let's do some interesting stuff.
+What if I want to view rows
+from the DataFrame in between
+some random values and
+not the head and the tail?
+We can do something of this kind.
+If you want data from index,
+10 to 20, just add this line.
+Let's see the output.
+Here it is.
+All the data between the index 10 and
+20 are displayed.
+But you might also observe that
+if you want data between 10 and
+20, you have to mention 10:21.
+Because 21 is not
+inclusive in the range.
+This operation is called slicing and
+it is a very important operation
+in Python pandas, which you will
+encounter in the future lesson.
+
+Now let's do some more
+processing on the data frame.
+We can start with finding
+the maximum closing value for
+each of the stock AAPL and IBM.
+So here's the code.
+The test_run function simply loops
+over two symbols, AAPL and IBM,
+and will print the maximum closing
+value of each of the stock.
+Let's call the function
+get_max_close along with the symbol.
+Here's the function that will
+compute the maximum closing value.
+Let's see what get_max_close
+function does.
+The first step would be to read
+in the csv into the data frame.
+The next step would be to get only
+the closing values from the entire
+data frame, which means we have
+to extract the column close.
+This is how you do it.
+df[, pass the parameter of
+the column name, that is, 'Close'.
+Make sure you include
+the inverted commas.
+The last step is to calculate
+the maximum value, and
+it is as simple as calling the .max()
+function over the extracted data.
+Let's go ahead and print this.
+Here is your output.
+The max close for the AAPL is 680.44 and
+the max close for the IBM is 209.5.
+
+Your task is to calculate the mean
+volume for each of the given symbols.
+You can start with extracting the volume
+column form the data frame and
+then finding the mean.
+I'll come back with the solution.
+Good luck.
+
+So here's the solution to find
+the mean volume for the given stroke.
+As I explained,
+the first step would be to extract
+the volume column from the data frame.
+The next step is to find the mean.
+It can be done by calling
+the mean function.
+Let's run this code.
+Here you go.
+The mean value for Apple,
+and the mean value for IBM.
+I hope you enjoyed the quiz.
+
+Now let's do some plotting.
+It's easy to plot data
+in the data frame.
+Here's how you plot
+Apple's adjusted close.
+First let's call a library
+that would help us to do this.
+We import a library name, matplotlib.
+Do not worry about the details.
+You will learn them eventually
+in the further lessons.
+But to plot the adjusting close,
+we first need the adjusting
+close data from the data frame.
+And, as you learned in
+the previous video,
+we can slice over the column
+using the square brackets.
+Plotting the adjusting close is as
+simple as calling a plot function.
+To show the plot on your screen, we need
+to add one more line and this plot.show.
+Now let's run this code.
+Here's your first graph.
+You can observe there is no x-axis
+label, no y-axis label, no header also
+the data is printed in reverse order
+since the CSV is in the reverse order.
+So the Apple prices are not moving down,
+they are just printed inversely.
+In the coming lessons,
+you will learn how to fix it.
+As of now,
+enjoy the power of the Python Pandas
+that can plot information
+using just one line of code.
+Get ready to plot some data by yourself.
+I'll be back with a quiz.
+
+So here's the question for you.
+Plot the high prices for the IBM.
+You can approach this problem by
+first getting the CSV data of the IBM
+followed by getting the high prices from
+the data frame and then plotting it.
+You can refer to the previous example.
+Good luck.
+
+Here's the solution.
+You can get the csv of
+the IBM by using IBM.csv.
+The next step was the get the high
+prices from the data frame.
+df[high] will do that for you.
+And finally, you go ahead and plot it.
+Let's see how the graph looks like.
+I hope you got a graph similar to this.
+An advice I would like to
+give you at this point is,
+you will get hold of Python
+easily if you experiment.
+Try different options and
+see what works and what does not.
+During the course you will realize
+why some things worked and
+why just some things failed.
+
+I'll sign off by showing
+you some pair of pandas.
+We are about to plot two columns
+simultaneously on one graph.
+That is close and
+adjusted close for the Apple stock.
+Don't worry about how to extract
+multiple columns from the data frame.
+But intuitively you use
+a double square brackets and
+pass the two column names,
+that is Close and Adj Close.
+We go ahead and plot this.
+Here's the graph.
+You can observe two lines.
+One is blue, which corresponds
+to Close; and one is green,
+which corresponds to Adj Close.
+Observe that we did not write
+code to print the legend, or
+give color to each of the graph lines.
+This is the pair of the Python pandas.
+The blue line corresponds
+to the close value, and
+the green line corresponds to
+the adjusted close values.
+You will learn in the further
+lesson why there is a difference.
+That's all for now,
+I'll see you in the next lesson.
+Happy coding.
+Tyson
+
+
+Search Drive
+
+Drive
+.
+Folder Path
+My Drive
+eBooks
+text_versions
+ml_4t
+NEW 
+Folders and views
+My Drive
+Shared with me
+Google Photos
+Recent
+Starred
+Trash
+28 GB of 115 GB used
+Upgrade storage
+Name
+Owner
+Last modified
+File size
+
+01-04.txt
+me
+Feb 21, 2016me
+18 KB
+
+01-06.txt
+me
+Feb 21, 2016me
+20 KB
+
+01-05.txt
+me
+Feb 21, 2016me
+11 KB
+
+01-03.txt
+me
+Feb 21, 2016me
+30 KB
+
+01-02.txt
+me
+Feb 21, 2016me
+23 KB
+
+01-01.txt
+me
+Feb 21, 2016me
+15 KB
+
+00-00.txt
+me
+Feb 21, 2016me
+4 KB
+Text
+01-02.txt
+Details
+Activity
+01-02.txt
+Sharing Info
+
+General Info
+Type
+Text
+Size
+23 KB (23,731 bytes)
+Storage used
+23 KB (23,731 bytes)
+Location
+ml_4t
+Owner
+me
+Modified
+Feb 21, 2016 by me
+Opened
+4:34 PM by me
+Created
+Feb 21, 2016
+Description
+Add a description
+Download permissions
+Viewers can download
+All selections cleared 
+
+
+So far in this course we've been
+working with one stock at a time.
+>> Yes, professor.
+>> Dave, are you a juggler?
+>> No.
+>> Can you juggle lots of things
+at once?
+>> What?
+>> [Laughter]
+>> I can juggle two.
+>> Sorry, I can't do this.
+>> Allright.
+We're not jugglers.
+
+Okay, in this lesson,
+we're going to dive into how do we fill
+a dataframe with the data that we want.
+And we're also going
+to touch upon a couple
+issue that we had that were pointed
+out in the previous lesson.
+For instance, remember when we had that
+issue that the dates were actually in
+the reverse order when we loaded
+them in, we're going to fix that.
+We're going to fix
+a couple other things too.
+Okay, just to refresh your memory,
+here's the kind of stuff that goes in
+a dataframe, our columns are the
+particular symbols of stocks that we're
+interested in, and our rows are dates.
+So time, goes from the top of
+the dataframe down to the bottom, and
+symbols, from left to right.
+
+So in order to get to
+a dataframe like this,
+we've got a couple of problems to solve.
+And we're going to solve
+them in this lesson.
+So one of the first issues is we want
+to be able to read in particular
+date ranges.
+So if you remember from the last lesson,
+we just read all of it in.
+But what if we just want to
+read in a certain part of it,
+instead of from 1995 to 2012.
+What if we want, say, just 2010 to 2012?
+Well, we gotta figure
+out how to solve that.
+Something that's very special about
+Pandas, and one of the things
+that makes it very powerful,
+is that we can index the rows by dates.
+We don't have to just use a single
+number like zero for instance.
+We need to be able to read in multiple
+stocks, instead of just, say having one.
+We want to have SPY, IBM,
+Google, and Gold all at once.
+We need to be able to align dates.
+For instance,
+If GLD traded on particular days and
+SPY traded on particular days we want
+to make sure that those line up, so
+that for each row we have
+the correct information for
+each equity on that particular date.
+Finally, we need to undo that problem
+that we discovered in the last lesson.
+Namely that these dates and the files
+we read them from are in reverse order.
+So, we want to be sure that we have
+them in the right order when we're
+processing them.
+So, these are the tasks we're
+going to dig into in this lesson.
+
+Here's a quiz, and
+something important to think about.
+How many days were US stocks traded at
+the New York Stock Exchange in 2014?
+Here are three possible answers.
+
+The correct answer is 252.
+The reason is, you need to
+factor in weekends and holidays.
+And interestingly, the New York Stock
+Exchange has a set of holidays that
+occasionally differ from
+the US Government holidays.
+In almost all cases, almost every year,
+we've got 252 trading days and
+this number is going to come up a lot,
+as we continue to look at days and
+calculating statistics about stocks.
+
+Now here's how we're going to
+build that data frame.
+Alright we start by constructing
+an empty data frame
+that has all the dates we're
+potentially interested in.
+And Dave will show you the syntax for
+doing that later on in the lesson.
+We'll call this df1 for
+data frame 1 of course.
+Now, we want to load this data frame up
+with a column of data for SPY, for IBM,
+for Google and Gold, and I'm going to
+show you step by step how we do that.
+Okay, so we separately read in SPY.
+And again,
+Dave will show you how to do that.
+Now when we read SPY,
+we get all the potential dates and
+all the prices that go with that.
+And in this case,
+we're loading adjusted closed data.
+Note that there's many more
+dates here than there are here.
+And this is our target data frame that
+we loaded with the particular dates
+that we're interested in.
+One other thing to mention,
+that I didn't mention before,
+is these two days are weekend days.
+So you can go ahead and
+check your calendar, go back to 2010,
+and see if I'm right.
+Interesting thing, or
+just obvious thing about weekends,
+is the markets are not open on weekends.
+So if you compare this with this,
+look in our SPY history,
+we don't have the 23rd and the 24th
+because SPY did not trade that day.
+So, we've got a little bit of mismatch
+there that we need to deal with.
+And this actually is one of
+the important reasons that we use SPY
+as a reference, because if SPY traded,
+it meant the market was open.
+And if the market was open, SPY traded.
+So, SPY, the S&P 500 ETF,
+is our reference for many, many things.
+
+So pandis has many
+very powerful features,
+among those features are the ability to
+do many operations that you may
+be familiar with from databases.
+In particular, one that we're
+going to leverage here is adjoin.
+So we're going to join this data
+from SPY and our empty data frame.
+And we're going to do a special
+join that says, look,
+we're only interested in dates that
+are present both in SPY and df1.
+And what happens is,
+we end up with this data.
+According to its date and
+this position in our target dataframe,
+and, of course,
+the other two rows as well.
+But note, because of the join,
+these two days were missing from SPY and
+the result of the join is they
+are eliminated from our dataframe.
+They're eliminated
+because it's the weekend.
+There was no trading, because we know
+that because SPY is our reference.
+All right, so here's our original data
+frame now after we've loaded an SPY.
+And those weekend days that were
+here are gone because of that join.
+Now we can add more
+columns from other stocks,
+here's one for instance, IBM,
+by performing additional joins.
+So after this join with data frame IBM,
+bump,
+we've got this new data over
+here in our empty data frame.
+We can repeat this process for each
+additional symbol that we want to add.
+So we'll add Google and GLD.
+And again, Dave will show you
+the syntax for doing that and
+pandis in just a few moments.
+
+Let's try to build the data
+frame professor outline.
+Starting with the things we need to
+populate the data frame with, r,
+firstly dates.
+We used pandas date range method
+which takes two parameters,
+that is start and end date.
+For this code,
+we will take a small date range that is
+from 22nd Jan 2010 to 26th Jan 2010.
+We then call the date range
+function as I mentioned before,
+passing two parameters,
+start date and the end date.
+Let's run this code to see
+what variable dates has in it.
+The output you see is not
+the list of strings, but
+the list of date time index objects.
+Now, what do you mean by
+date time index object?
+Let's extract the foremost
+element of this list.
+You can get the forced element
+of the list by writing
+dates[0] Let's go ahead and
+run this code.
+This is the first element of the list
+which a date/time index object.
+The trailing zero zeros for
+each object is the default time stamp.
+The index for
+a stock data only consists of dates.
+We can ignore the time stamps for now.
+Next we define an empty dataframe
+df1 with these dates as index.
+We use the parameter index
+to supply the dates.
+Note that without this parameter the
+dataframe will have an index of integers
+0,1,2 as seen before.
+Let's print this now.
+So here's your DataFrame, DF1.
+It's an empty DataFrame with no columns.
+However, as we pass the index parameter,
+we have an index as dates.
+And you can see that it's
+a date time index object.
+Two major steps have now been completed.
+
+Continuing on,
+let's read the csv file for SPY.
+In dfSPY, a temporary DataFrame.
+The next step is the heart of
+building the final DataFrame.
+We combine the empty DataFrame, df1,
+with the temporary DataFrame, dfSPY.
+We use the join function of
+the DataFrame for this purpose.
+Let's do it.
+DataFrame.join does
+a left join by default.
+So if we write a.join b,
+it will read in all the rules from a,
+but only those rules from b whose
+index values are present in a's index.
+For the remaining rows, that is
+the index values, not present in b,
+pandas introduce nans.
+So in this case, all the rules from
+the df1 will be retained and we will get
+all the values for the prizes from dfSPY
+for the given range we defined above.
+So in our case, all the rules
+from the df1 will be retained and
+only those rules of dfSPY, which is
+present in df1, will be retained.
+This will give us all the prices for
+the stock SPY in the defined date range.
+Let's use join df1 one after
+the join step to make it clear.
+You should expect to see all
+the values of SPY for the given dates.
+Observe the output.
+We did not get any
+values from the dfSpy.
+What do you think?
+What could be the reason?
+Let's print dfSPY to investigate.
+Commenting out the join lines.
+So let's see what dfSPY has.
+We told pandas to join df1, and dfSPY.
+But dfSPY has an index of integers,
+which is not the same as
+the dates index that df1 uses.
+We fix this by informing
+the read_csv function,
+that the date column in the csv
+file should be used as index.
+We do this by using
+the index_col parameter.
+Make sure you give
+the correct column name.
+We also want the dates present in
+the DataFrame to be converted into date
+time index objects.
+This can be done by setting the value
+for the parse_dates parameter to True.
+Let's see if this works.
+Notice that the Date column is
+now being used as the index.
+There is no separate
+integer index on the left.
+Now let's see what the resulting
+join DataFrame looks like
+by uncommenting these lines.
+But before that, let's add some more
+parameters to the read_csv function.
+Note that we are interested in just
+two columns, which is the Date and
+the Adj Close.
+We can get rid of the other column,
+by using the usecols
+parameter of the read_csv.
+We pass a list of column name we
+are interested in, which are Date and
+Adj Close.
+Now let's see what's there in df1.
+You see now we have just the Adj Close
+for the SPY for a given date range.
+Also observe that weekend
+dates have NaN value.
+Before we go ahead,
+let's understand that csv NaN as string,
+so we need to tell the read_csv that NaN
+should be interpreted as not a number.
+This is how you indicate it.
+One last step.
+We just want the date,
+on which SPY traded, so
+we can add more stocks
+based on these dates.
+Let's drop the rows where SPY is NaN.
+For this, we use the dropna function.
+df1.dropna will drop all the rows
+which has NaN values for the SPY.
+Let's go ahead and print this.
+Now we have built a clean DataFrame
+filled with SPY data using
+a selected date range and keeping
+only the dates that SPY traded on.
+
+Note that we use two steps for
+combining the data frames.
+That is left joining the empty
+data frame with dfSPY, and
+then dropping the rows
+that SPY did not trade on.
+This can be done in a single step using
+the how argument when calling join.
+Can you figure out what the appropriate
+value of how should be?
+Type it in the box.
+
+We are essentially trying to
+do an inner join, that is,
+we only want to retain rules
+common to both dataframes.
+Note that this is not the default,
+hence, we have to mention it explicitly.
+So what is the default value?
+What effect does it have on the result?
+Find out using the documentation link
+provided in the instructor notes.
+
+So we want to read in more stocks
+into a combined dataframe.
+Start with the code we used to build
+our dataframe with the SPY data.
+Then define a list with
+the required stock symbols.
+Now we can write a for loop to read and
+join each stock into
+the dataframe just like SPY.
+So here's the for loop which takes
+each symbol in the symbols list and
+joins it to our main dataframe.
+Let's go ahead and print this.
+Oops.
+There is an error.
+Reading the error message carefully,
+we observe that index column
+Adj Close has an overlap.
+What is happening here is that,
+irrespective of the stock
+the column we are extracting
+each time is named Adj Close.
+So the join method is confused as
+to what to name it in the result.
+Column names must be unique.
+As professor described earlier,
+we would like each stock symbol as
+the corresponding column name or header.
+So we add these two lines.
+This renames the column Adj Close
+to the respective stock symbol.
+Now let's see the output.
+Here you go,
+everything is finally in place.
+
+You must have noticed how we
+are carrying out essentially the same
+operation in different places.
+Why not write some utility function
+that we can use going forward?
+I have implemented one function for
+you, symbol_to_path.
+It accepts a symbol name as a string and
+returns the path to the corresponding
+CSV file, assuming it is
+stored under data by default.
+For example, symbol_to_path
+IBM will return data/IBM.csv.
+Can you finish the implementation for
+get_data?
+It take a list of symbols and
+dates as index and is supposed to return
+a data frame with stock data for
+each symbol within the given date range.
+SPY is inserted into the list,
+if not already present,
+in order to solve as a reference.
+Note that you must ensure the column for
+SPY does not have any nulls.
+That is, the data frame should only
+contain dates when SPY actually traded
+in the given date range.
+Type in your code here.
+You can use test run to
+execute your code and
+submit to evaluate it
+against our test cases.
+Don't worry, there is no limit
+to how many times you can try.
+Good luck.
+
+As show in the previous demo,
+there are three main steps to
+implement inside the for loop.
+The first one is to read in
+the data from the symbol.
+Make sure you specify
+all the parameters.
+Also notice how I have used
+symbol_to_path function
+to get the path to the CSV file.
+The next step is to rename the adjacent
+close column to the symbol name.
+And the last step is to join this
+new data with the new data frame.
+Now, we have to take care
+of one important thing.
+That is,
+dropping off the lines from the SPY.
+Subset is equal to SPY will ensure that
+only those rows will be
+dropped where SPY is none.
+Also the statement ensures that
+SPY is used as a reference.
+And that we do not have any
+non-values in the SPY column.
+Let's run it.
+So here's the output, same as before.
+
+Okay, let's suppose we have a nice
+big beautiful pandas dataframe and
+this time read in a lot of data.
+We didn't just focus on a few days,
+we've got the data all the way from
+the beginning of 2010 to 2012 and we
+got data for SPY, IBM, Google and GLD.
+Now suppose we want to focus
+on just a subset of that data.
+In fact, we might call that a slice.
+For instance, what if we wanted
+to look at just the values for
+Google and GLD between these dates,
+February 13,
+2010 through February 15, 2010, and
+we want to again just look at Google and
+GLD.
+Well there's very beautiful syntax in
+Pandas that allows you to do that.
+So we're going to be learning a lot more
+about this syntax in a later lesson.
+But this is sort of a preview of
+the very nice things you can do.
+To select these rows we do a simple
+statement that they will show
+you later to create a date time object.
+And we just put the start
+date colon end date.
+And if we just write df1[sd:ed] where
+this is start date and that's end date,
+then we end up With these three rows,
+but we want to be more selective.
+We want to focus on these three rows and
+these columns and
+we need to add one more piece of
+syntax that indicates these columns.
+So this statement will extract
+these rows and these columns,
+and leave you just with this
+sub-portion or slice of df1.
+So, if we were to execute
+the statement df2 equals df1,
+and then this additional syntax,
+we will end up with this
+little morsel of data right
+here in our new dataframe.
+Now there's lots of different ways
+you can slice the data, you don't
+have to take a group of pieces of data
+that are right next to each other.
+You can grab any different columns you
+want and any different rows you want.
+So you might build a new
+dataframe by taking GLD and IBM.
+And it'll just take those two
+columns and splat them into df2.
+So that's slicing.
+This is just a brief introduction.
+We're going to go into some
+deeper examples when we get
+to the lesson on numbpie.
+
+To do any kind of analysis on the data,
+we need significant amount of data.
+So let's read data for each stock for
+a period of one year,
+that is, the year 2010.
+You can do this by changing the stock
+and the end date as shown here.
+Let's see the data frame contains now.
+So this is your data frame which has
+stock prices for the symbol SPY,
+Google, IBM and gold for a year 2010.
+We briefly explained
+slicing in the last lesson.
+In this lesson we will learn how to
+do slicing using the data frame we
+just created.
+There are basically three ways
+we can slice the data frame.
+First, row slicing.
+As the name suggest,
+it will give us the required
+rows along with all the columns.
+This is useful when you
+want to compare moment of
+all the stocks over subset of time.
+This is how you do it in the code.
+We use the function .ix
+of the data frame and
+just mention the start and
+the end date in the square brackets.
+Here we extract the moment of all
+the stocks in the month of Jan.
+Note that the start and the end date
+should be in the chronological order.
+If you write the 31st
+Jan date before 1st Jan,
+the date frame will give
+you an empty data frame.
+Even if you remove the .ix function and
+just to print DF
+passing the dates in the chronological
+order, you will get the same result.
+However, .ix is considered to be more
+Pythonic and robust, so we follow that.
+Now let's run the code to see the stock
+prices for the month of January.
+You can observe that we get the data
+only for the January month but
+for all the symbols,
+this is known as row slicing.
+Second way of slicing is useful when you
+want to view prices of only one stock
+over the date range,
+in this case you can use column slicing.
+We want to project the prices of
+Google for the entire year of 2010.
+Here is how we do it.
+A square bracket along with the name of
+the column and do not forget the colon.
+To retrieve a single column
+we just pass a single label.
+To select multiple columns
+we pass a list of labels.
+Let's print this.
+And this is the output for
+multiple columns.
+The last way of slicing is to
+slice through both dimensions,
+that is rows and columns.
+The most robust way to do this is using
+the IX selector of the data frame.
+Let's go ahead and use it.
+If you need more than one column,
+you define them in a list like this,
+and date range
+are separated with a colon.
+Here you go, the stock prices for
+the symbol SPY and
+IBM over the date range
+10th March to 15th March.
+One application of this way
+of slicing is to compare
+multiple stocks over a period of time.
+Panda support many ways of slicing
+a data frame to suit different needs.
+Find out more using the link
+in the instructor notes.
+
+Suppose you've got a data frame.
+It's pretty easy from the data
+frame to make a plot.
+In fact the syntax is as simple as this.
+Pandas will take this data and create
+a nice chart that looks about like this.
+It will give an individual
+color to each time series and
+give you a nice legend
+telling you which is which.
+Now one problem with viewing.
+Data like this is for instance,
+at this time, by the way,
+these numbers are made up.
+But it's often the case that stocks
+are priced at significantly different
+levels, so in this example, say,
+Google had a very high price and
+the other stocks had low prices, and
+it's hard to look at them sort of In
+a good way comparatively when they
+have these widely variant prices.
+So what we'd like to do instead is
+be able say to have them all start
+at one single point here,
+say that's 1.0.
+And then go out from there so
+we can compare them on
+an apples to apples comparison.
+So we'd like to end up with a chart
+that looks like this, where everything
+starts at 1.0, and we can compare
+them on an equal basis going forward.
+
+Okay, let's try a quick quiz.
+What is the best way to normalize price
+data so that all prices start at 1.0?
+So, here are two choices: a nested for
+loop or a one line expression.
+Good luck.
+
+Well, it was a little bit of
+a trick question because both
+of these will accomplish the same goal,
+namely normalizing everything
+according to the first row.
+This method uses two nested four
+loops to go through each date for
+each symbol and then make the division.
+This is the preferred method however,
+and
+that's because it's elegant,
+just a single line.
+We divide the entire data
+frame by its first row.
+The other reason that this is the way to
+do it is because it's much much faster.
+This ends up being executed
+in C at lower levels.
+Whereas this will be executed
+at the higher level,
+the higher interpreter
+levels of Pandas and Python
+
+Carly Fiorina rightly states that
+the goal is to turn data into
+information and
+information into insight.
+So let's better understand
+the data by improving our plots.
+We will need the matplotlib library for
+this purpose.
+Specifically we import
+the matplotlib.pyplot and
+rename it as plt for ease of use.
+First, let's define
+a trivial plot function.
+We define a plot data function
+which will essentially plot
+the contents of the data frame.
+We pass the data frame to it and
+use its plot function to
+plot all the data in it.
+Let's see the output.
+Remember, to see the graph,
+we have to call the show function
+from the matplotlib library.
+Observe that x axis has dates and y
+axis has prices for all the four stocks.
+The graph still looks incomplete.
+We need to add details
+like give a name or
+title to the graph,
+add x and y axis labels.
+We will give name to the graph
+by passing in parameter title.
+This should be customizable.
+And here we pass the value of the title
+to the parameter title of the dataframe.
+For x and y axis labels,
+we need a handler to the plot
+which the dataframe generates.
+The output of df.plot is such a handler.
+You can imagine it as an object.
+We name it ax for axis.
+Now we call set x label and
+set y label on this object to give the x
+and y axis some meaningful labels.
+The desired labels are passed as a
+parameter to the function set_xlabel and
+set_ylabel.
+Remember that set_xlabel and
+set_ylabel are the function of
+the object that we got from df.plot.
+You can also use the fontsize parameter
+in df.plot to make
+the graph more readable.
+Now let's see the modified plot.
+So here is your detailed plot with
+x label, y label, and a title.
+
+You now know how to read stock data,
+slice it, and plot it.
+The challenge for you now is to write
+the code to plot the values of SPY and
+IBM over the date range.
+Go ahead and
+write your code in this function.
+The clue to this is use slicing.
+
+To complete this, four slides using
+the notation you learned earlier.
+Once you get the desired data set,
+the next step is to plot
+by calling the plot and the score
+data function we defined earlier.
+Recollect that, plot_data takes
+the parameter, data frame and title.
+Let's see what we get now.
+Here's the plot showing the changes
+in the stock prices for
+SPY and IBM for the period of March.
+
+Let's analyze the graph that we
+had plotted for the four stocks.
+You see the four stocks
+are all multiple ranges.
+But we need to observe
+the movement of the stock.
+By movement I mean how
+much the stock went up or
+down as compared to the others.
+To do this, we need to normalize
+the prices of all the stock.
+We do this by dividing
+the values of each column.
+By day one.
+This will ensure that all
+the stocks will start with $1.
+Power of pandas and Python is
+that we can do this in one line.
+Let's add it.
+We define the function: normalize data
+and pass the data frame through it.
+First, we want all the values
+of the data frame.
+Hence, we just type the name of
+the data frame, which is df.
+Now we want to divide all
+the values of this data frame
+by the first row of eight.
+So we extract the first
+row using row slicing.
+This will give us the first row.
+Now we will just divide it.
+Let's see how the graph changes.
+Observe, all the stocks
+start with price one.
+And now you can see the changes
+that is the stock movement.
+That's it for now,
+I will be back soon with more coding.
+Until then, enjoy the power of
+the Python and happy coding.
+Tyson
+
+
+Search Drive
+
+Drive
+.
+Folder Path
+My Drive
+eBooks
+text_versions
+ml_4t
+NEW 
+Folders and views
+My Drive
+Shared with me
+Google Photos
+Recent
+Starred
+Trash
+28 GB of 115 GB used
+Upgrade storage
+Name
+Owner
+Last modified
+File size
+
+01-04.txt
+me
+Feb 21, 2016me
+18 KB
+
+01-06.txt
+me
+Feb 21, 2016me
+20 KB
+
+01-05.txt
+me
+Feb 21, 2016me
+11 KB
+
+01-03.txt
+me
+Feb 21, 2016me
+30 KB
+
+01-02.txt
+me
+Feb 21, 2016me
+23 KB
+
+01-01.txt
+me
+Feb 21, 2016me
+15 KB
+
+00-00.txt
+me
+Feb 21, 2016me
+4 KB
+Text
+01-03.txt
+Details
+Activity
+01-03.txt
+Sharing Info
+
+General Info
+Type
+Text
+Size
+30 KB (30,248 bytes)
+Storage used
+30 KB (30,248 bytes)
+Location
+ml_4t
+Owner
+me
+Modified
+Feb 21, 2016 by me
+Opened
+4:34 PM by me
+Created
+Feb 21, 2016
+Description
+Add a description
+Download permissions
+Viewers can download
+All selections cleared 
+
+
+In this lesson, we're going to learn
+about the NumPy numerical library.
+NumPy is a Python library that acts
+as a wrapper around underlying C and
+Fortran code.
+Because of that, it's very, very fast.
+NumPy focuses on matrices which
+are called in the arrays.
+The syntax is very similar to MATLAB, so
+if you've used MATLAB before
+It'll look familiar to you.
+NumPy is one of the important
+reasons people use Python for
+financial research.
+
+Now, how does NumPy relate to Pandas?
+Well, I said just a moment ago that
+NumPy is a wrapper for numerical
+libraries, well it turns out that
+Pandas is a kind of wrapper for NumPy.
+So remember our traditional data frame
+here, with our columns being symbols and
+our rows being dates.
+This data frame is just
+a wrapper around this ndarray,
+access the columns with symbols and
+the rows by dates.
+But you can, in fact, just treat this
+inside part as an ndarray directly.
+If you use this syntax in Python,
+that pulls these values out and
+lets you access it directly and
+then ndarray.
+You don't really need to do that though,
+you can,
+if you like, treat a data frame
+just like a NumPy ndarray.
+And so we're going to assume
+in the rest of this lesson
+that we're just working with an ndarray.
+And like I said, you can use all of
+these mechanisms that we're going to
+show you with ndarrays and
+with data frames directly.
+What you get if you create something
+as a data frame, as we'll see in
+a lesson a little bit later,
+you get many, many, many more routines.
+And you can treat it, like I said,
+just like an ndarray but
+you get a vast new number of
+statistical functions and so on.
+
+Consider an nd array, nd1.
+I'm going to show you now how
+to access cells within that.
+Now, the notation, at first,
+might seem sort of familiar, but
+there's some new and different things
+that you probably haven't seen before.
+So the usual syntax is
+the name of your nd array,
+bracket, the row and the column.
+So again, these are our rows.
+So row indicates which row we're using.
+Column, which column.
+It's important to know that in NumPy,
+our columns and rows begin at 0.
+So this element is nd1[0,0].
+It then continues of course,
+1, 2, 3, 4 in the rows, and
+in the columns, 0, 1, 2, 3.
+Before I tell you, see if you can
+guess how to address this cell.
+The answer is that
+this cell is nd1 [3,2],
+0, 1, 2, 3, 0, 1, 2.
+Now, this is probably the kind
+of stuff you've seen before.
+It turns out, though,
+that the NumPy is much more powerful and
+can do interesting and
+different kinds of slicing.
+What if, for instance,
+you wanted to address this
+sub portion of the nd array?
+How could you indicate that?
+NumPy uses a special symbol,
+the colon, to let you indicate ranges.
+So we can indicate this
+range in rows with 0:3,
+which indicates the zeroth to the,
+just before the third row.
+And in the columns, we've got 01:3.
+So this syntax indicates starting
+at the zeroth row to just
+before the third and the first
+column to just before the third.
+And in fact, captures this region.
+The key thing to remember here
+that's a little bit tricky is that
+this last value is one past the one
+that you actually want to include.
+So, for instance, this is column 3,
+but it's not included.
+Now, if we just use the colon by
+itself that indicates, for instance,
+if we place it in the rows position,
+that we want all of the rows.
+So you don't have to use the colon
+just to indicate a range.
+You can use it by itself for
+all of them.
+Now, look at this statement,
+see if you can figure out
+which part of this nd array it
+refers to before I show you.
+It is this region right here.
+So it's all the rows and
+column 3, 0, 1, 2, 3.
+So it's this section right here.
+NumPy includes some
+special syntax that lets
+you refer to the last row or column.
+So, for instance, the last row here,
+you can indicate with
+negative 1,
+second to last row would be negative 2.
+So if we wanted to refer
+to these 2 cells here,
+we would take advantage of
+this negative 1 syntax.
+So a negative 1 indicates that last row.
+And then to get these 2 columns,
+we would use 1:3.
+0, 1, 2, and
+then we don't include the last 1 there.
+There is a bunch of new syntax.
+I hope that you find it exciting.
+This is really one of the most
+powerful aspects of Python and NumPy.
+And it really enables you to
+do some interesting things.
+Now, we've got a quiz to see if you
+can figure out how to use this new
+syntax yourself.
+
+Now we've shown you how to
+address slices of ND arrays.
+We're going to give you a little quiz
+to see if you can figure something out.
+Suppose we have these two ND arrays,
+nd1 and nd2.
+And we want to replace
+some of the values in nd1,
+with these values from nd2.
+Here are four alternatives, see which
+one you think makes the most sense.
+
+Of these four,
+this one is the right answer.
+Here's why.
+This is the only left-hand side that
+singles out these correct rows,
+starting at zero, and ending at one.
+And these correct columns, again
+starting at zero and ending at one.
+If you look at the right hand side,
+here is a little bit of new syntax
+that you hadn't seen before.
+We indicate the rows
+second from last by a -2.
+So that's what that -2 means.
+And a colon with nothing after it
+means go all the way to the end.
+So we've singled out these rows and
+this indicates these two columns.
+So that's why this one
+is the correct answer.
+Now, I'm going to hand it over to Dev,
+and
+she is going to show you how to do all
+these things directly in Python syntax.
+Here's to you Dev.
+
+You can access the underlining NumPy
+array within a Pandas data frame
+using the values property.
+But you can also create
+NumPy arrays from scratch.
+There are many ways to create an array.
+Let's start with creating a one
+dimensional array from known values.
+NumPy has an array function
+which can convert most
+array-like objects into an n d array.
+What do we mean by nd array
+is n-dimensional array.
+Let's see how this works for
+Python lists.
+To start with,
+we need to import the library numpy.
+And we rename it as np for
+the ease of use.
+Next, we simply call
+a function np.array and
+pass a list which has value [2,3,4].
+Note that this function
+can take as input a list,
+a template, or other sequence.
+Check out the documentation for
+the array function and nd array type for
+more information.
+Now let's see the output.
+The output you see here is not
+a list but it is an array.
+Let's go ahead and create a 2D array.
+Now if you want to create a 2D array,
+we simply pass in a sequence
+of sequences to this function.
+Each tuple enclosed in round parenthesis
+serves as one row in
+the resulting array.
+We could also have
+passed a list of lists.
+This is called sequence of sequences.
+Let's go ahead and print it.
+Here is the output and as expected
+there are two rows and three columns.
+This function is mainly useful when you
+have a list of sequence of values, and
+you want to convert
+them into NumPy arrays.
+
+NumPy also offers several function to
+create empty arrays with initial values.
+For certain computations these help
+avoid growing arrays incrementally
+which can be an expensive operation.
+Let's start with
+creating an empty array.
+The empty function takes
+the shape of the array as input.
+The shape can be defined as a single
+integer, as we did over here, for
+creating a one dimensional array, or
+a sequence of integers denoting
+the size in each dimension.
+For a two dimensional array,
+a sequence of two integers is needed.
+That is the number of rows and
+the number of columns.
+For this example, we will create
+an empty array with five rows and
+four columns.
+Passing in a tuple with values 5 and 4.
+So here I pass a tuple with values 5 and
+4.
+In case you need a three
+dimensional array, or any
+greater number of dimensions, you can
+just add another number to the sequence.
+This will give you a 3 dimensional
+array with a depth of 3, and
+each depth having 5 rows and 4 columns.
+For this lesson we will only work
+with two dimensional arrays.
+Now let's check the output.
+Hm, strange.
+The empty array is not actually empty.
+What happens is that when we call
+numpy.empty to create an array,
+the elements of the array
+read in whatever
+values were present in
+the corresponding memory location.
+These are effectively
+random values that depend
+on the state of the computer's memory.
+Also observe that by default
+the elements are the floating points.
+Next we create an array full of ones.
+Like the empty function,
+we pass in the number of rows and
+columns as a sequence.
+To create an array full of ones,
+you call the one function and
+pass the sequence, which has number
+of rows and number of columns.
+You can expect this time to
+have an array of 5 rows and
+4 columns with all
+the values equal to 1.
+Let's go ahead and check this.
+Here it is.
+An array with 5 rows, 4 columns, and
+all the values of the array equal to 1.
+
+We notice that the default data type
+of all the values in the array is.
+Fortunately, you can change
+this when creating the array.
+What parameter do you need to
+add to this function to create
+an array of integers instead?
+Type the name of the parameter and
+the correct value in
+the corresponding boxes.
+Documentation for the array.ones
+function might be helpful.
+
+dtype is the parameter we
+passed to the function
+to specify the type of the value
+we want in each array location.
+Here we defined the values to be
+integers using NumPy data type np.int.
+Just as a matter of fact,
+NumPy supports a much greater variety
+of numerical types than Python.
+Let's run this.
+Here it is.
+The array now has integer values.
+And since we defined the array as ones,
+it has all the values as 1.
+Just like function np and
+ones, you can create an array full
+of zeroes using the zeroes function.
+All these functions accept
+the dtype parameter.
+Before moving forward, I would like
+to mention that we can also create
+n-dimensional array using
+the low-level NumPy function ndarray.
+But ones, zeroes and empty provide
+a more friendly interface for
+creating arrays.
+And are hence generally preferred.
+Refer to the documentation links and
+instructor notes for more information.
+
+Numpy also comes with bunch of
+handy functions to generate arrays
+filled with random values.
+These functions are defined
+in numpy's random module.
+The random function
+generates uniformly sampled
+floating point values between 0 and
+1, with 0 inclusive and 1 exclusive.
+More formally,
+we can say that it generates values in
+the half open interval 0.0 and 1.0.
+Let's go ahead and print this.
+Here is the generated array with
+five rows and four columns.
+Note that we pass the array
+shape as a tupple.
+A slightly radiant of this function
+is rand which randomly accepts
+a sequence of numbers as arguments and
+straight of the tuple.
+It is otherwise equal valid.
+Observe that, we directly pass
+the values of the rows and
+columns through the function and
+did not define a tuple.
+Here it is the area with same shape
+as before five rows and four columns.
+Numpy provides this to achieve
+a greater compatibility
+with the more established
+math lab syntax.
+We highly recommend using a more
+consistent num pi function
+that explicitly accepts a shape tuple.
+Now both the function, rand and
+random, sample, uniformly,
+from the rain 0 and 1.
+What if you wanted a sample
+from a different distribution?
+To sample, or normal distribution,
+we can use the normal function.
+Recall the normal function
+from numpy dot random and
+pass the shape of the array required.
+Let's run this.
+The core produced a 2 into 3 array
+of random numbers with
+a standard normal distribution.
+That is 0 mean, and
+unit standard deviation.
+You can change the mean and
+the standard deviation as well.
+Let's see how to do that.
+We change the mean to 50 and
+standard deviation to 10.
+Now, let's see the output.
+Notice that the values
+are centered around 50.
+To generate integers,
+we can use the randint function
+in one of the several ways.
+Passing to values 0 and
+10 will not divide randint to generate
+a single integer between the range 0 and
+10.
+We can also specify randint how many
+integers we want between between 0 and
+10 by specifying the size attribute and
+giving it a value.
+So, this statement
+will give us a 1d array
+of 5 integers between the range 0 and
+10.
+Going forward with that, we can pass
+a tuple value to the attribute size,
+which will create a 2d array with all
+the values between the range 0 and 10.
+Now, let's see the output.
+These are the single random integers
+between the range 0 and 10.
+Next, we created a 1d
+array with five values.
+Note that,
+we mentioned the number of values needed
+in the one dimensional array
+with the parameter size.
+Passing a tuple to the size
+parameter gave us the 2d values.
+And also note that all the values
+of the array are between 0 and 10.
+Check out the random sampling
+routines on the numpy website for
+more distribution and usage radiations.
+Find the link in the instructor's notes.
+
+Any numpy array has a number of
+attributes that describes it.
+In addition to the elements it contains.
+One of the most useful one is shape.
+Essentially a tuple containing
+the number of rows and
+columns are height and
+width of the array.
+We have already seen how to
+specify this when creating arrays.
+The shape of the array A would
+be five rows and four columns.
+So this is your array.
+Now let's see how to access
+the shape of the given array
+by using the shape attribute.
+a.shape will give you
+the shape of the array.
+Let's run it.
+Array.shape will return you a tuple
+with the first value specifying
+the number of rows.
+And the second value specifying
+the number of columns.
+Next we will learn how to
+individually access number of rows or
+number of columns.
+a.shape[0] would return
+the number of rows and
+a.shape[1] would return
+the number of columns.
+Let's check the output.
+Here you will see that the number of
+rows are correctly extracted as five.
+And number of columns as 4.
+If you have more dimensions,
+you will have additional
+elements in the shape tuple.
+The number of dimensions in an array
+can be found by simply asking for
+the length of this tuple.
+a.shape will return a tuple and
+the length of that tuple would inform
+us what is the dimension of the array.
+It rightly tells us that the dimension
+of the defined array A is 2.
+Okay, how about total number
+of elements in an array?
+Yes for a 2D array, it will be the
+product of number of rows and columns.
+But if you had more dimension,
+this calculation could
+be a little complicated.
+Fortunately we can retrieve
+the number of elements directly using
+size attributes.
+a.size will give us the number of
+elements present in the array A.
+We can expect the output to be
+the product of the rows and
+the columns which is 5 into 4,
+which is 20.
+Let's check it.
+As we expected, the output is 20 which
+means there are 20 values in the array.
+Attributes like size and shape
+are very useful when you have to over
+array elements to perform
+some computation.
+You can also access the data
+type of each element using
+the D type attribute of the array.
+Let's check the data type of
+the values present in array A.
+In this case, our array elements
+are of the type float64.
+That is 64-bit floating point numbers.
+
+Next you will see how to perform various
+mathematical operations on np arrays.
+Let's use a random heading of integers.
+Let's create an array with shape
+five rows and four columns.
+Let's see the output.
+So here's an array with five rows,
+four columns, and
+all the values between the range 0 and
+10.
+Note how we used seed, the random
+number generator with the constant,
+to get the same sequence
+of numbers every time.
+Let's run again and
+see if the output remains the same.
+You can see that we have
+the same values for the array.
+Summing all the elements in an array
+is as simple as calling the function
+sum on the array.
+Here is our array a, and
+we call the sum function on it.
+Let's check the output.
+This is our array and
+this is sum of all the elements present
+in the array, which comes out to be 79.
+We can also sum in a specific
+direction of the array.
+What I mean by direction
+is along rows or columns.
+NumPy gives this
+direction a special name.
+It is called access.
+Access is equal to zero,
+signifies rows, and
+access is equal to one
+indicates columns.
+Remember this terminology as
+you will use it frequently.
+Let's code to make things clear.
+Passing the parameter, axis,
+along with a specific value will
+give you the sum along that axis.
+To understand this,
+let's first see the output.
+To get the sum of each column, we pass
+the value to the axis attribute as zero.
+And to get the sum of the rows,
+we pass the value as one.
+To understand this imagine if you wanted
+to sum the values of each column,
+what would you iterate on?
+You would say something like,
+For each column, sum all the values
+of each row of that column.
+So you would essentially
+iterate over the rows.
+Hence we pass axis=0 to compute column
+sums and similarly axis=1 for row sums.
+Observe the output when we pass axis=0,
+we get four values.
+These are basically
+the sum of each columns.
+And when we passed axis=1.
+We get five values which
+are the sum of each row.
+Let's go ahead and try some basic
+operation like finding minimum,
+maximum, and mean of an array.
+So, if I want minimum along columns,
+I have to go through each row
+of each column, so axis equal to zero
+to get the minimum of each column.
+To get the maximum of each row,
+similarly we call a max function and
+pass access equal to one.
+Just calling a.mean,
+that is array dot mean, will give
+us the mean of the entire array.
+Of course we can get mean along each
+axis as we did for max and min.
+Observe the output.
+Minimum of the first column is one,
+which is shown over here.
+This value is essentially,
+minimum of the first column.
+This is of second, this is of third,
+and this is of fourth.
+Similarly, for maximum of the each row,
+you can observe that for
+the first row, the maximum is five,
+and it is shown here.
+The mean of all
+the elements is 3.95 which
+is calculated using the mean function.
+There are many more functions
+which you can experiment with.
+Check the documentation link
+in the instructor's notes.
+
+So far we have seen how to
+compute certain measures.
+How about finding the position
+of some element in an array?
+Can you implement this simple function
+to find the index of the maximum value
+in the one-dimensional array.
+Remember NumPy is your friend.
+
+To get the maximum value in a given 1D
+array, you could loop through the array,
+finding the maximum and
+keeping track of an index.
+But numpy can help you do
+this in a single call.
+You must have seen argmax and
+argmin used to described
+optimization equations.
+This is the same idea.
+Let's check the output.
+So the function returned us the maximum
+value, along with the index.
+Now for multidimensional arrays,
+finding and
+representing indices is a little tricky.
+But numpy provides some
+utility functions like
+underscore index to help you out.
+
+We claim that run.py is fast, very fast.
+So let's confirm this.
+But before that, we need to learn
+how to time a particular operation.
+We need to import a library for that.
+We import the time library to help
+us know how fast our operation is.
+We use the time function
+from the imported library.
+The idea is to capture the time
+snapshot before the operation, and
+then again capture the time snapshot
+after the operation is performed.
+We then subtract the two times.
+Simple, right?
+Let's check the code.
+Here we will check how much time
+a Python print statement takes.
+So we capture the time before
+the print statement and
+then record the time after
+the print operation is performed.
+Then, finally, subtract t2- t1.
+Let's run the code, now.
+Here, we get the time taken
+by a print statement.
+Oh, the number is really very small.
+
+Now when we know how to time
+an operation an operation in
+Python let's check how fast Num-Py is.
+Let's define a really large array so
+that the time taken for
+the operation will be
+significant to compare.
+So here is our large array of
+1,000 rows and 10,000 columns.
+Before I go ahead,
+I would like to mention
+that this is just a demo code
+to show the speed of Num-Py.
+So, I will be giving a high
+level explanation of this code.
+Moving ahead, we will be comparing
+how to compute mean of the array
+using Num-Py and
+using standard iteration.
+Here is the manual mean function
+which computes the mean of the values
+in the defined area.
+We trade over each row, and for
+each row it trade over each column.
+We then sum present all
+the values throughout the array.
+Finally, we divide by the size of
+the array and hence we get the mean.
+In case of using Num-Py for
+calculating the mean,
+we just write array.mean to get
+the mean of the entire array.
+How long function will just compute
+the time each matter takes.
+Now, let's check what's
+the time difference.
+Do you see the difference?
+This is the time taken by
+the numpy.mean function
+to calculate the mean
+of the entire array.
+And remember the size of
+the array are in thousands.
+On the other hand, the time taken by
+the manual method is about 5 seconds.
+Hence proved, Num-Py is super fast.
+We also compute the rate of how fast
+the Num-Py is and the numbers are crazy.
+It's about 290 times faster
+than the manual for loops.
+Observe that Num-Py not only makes
+the code more cleaner as compared
+to the manual method, but there's about
+290 times faster than other method.
+Don't you think it's just awesome?
+
+Accessing array elements
+is straightforward.
+You can access a particular element
+by referring to its row and
+column number inside
+the square brackets.
+The first integer over here
+denotes to the row number and
+the second integer denotes
+to the column number.
+Let's see which element do
+we get at position 3,2.
+Observe that the element we get
+actually belongs to the fourth row and
+the tall column, but note that the row
+and the column indexing start from zero.
+Hence if you want an element of
+the fourth row and tall column,
+you pass the parameter as we did,
+that is 3,2.
+Now let's do some interesting stuff,
+accessing elements and ranges.
+If I would want to access
+elements from first
+through third column in the zeroed row,
+here is how I would do it.
+This operation is called slicing,
+as explained before using data frame.
+Let's read out this slicing operation.
+For the 0 through,
+get values from first through third
+column excluding the third column.
+Now let's run this.
+So here's the output.
+For the 0 through, first through the
+third column excluding the third column.
+This was just column slicing.
+We can combine row and column slicing
+and get a subset of the array.
+If I would like to access the top
+left corner of the array,
+I would do this as follows.
+We can combine row and column slicing
+and get the subset of the array.
+Here is the top left corner,
+which has elements at position 0,
+0, 0, 1, 1, 0, and 1, 1.
+One last interesting thing in slicing,
+which I would like to
+bring in front of you.
+You see a lot of numbers over here,
+so let's break it down and read it.
+The three number separated by the colon,
+this is not accessing the tall access.
+But a slicing of the form,
+n is to m is to t,
+will give you values in the range n
+before m, but in steps of size t,
+hence this statement will give
+you values of the column 0.
+Skip the values of the column one, and
+then give the values of the column 2.
+Let's run this.
+As explained, you get the 0, and
+the second column with all the rows.
+Seems like magic, right?
+
+Moving forward.
+It is good that we can
+access elements in a, but
+another important operation is assigning
+values to specific location in a.
+This will give us access to the element
+at the position 0, 0 in the a.
+Using the assignment operator,
+we can assign a value one to it.
+Let's see the output.
+Here you go.
+This is the original array where we
+replaced the element at 00 with 1, but
+that's not all,
+with the minor change you can assign
+a value to the entire row or column.
+Let's do it.
+This will give us access
+to the 0 true and
+we assign the entire row a value of 2.
+Let's run this.
+Using similar operation and
+column slicing, we can also assign
+an entire column a single values.
+Now what if we need each column or
+row to have different value and
+not the same as we did over here?
+Let's see how we can achieve this.
+Yes, this is a list of values.
+You can assign a list of
+values to a row or a column.
+Here we assign this list of values
+to column number three, but
+make sure you keep
+an eye on the dimension.
+That is, for this example,
+if you have five rows in an area
+the list should have five elements.
+As you can see, all the list values
+have been assigned to the third column.
+So now it's your turn.
+Go ahead and try more row and
+column slicing.
+
+There are various options of indexing.
+And that gives NumPy
+indexing great power.
+NumPy array can be indexed
+with other arrays.
+It is just one other tool
+which can be used to make
+process of accessing
+values in array easy.
+To start with, we create a one
+dimensional array of five random values.
+Next we create a variable indices
+which is also a one dimensional array.
+But the elements of this array,
+which is 1, 1, 2, 3,
+are actually the index
+we need to access.
+That is, we want the value at index 1,
+again at 1, 2, followed by 3.
+Next step we learn how to use
+this indices along with the edit
+to access the desired values.
+Yes, you saw that right.
+Just passing the area of indices to
+another area will give us the values.
+Let's check the output.
+So here is the output.
+Observe that the length
+of the indices array and
+the returned array is the same.
+Also it return value from
+array a at index 1,1,2,3.
+It is a bit difficult to understand
+the application of this now, but
+this is a tool you would like
+to use once you get hold of it.
+We can do such indexing using
+multidimensional array as well.
+But things get complicated with
+creating multi-dimensional index array.
+These are just a few
+interesting ways of indexing.
+There are a lot more out there for
+you to experiment with.
+Check the link in the instructor notes.
+
+Next we will be working
+with boolean arrays.
+In simple terms arrays with
+values true and false.
+This can also be used for indexing.
+Indexing using boolean arrays is very
+different as compared to index arrays,
+we learned previously.
+Imagine a situation where we want to
+get all the values from the array,
+which is less than mean
+of the entire array.
+The first step to solve this problem
+would be to calculate the mean.
+Consider a two dimensional array.
+As we learned before,
+we will calculate the mean using
+the mean attribute of the array a.
+Let's check what the mean is.
+According to our problem,
+we want all the values from
+the area which is less than mean.
+Mean is 14.2.
+You can imagine that the solution would
+contain values 10, 10 again, 5, 0,
+0 again, 2, and so on and so forth.
+If you need all these values,
+one way is to run the for
+loop over the array, and get them.
+But using masking,
+we do this in one single line.
+To read this operation, it would be for
+each value in array A,
+compare it with the mean.
+If it is less, we retain the value.
+Let's check the output.
+Here is the values which we
+expected in the form of list.
+Now to go ahead with this concept,
+we can also replace these
+values with the mean value.
+We just assign the mean value to
+masking operation we performed before.
+Let's see the output.
+Observe that all the values
+previously less than mean
+have been replaced by the mean.
+This is one of the important operation
+that shows the power of the and
+justifies its extensive use throughout.
+
+Arithmetic operations on arrays
+are always applied element wise.
+Let's start with simple
+multiplication operation.
+Here we define a simple array so
+that we can easily track the changes.
+This will multiply each element by 2.
+Let's check the output.
+When using arithmetic operation,
+a new array is created and
+the values are stored in that array.
+So our original array a still
+holds the same values.
+And this is our new array which we
+get after multiplying array a by two.
+Observe that,
+it is element wise multiplication.
+Let's try division.
+Here we use the division operation to
+divide each element of array a by two.
+Let's check the output.
+Observe that, when you divide 1 by 2,
+you get a value 0 over
+here instead of 0.5.
+This is because both the array and
+the divisor are integers.
+If we were to do 2.0 instead of 2,
+you will get float values.
+Keep this point in mind before
+performing division in general.
+That is int divided by int will
+give you an integer output.
+To get float values,
+you need at least, the numerator or
+the denominator to be a float value.
+Let's check the output.
+Observe that, we could successfully get
+a floating point value instead of 0.
+How about arithmetic
+operation using two arrays?
+We will start with addition.
+We create another array
+b with these values.
+Now, let's just add a and
+b using the plus operator.
+As mentioned, this is element wise.
+This is our new arraya plus b.
+One important thing to note
+here is that the shape of a and
+b should be similar before the operation
+a plus b, else it will throw error.
+Similar to the addition,
+you can perform subtraction.
+Now, let's move ahead with
+multiplying two arrays.
+This is interesting, because unlike
+other many metrics languages
+multiplication operator
+when used with two array
+will not give you metric product, but
+will do element wise multiplication.
+That is,
+element at position 0,0 in array
+a is multiplied only with
+the element at position 0,0 in b.
+Let's print the multiplication
+of matrix a and b.
+Can you also element
+wise multiplication?
+But the next question would be,
+what about matrix multiplication?
+How do you achieve that?
+Like, for everything,
+Num Pi has a function.
+It has function called dot,
+which performs matrix multiplication.
+Similar to multiplication,
+division of two arrays can be performed.
+Just include division of
+operators between the two arrays.
+Let's check the output.
+As seen before, since array a and
+b are indigenous, we get the final array
+in the form of indigenous as well.
+If you want to see floating values,
+convert one of the arrays to float.
+Well, that's all for now.
+Keep practicing.
+
+All the operations and functions
+explained in this lesson are those
+which will help you perform computation.
+But there is a lot more to learn.
+Check out the link in
+the instructor notes.
+I will meet you in the next
+lesson with some more coding.
+Happy coding with Python and
+bye until then.
+Tyson
+
+
+Search Drive
+
+Drive
+.
+Folder Path
+My Drive
+eBooks
+text_versions
+ml_4t
+NEW 
+Folders and views
+My Drive
+Shared with me
+Google Photos
+Recent
+Starred
+Trash
+28 GB of 115 GB used
+Upgrade storage
+Name
+Owner
+Last modified
+File size
+
+01-04.txt
+me
+Feb 21, 2016me
+18 KB
+
+01-06.txt
+me
+Feb 21, 2016me
+20 KB
+
+01-05.txt
+me
+Feb 21, 2016me
+11 KB
+
+01-03.txt
+me
+Feb 21, 2016me
+30 KB
+
+01-02.txt
+me
+Feb 21, 2016me
+23 KB
+
+01-01.txt
+me
+Feb 21, 2016me
+15 KB
+
+00-00.txt
+me
+Feb 21, 2016me
+4 KB
+Text
+01-04.txt
+Details
+Activity
+01-04.txt
+Sharing Info
+
+General Info
+Type
+Text
+Size
+18 KB (18,836 bytes)
+Storage used
+18 KB (18,836 bytes)
+Location
+ml_4t
+Owner
+me
+Modified
+Feb 21, 2016 by me
+Opened
+4:34 PM by me
+Created
+Feb 21, 2016
+Description
+Add a description
+Download permissions
+Viewers can download
+All selections cleared 
+
+
+Are you ready, Dave?
+>> Ready for what, Professor?
+>> We're going to start some
+serious number crunching now.
+>> What do you mean?
+>> In this lesson, we're going
+to unleash the power of Python.
+We're going to show folks some
+tools that enable them to calculate
+all kinds of important
+statistics on time series data.
+>> What are we waiting for?
+>> Let's go.
+
+In this lesson, we're going to take a
+look at the various kinds of statistics
+that we can take on time series data.
+Let's start first with
+global statistics.
+Consider our trusty data frame DF1 with
+columns for SPY, XOM, Google, and Gold.
+We can take the mean
+of each of these columns very
+simply with a statement like this.
+This statement will take
+the mean of each column and
+put it in the appropriate location
+of a new one-dimensional or
+row-wise of the array.
+Now because this is a data frame,
+and remember,
+a data frame augments NumPy and
+provides a lot more functionality.
+It's sort of in the array on steroids.
+Now we get lots and lots of
+functions we can access in this way.
+We already mentioned mean in
+addition to mean we've got median,
+standard deviation, sum, prod, mode.
+All together there's at least 33 global
+statistics you can compute in this way.
+And they're always adding more.
+Let me hand it over to Dave and
+she's going to show you
+how to do this in code.
+
+Let's do some coding to get an idea
+of what professor just explained.
+Starting with defining our symbols list,
+having symbols like SPY,
+XOM, GOOG, and GLD.
+We then move ahead to
+build our dataframe
+df just like we did in
+couple of lessons before.
+So df is our final dataframe.
+Now let's start computing statistics.
+First we compute mean.
+We need mean of stock prices for
+each symbol.
+And dataframe.mean will do this for us.
+As professor explained,
+it computes mean for each column.
+And our columns denote one stock each.
+So we get mean for
+all stocks in just one line of code.
+So to compute the mean, we just called
+the name of the data frame df.mean.
+Let's check the output.
+Note how Pandas prints the mean for
+each symbol properly labeled.
+Also, here's the graph with all
+the symbols and their data.
+Similarly, we can compute median and
+standard deviation.
+Let's do it.
+We compute the median of the data
+frame by calling the median function.
+Remember the difference between
+the mean and the median.
+Mean is the average of a set of values
+that is the total sum
+divided by number of values.
+Whereas median refers to the value in
+the middle when they are all sorted.
+Now let's try standard deviation.
+We compute the standard deviation
+by calling the function std
+over the data frame.
+Let's check the output.
+Mathematically, standard deviation
+is the square root of variance.
+But more intuitively, it is a measure
+of deviation from central value.
+Here, the central value is the mean.
+A higher standard of
+deviation like here for
+Google indicates that the stock
+prices has varied a lot over time.
+
+We're going to introduce a new kind of
+statistic now called rolling statistics,
+and as opposed to just
+taking the mean across
+the whole period of time we take
+sort of a snapshot over windows.
+I'll show you what that
+means in just a moment.
+Now on that last slide,
+we computed a global mean,
+which would be something
+about like this on this data.
+A rolling mean is a little bit
+different and here's how it works.
+Let's suppose we're going to
+take a 20 day rolling mean.
+We go, starting from here,
+20 days, it's right about here.
+And then we take the mean
+of all that data behind us.
+We can draw a little box around that.
+This is called the window.
+In our case, it's 20 days.
+So we average all these values, and
+we get one mean, which is this point.
+We then move the window forward
+one day and we take another mean.
+Here's our next mean,
+which is a little bit higher.
+Now if we do that everyday over
+this entire year, so this is S and
+P 500 over the year 2012, we get
+something that looks about like this.
+You can see essentially, that it's
+a line that follows the day-to-day
+values of whatever it is we're tracking,
+but it lags a little bit.
+It's sort of a smoothed and lagged line.
+And this is called the rolling mean.
+We can compute statistics like this,
+just like the rolling mean.
+We could do standard deviation.
+We could do mode, median and so on.
+All of those statistics I
+showed you just a moment ago
+can also be used as rolling statistics.
+In the next mini course we are going to
+spend a lot of time talking about
+technical indicators, and this is
+actually one of them this rolling mean,
+it's called by technical
+analysts a simple moving average.
+And one thing they
+look at is places where
+the price crosses through
+the rolling average.
+So, in this case, the price is
+moving down through the 20 day mean.
+Now a hypothesis that I'm
+not saying I support, but
+a hypothesis that many who
+conduct technical analysis,
+is that this rolling mean may be a good
+representation of sort of the true
+underlying price of a stock, and
+that significant deviations from that,
+like this one here eventually
+result in a return to the mean.
+So if you can look for, say
+significant deviations like this one,
+you might find say
+a buying opportunity here.
+A challenge though, is to know when
+is that deviation significant enough
+that you should pay attention to it.
+
+Assume we're using a rolling mean, and
+we're tracking the price here in blue.
+And we're looking for an opportunity
+to find when the prices diverged
+significantly far from the rolling mean
+that it might be an opportunity for,
+say, a buy signal or a sell signal.
+How can we decide that we’re far enough
+away from the mean that we should
+consider something like that?
+So the question is, which statistic
+might we use to discover this?
+Here are a few options.
+Give it some thought, and check the box
+you think makes the most sense.
+
+The answer is rolling
+standard deviation, and
+we'll show you why in the next note.
+
+Returning to that question of
+how can we know if a deviation
+from the rolling mean is significant
+enough to warrant a trading signal,
+we need some way of measuring that.
+And John Bollinger, in the 1980s,
+came up with something he
+calls Bollinger bands.
+And whenever you mention that you
+have to put a little R there,
+because he has registered
+Bollinger bands as a trademark.
+If you don't do that,
+they'll come after you.
+[LAUGH] Anyhow,
+how might we measure that?
+What Bollinger observed
+was that we ought
+to take a look at the recent
+volatility of the stock.
+And if it's very volatile,
+we might discard movements above and
+below the mean.
+Whereas if it's not very volatile,
+a similarly sized movement maybe
+we should pay attention to.
+His idea then was to add a band
+2 standard deviations above
+and 2 standard deviations below.
+Now I'm not going to make any comment
+as to how effective this method is.
+That's something for
+us to assess in the next mini course.
+But the theory anyways is that when
+you see excursions up to 2 sigma or
+2 standard deviations away from
+the mean, you should pay attention.
+And in particular,
+if we drop below that and
+then up back through it,
+that is potentially right there
+a buy signal, because the hypothesis
+there is that we've gone quite far
+from the simple moving average.
+And we're now moving back towards it.
+So if you buy there,
+you should anticipate positive returns
+as it climbs back through the average.
+Similarly, here where you see
+it punch through the top and
+then go back down through,
+that's potentially a sell signal.
+And as you can see, in this particular
+case, if we had bought here and
+sold there, we would've done great.
+But if you look at many, many examples
+of this, it's not always so great.
+So don't run off and start trading, but
+just be aware that this is an example
+of a technical indicator, and how you
+might involve it in a trading strategy.
+Dave is now going to show you
+how to read in data like this,
+compute a rolling mean, and chart it.
+And once again, I want to repeat
+that I'm not necessarily endorsing
+technical analysis here, although
+I think it can be very powerful.
+Just introducing some of
+these concepts to you.
+And again, in our later mini course,
+we're going to talk a lot
+about these approaches.
+Okay, here's to you, Dave.
+
+For working with time series data,
+pandas provide a number of functions
+to compute moving statistics.
+We use rolling mean function to
+compute the rolling mean of the SPY.
+Note that rolling mean is
+not a DataFrame method but
+it is a function with
+the pandas library.
+So we wouldn't be able
+to call def.rollingmean.
+Instead we pass in a set of values for
+which rolling mean has to be
+calculated as the first parameter.
+Now let's go for this.
+Firstly, let's get SPY data in
+our data frame for the year 2012.
+We also go ahead and plot the SPY data.
+Notice that we retain
+the matplotlib axis object so
+that we can add to it later on.
+Next we call the rolling mean
+function from pandas library, and
+pass in two parameters.
+As explained before the first
+parameter would be the values for
+which the rolling mean
+has to be calculated.
+Hence we pass our data frame
+containing SPY values.
+The next parameter is the window size,
+for which the mean will be calculated.
+We use a period of 20 days.
+This will return a series
+consisting of the rolling mean.
+It is always good to
+visualize the rolling mean.
+So we plot the series
+using the plot function.
+This time, while plotting the rolling
+mean, we pass in the matplotlib
+access object so
+that it gets added to the existing plot.
+Notice that we specified a label
+is equal to rolling mean.
+This will be used to
+create a plot legend.
+Let's add the legend and
+some access labels to our plot.
+So here we add our legend to
+the upper left corner of the plot
+at the X label and the Y label.
+Finally we are all set to view the plot.
+Observe that the rolling mean
+has missing initial values.
+The reason is that we defined
+a window period of 20 days, so
+the first 20 days there are no values.
+Also notice how it follows
+the movement of the draw prices, and
+is also less spiky.
+
+It's quiz time.
+Professor explained to you how
+to get Bollinger Bands and
+now you get to try it yourself.
+Here's the data frame containing
+the stock prices for SPY for year 2012.
+Now computing Bollinger Bands
+consists of three main steps.
+First, compute rolling mean followed by
+computing rolling standard deviation.
+And then, finally, computing the values
+for the upper and the lower bands.
+We want you to implement
+one function for each step.
+You can call each
+function in this manner.
+Note that in this case,
+we use a window size of 20 for
+calculating rolling statistics.
+But we should be able to vary this.
+Finally, we plot the original prices,
+rolling mean, and the Bollinger Bands.
+Let me start you out with
+one of the functions.
+Here is how I would
+implement get_rolling_mean.
+Now go ahead and write code to compute
+the rolling standard deviation and
+calculate the upper and
+the lower Bollinger Bands.
+Wondering how to compute
+rolling standard deviation?
+Check out the trusty panels
+documentation for that.
+Now refer back to the previous
+video if you forgot how to
+calculate Bollinger Bands.
+
+Note how we calculated the rolling mean.
+The rolling standard deviation can
+be computed in a very similar way.
+Pandas provide a function called
+rolling_std to do this job.
+We simply pass in the values and
+the window size.
+Now, onto Bollinger bands.
+Recall that upper bound is two standard
+deviation above the rolling mean.
+Let's type this in our code.
+Here, we add 2 times the value of
+the rolling standard deviation to
+the rolling mean.
+Though the mean and the standard
+deviation values are in the form of
+CD's, the mathematics still works.
+It is similar to the arithmetic
+operation on numpy arrays,
+which is done element-wise.
+Next, let's calculate
+lower_band in a similar way.
+Here, I subtracted 2 times the rolling
+standard deviation values from
+the rolling mean.
+Note that will return the values for
+the two bands together.
+These are received back when
+the function is called.
+Let's see if a function computes
+Bollinger bands correctly.
+Looks good to me.
+Observe the selling and
+the buying points.
+You can play with the window size and
+see how the bands change.
+You could also try computing
+bands at different deviation
+away from the rolling mean.
+
+Now we're going to look at
+something called Daily Returns.
+Daily returns are one of the most
+important statistics used in
+financial analysis.
+So let's consider first here this
+time series, S&P 500 in 2012.
+What daily returns are is simply
+how much did the price go up or
+down on a particular day?
+So, for instance,
+on this day it went down a little.
+On the next day it went up a lot.
+Daily returns are calculated easily
+using a simple equation here.
+So the daily return for
+day t, let's say today,
+is simply today's stock price divided
+by yesterdays' stock price, minus one.
+Let me show you an example.
+Let's suppose on this particular
+day the price went from $100
+yesterday to $110 today.
+The daily return then, for that day,
+is (110/100)- 1, or
+1.1- 1 = .1, which is 10%.
+So that's how we
+calculate daily returns.
+Now one thing to remember is this is a
+kind of statement you might put in a for
+loop where you iterate
+over individual days.
+Don't do that.
+Use the NumPy syntax we showed you,
+where you can do this in a single
+statement with no for loops.
+Here's what a chart for
+daily returns might look like.
+Everything is scaled now
+from minus 10% to plus 10%.
+And what we see here is
+the daily return for each day.
+If it was a positive return,
+of course it's positive, and
+negative if it were negative.
+Remember the day when we calculated
+we had a positive return of 10% that
+corresponds to that point right here.
+And for instance, here on the next
+day we had negative daily return.
+That corresponds to
+that point right here.
+Key thing to remember here is this
+is a line that sort of zigs and
+zags, usually close to zero.
+And if you were to, say,
+take the mean of all these
+values because we've had a generally
+upward moving trend here,
+our mean would probably be
+a little bit positive, above zero.
+Where looking at daily returns can
+be really important and revealing
+is to compare daily returns between
+different stocks or different assets.
+So, for example we might compare how
+Exxon moves in comparison to S&P 500.
+As one example,
+if you take a look at this section here
+you can see that when S&P 500 went up,
+Exxon went down and that's revealed here
+in this section of the daily returns.
+We're going to spend a lot of
+time in some future lessons,
+looking at how these statistics,
+specifically how daily returns between
+different assets, can be revealing.
+Dave is going to show you now in Python,
+how to calculate these
+daily return values.
+Here's to you, Dave.
+
+Ta da!
+It's quiz time again.
+Can you write a function to
+compute daily return values?
+It should take a data frame as input.
+Apply the formula to
+calculate daily returns.
+Use proper slicing and indexing to
+avoid having to loop over each value.
+Note that the return data frame must
+contain the same column labels and
+the same number of rows
+as the given data frame.
+Which means if there are any missing or
+unknown values, replace them with zero.
+
+First we make a copy of the data frame,
+where we can save computed values.
+Dataframe.copy will help us with that.
+For the next part, let's consider this.
+Suppose we want daily returns for
+date at index T,
+then we need to divide the value at
+index T by the value at index T minus 1.
+And subtract 1.
+We want to do that for all the dates,
+starting with index 1.
+Now let's code this.
+Here, df[1:] picks all
+the rows from 1 till the end.
+And df[:-1] picks all the rows
+from 0 till 1 less than the end.
+This operation cannot
+be done at index zero
+since we do not have the price
+of the stock prior to this day.
+So we set the values at
+the zero throw to all zeros.
+Finally, we return this data frame.
+You must be wondering why did
+we use dot values attribute of
+one of the intermediate data frames.
+The reason is to access
+the underlying num pi array.
+This is necessary because when given two
+data frames, Pandas will try to match
+each row based on index when performing
+element wise arithmetic operations.
+So all our effort in shifting the values
+by one will be lost if we do not use
+.values attribute.
+Okay, now let's run this.
+Here is what the daily returns look like
+compared to the original stock prices.
+As you can see, the original prices
+of SPY and XOM are quite different.
+However since the daily returns
+are implicitly normalized,
+they show up at a comparable scale.
+Each daily return value
+is either positive or
+negative fraction related to
+the previous day's value.
+This reveals that Exxon or
+Exxon Mobil actually matches ups and
+downs of the SPY quite closely.
+There is another way to
+compute daily returns.
+This time,
+directly using Pandas data frame.
+Here is how we can do it using
+Pandas data frame function, shift.
+Note that we still have to replace
+the values at the zero true with zeroes.
+The reason for doing this is,
+Pandas leaves these unknown
+values as 9 by default.
+Now let's check the output.
+As you can see the result
+is same as before.
+
+One last important statistic
+on a stock that's important
+is called cumulative returns.
+So let's consider S&P 500,
+again, back in 2012.
+Now in 2012,
+the S&P 500 started the year
+at $125, and it ended the year at $142.
+When you listen to the news
+you hear things like, for
+the year 2012 S&P 500 gained 13.6%.
+That is cumulative return.
+You don't hear them say over 2012
+S&P 500 went from $125 to $142.
+So how do you calculate
+these cumulative returns?
+It's really easy.
+Here's the equation.
+The cumulative return for
+a particular day,
+t, is just today's price divided
+by the price at the beginning.
+So price of zero is over here, and
+the price of any particular day,
+say would be here.
+And we can calculate
+the value like this.
+Now the cumulative return for the whole
+period is where t is this last day.
+So let's consider
+the example we've got here.
+To calculate the cumulative return for
+this whole year.
+It's the price at the end, divided by
+the price at the beginning, minus one.
+Turns out 142/125 is 1.136- 1 gives
+us .136 Which is equal to 13.6%.
+So our cumulative return for
+the ETF SPY was 13.6%.
+We can calculate and chart cumulative
+returns just like we did earlier for
+daily returns,
+except now the plot is showing us
+the cumulative return of course
+instead of the data return.
+Note that the shape of the chart
+is the same as the price chart.
+It's just now it's normalized, and
+in fact this equation is exactly
+our normalization equation.
+So that is how to calculate and
+plot cumulative returns.
+We're not going to have Dave show you
+how to do that, you're on your own
+there, now that you know how to do daily
+returns, it shouldn't be that tough.
+Okay, that's it for this lesson,
+we'll see you again soon.
+Tyson
+
+
+Search Drive
+
+Drive
+.
+Folder Path
+My Drive
+eBooks
+text_versions
+ml_4t
+NEW 
+Folders and views
+My Drive
+Shared with me
+Google Photos
+Recent
+Starred
+Trash
+28 GB of 115 GB used
+Upgrade storage
+Name
+Owner
+Last modified
+File size
+
+01-04.txt
+me
+Feb 21, 2016me
+18 KB
+
+01-06.txt
+me
+Feb 21, 2016me
+20 KB
+
+01-05.txt
+me
+Feb 21, 2016me
+11 KB
+
+01-03.txt
+me
+Feb 21, 2016me
+30 KB
+
+01-02.txt
+me
+Feb 21, 2016me
+23 KB
+
+01-01.txt
+me
+Feb 21, 2016me
+15 KB
+
+00-00.txt
+me
+Feb 21, 2016me
+4 KB
+Text
+01-05.txt
+Details
+Activity
+01-05.txt
+Sharing Info
+
+General Info
+Type
+Text
+Size
+11 KB (11,119 bytes)
+Storage used
+11 KB (11,119 bytes)
+Location
+ml_4t
+Owner
+me
+Modified
+Feb 21, 2016 by me
+Opened
+4:35 PM by me
+Created
+Feb 21, 2016
+Description
+Add a description
+Download permissions
+Viewers can download
+All selections cleared 
+
+
+Historical financial data
+is of course essential for
+effective financial research.
+One reason people are attracted to
+finance as an area of research,
+is because they believe the data
+is very well documented.
+In other words, all the data is
+monitored and recorded by computer and
+saved for us to pore over later.
+It turns out though that there
+are many ways the data can be faulty.
+In this lesson, we're going to look
+at how missing data can occur and
+what we can do about it.
+
+Now, as you might have guessed,
+the data isn't really pristine.
+So, here's what people think
+financial data is like.
+They imagine that it's perfectly
+recorded minute by minute.
+The prices that are recorded
+are exactly right.
+The volume data is exactly right.
+But that's not the case.
+But that's not the only mistake
+[LAUGH] people make about
+what they think the data's like.
+People assume there's
+no gaps in the data,
+that we have every
+single minute recorded.
+That data for stocks started
+since the beginning of time, and
+they continue to the very last minute.
+The reality is that our data is
+an amalgamation created from many,
+many sources.
+For instance, for any particular stock,
+it may be traded on the New York Stock
+Exchange, at NASDAQ, at Bats, and
+over any particular
+minute during the day,
+it may trade at one price at New York
+Stock Exchange, another price at NASDAQ.
+The reality is that there's
+no single price for
+any stock at any particular time.
+In fact, it's hard to say who's right.
+So, the reality of the data that
+we get is that it's a combination
+from all these different sources.
+And different data providers will
+provide, actually, different numbers.
+And finally, one part of reality
+that's especially troublesome
+is not all stocks trade everyday.
+Sometimes stocks come into existence and
+suddenly, there's values for them and
+before that there was no data.
+Sometimes stocks go out of existence and
+suddenly,
+they quit existing and
+there's no data for them going forward.
+There's another kind of failure mode or
+missing data mode where
+a particular stock will be trading,
+data will be missing, suddenly,
+it starts trading again.
+And these are the sorts of problems
+we're going to take a look at and
+find a way to solve in this lesson.
+
+Okay, let's take a look
+at some examples so
+we can see how prices
+are recorded over time.
+We'll start with SPY.
+This is showing a time series
+of that ETF over time.
+This is the downturn in 2008, 2009.
+SPY represents the S&P 500.
+It's one of the most liquid and
+actively traded ETFs out there, and
+we typically use it as a reference,
+a time and
+date reference for other stocks.
+Because we know if SPY was trading,
+the stock market was open and
+we can use its time history as
+a reference in that regard.
+It goes all the way back to 1993.
+There are of course some
+stocks that go back further,
+all the way to 1901 and so on.
+But most of what we're going to do,
+it's fine that we know it's
+been active since 1993.
+Now Let's look at
+a couple more examples.
+We'll add JAVA, J-A-V-A, and
+as you can see, it was trading
+from the beginning here but for some
+reason or another, abruptly stopped.
+Now what happened there?
+Well, you may remember
+that Sun Microsystems,
+which was trading under the ticker JAVA,
+was acquired by Oracle in 2010.
+And on that date, that ticker went away.
+So if you look at historical data for
+JAVA, you'll see that it
+ends at sometime in 2010.
+Something else that's interesting
+about this ticker JAVA,
+is that before it was Sun Microsystems
+it was actually Mr. Coffee.
+So if you look historically for data for
+JAVA you'll find two
+different time series.
+One for when it traded as Mr.
+Coffee and another
+when it traded as Sun Microsystems,
+but it doesn't exist any longer.
+So imagine if you're processing
+this time series data,
+and you arrive at this abrupt end for
+JAVA, what's going to happen?
+Well in the data you'll see NAN,
+meaning not a number,
+meaning there's no data there.
+And the focus of this lesson
+is what to do about that.
+Let's take a look at another example.
+Okay, we've added now an additional set
+of data, and as you can see we named
+it FAKE meaning this example we invented
+for the purpose of this discussion.
+Now, each of these symbols
+is available to you
+in the data that we provide you for
+the class.
+So you also will have this FAKE1.
+Now, the data represented by FAKE1 is
+fairly common, and we only invented
+it just so it would work out well in
+this chart that we're looking at.
+Anyways, what's going on with FAKE1 is,
+as you can see,
+it didn't exist before this time.
+So instead of having, for instance,
+NAN values after a certain date,
+this FAKE1 data is going to have
+NAN values before a certain date.
+So we'll have a different kind of
+problem trying to process that data.
+Now we'll look at one more example,
+and as you might have guessed,
+we named that FAKE2.
+Now what's special about this one,
+is it's got all of the different
+kinds of problems at once.
+So it didn't exist before this date,
+data was absent in between
+these two dates, and so on.
+This is not typical data for
+a very liquid,
+very large stock, for
+instance like Google or Apple, but
+indeed data like this exists for
+thinly traded stocks.
+In other words, companies that don't
+have a high market capitalization,
+and they trade very little
+if at all occasionally.
+So we still have to be able to deal
+with data like this in our studies,
+and so
+let's focus on this FAKE2 example.
+
+The question is,
+what do we do in situations like this
+where we don't have data
+between two separate dates?
+Now, you might think,
+Gee, let's interpolate.
+And so we would estimate what a line
+is between those two dates and
+then fill in at each point
+an interpolated value.
+Why not do that?
+Well, the truth of the matter is,
+between these two dates,
+there was no trading.
+There really was no price for that data.
+But if we're going to do something like,
+for instance, compute a rolling average.
+Or a mean over that data,
+and there's nans there,
+that'll wipe out our entire calculation.
+So we can't leave it empty, but
+we shouldn't interpolate it either.
+So here's what we might do.
+One thing that we can do,
+is we fill forward,
+going from, we go over all the data,
+and when there's some missing data,
+we fill forward from the last,
+previous known value.
+So for instance,
+if we were to do that here,
+we would get these values up until
+that date, where it takes over there.
+We would fill forward here,
+and fill forward here.
+Now notice there's a big gap between
+there, and there's a big gap here, but
+that realistically reflects what
+was going on with the data.
+Now the reason we do this instead of
+the interpolation is the following.
+Let's suppose we were looking for
+patterns in the data and
+we had rolled back time and
+we were simulating history.
+And let's suppose for
+a moment we had this interpolation.
+And let's suppose we're
+right here in time and
+we're trying to figure out
+what's going to happen next.
+We're looking for patterns and so on.
+We're actually giving ourselves
+information about the future.
+We're observing that
+the price is going up.
+So if we were to make
+a calculation here,
+we would actually be
+peeking into the future.
+And that is not allowed.
+We do not want to do that.
+So we need to stick with only
+filling forward a last known price.
+If we do that then we're not
+peeking into the future.
+So let's get rid of that ugly,
+nasty peeking into the future.
+Okay, so now we've actually
+filled in all our gaps and
+we have continuous data from this
+start point all the way to the end.
+However, there still is missing
+data here at the beginning.
+And because we need some value here in
+order to calculate rolling averages or
+whatever sort of statistics we want to
+do, it's better to have some value here.
+Instead of not a number.
+And in this case, we fill backwards.
+So remember, if you are going to fill
+your data to resolve problems with gaps,
+fill forward first and
+fill backward second.
+That way you will avoid,
+to the max extent possible,
+peeking into the future.
+Now we'll hand it over to Dave.
+And she's going to show you
+how to do this in code.
+Here's to you, Dave!
+
+Thanks, Professor,
+I'll take it from here.
+So hello, everyone, and
+we will be using Pandas fillna
+function to fill the missing data.
+So let's find the documentation of this
+function, and let's go to this site.
+So here it is.
+The link is included in
+the instructor notes.
+I encourage you to bookmark this site.
+So it gives the usage for any function
+at a glance and it will help you a lot.
+So let's scroll down and
+let's search for
+a function using this small search box.
+Let's search for fillna.
+Here it is, DataFrame.fillna function,
+and we'll be using this.
+Read and
+try to understand different options and
+how to call this fillna function, and
+I'll be right back with a pop quiz.
+So here's a question for you.
+How would you call fillna() to
+fill forward missing values?
+Go ahead and
+type your answer in this box.
+
+So here's the answer.
+In order to fill forward missing values
+we need to specify the method ffill.
+Note that the method value is a string,
+so it has to be enclosed in quotes.
+
+So, let's do some coding.
+To start with, let's use an example
+stock with missing values.
+We will be using fakedo.csv and this
+file is included in your data folder.
+So as usual, we will be reading
+the csv into the data frame and
+we will do some plotting.
+So now let's go and
+plot this data and see what turns up.
+So, here is the graph.
+For the given range of dates,
+you can notice that there is a gap in
+the beginning and also a gap at
+multiple places in the middle.
+So now, let's try to fix this.
+We only need to add a single
+statement to fill those gaps.
+As you must have read
+in the documentation,
+method ffill corresponds
+to forward filling and
+inplace is equal to TRUE will save all
+the changes in the same data frame.
+Try removing this and see what happens.
+Now, let's plot and
+see how the graph looks now.
+So here's the graph.
+If you look closely, you will
+observe the forward filling effect.
+The stock prices retained their
+previous values throughout.
+However, note that the missing
+values at the beginning of the range
+have not been filled.
+Think about what you need
+to do to take care of that.
+
+Time for some coding quiz.
+Okay.
+Here's some code to read in our data for
+multiple symbols during
+a specified period of time.
+If you go ahead and plot this,
+you see where we have data missing for
+JAVA, FAKE1, and FAKE2.
+Your task is to fill these gaps
+using the filimon method and
+yes, it can work for
+multiple stocks or in that case,
+multiple columns of the data
+frame simultaneously.
+You can refer to the documentation and
+the previous example if you need a que.
+Good luck.
+
+So, here's the solution.
+To solve this, you need to use
+both forward and backward fill.
+The key is to use forward fill first,
+and
+then the backward fill, to avoid peeping
+into the future as much as possible.
+Now let's see how the graph looks now.
+Here is the resulting graph.
+Know the effects of
+the forward filling and
+the backward filling in different
+segments of the missing data.
+That's all for now.
+Happy quoting till I get back to you.
+Tyson
+
+
+Search Drive
+
+Drive
+.
+Folder Path
+My Drive
+eBooks
+text_versions
+ml_4t
+NEW 
+Folders and views
+My Drive
+Shared with me
+Google Photos
+Recent
+Starred
+Trash
+28 GB of 115 GB used
+Upgrade storage
+Name
+Owner
+Last modified
+File size
+
+01-04.txt
+me
+Feb 21, 2016me
+18 KB
+
+01-06.txt
+me
+Feb 21, 2016me
+20 KB
+
+01-05.txt
+me
+Feb 21, 2016me
+11 KB
+
+01-03.txt
+me
+Feb 21, 2016me
+30 KB
+
+01-02.txt
+me
+Feb 21, 2016me
+23 KB
+
+01-01.txt
+me
+Feb 21, 2016me
+15 KB
+
+00-00.txt
+me
+Feb 21, 2016me
+4 KB
+Text
+01-06.txt
+Details
+Activity
+01-06.txt
+Sharing Info
+
+General Info
+Type
+Text
+Size
+20 KB (20,011 bytes)
+Storage used
+20 KB (20,011 bytes)
+Location
+ml_4t
+Owner
+me
+Modified
+Feb 21, 2016 by me
+Opened
+4:35 PM by me
+Created
+Feb 21, 2016
+Description
+Add a description
+Download permissions
+Viewers can download
+All selections cleared 
+
+
+Daily returns are one of
+the most important factors for
+us to consider when looking
+at market statistics.
+But daily returns for
+a single stock just by themselves
+are not very informative.
+One of the most informative
+ways to consider daily returns
+is when we compare the returns
+of one stock with another.
+
+We're going to use daily
+returns as a basis for
+the analysis in this lesson and we build
+daily returns, like we've seen before,
+by starting with a price time series.
+And each point in this
+daily return chart
+is related to how much price has
+changed on that corresponding day.
+So, for instance,
+this represents how much the price
+changed from this day to that day,
+about 1%.
+And, of course, we have that for
+each of the days in our history.
+Now looking at this data, this daily
+return data, it's not too revealing.
+It's hard to draw any sorts of
+interesting conclusions just by visually
+looking at this data from day to day.
+And so, there's a number of interesting
+ways that we can look at that data, and
+that's what this lesson is all about.
+Those two ways are histograms and
+scatter plots.
+Let's start by taking
+a look at histograms.
+A histogram is a kind of bar chart
+where we plot the number of occurrences
+of each item versus the value.
+So the way we accomplish that is,
+we split up the range of data
+into lots of little bins.
+And we count up how many times the data
+matches the range across that bin.
+So, as an example, if you notice
+here we've got several occurrences
+of this value,
+which is about the same, and
+those three occurrences
+are probably in say, this bin.
+So when we go to plot
+the histogram overall,
+we would see a bar of
+the appropriate height here
+that represents how many times
+the data matched that value.
+And of course,
+we have values in other bins, and so
+the bars in those bins
+would have various heights.
+And as you gather that
+data across all of time,
+a shape emerges of this histogram, and
+that provides a lot of information.
+So let's consider what that
+shape might look like.
+
+Suppose now that we've looked at,
+say the S&P 500 over many years and
+we've measured each day what
+the daily return is for the S&P 500.
+And we conduct a histogram and
+plot that histogram.
+So, for
+each little bin we have a bar there.
+What is the shape of this
+histogram going to look like?
+Do you think the bars, when we put them
+all together, will have a sort of flat
+shape, maybe a triangular shape, or
+something that's more like a bell curve?
+Check the box next to the histogram
+that you think is the best answer.
+
+The correct answer is bell curve.
+[COUGH] That's what many,
+many distributions in nature.
+And if you consider, [LAUGH] the stock
+market nature, is not unusual that
+a histogram of daily returns ends
+up looking like a bell curve.
+
+Once we've got our histogram,
+there are a lot of statistics we
+can run on it to characterize it.
+For instance, of course we might
+be interested in the mean.
+We might also be interested
+in the standard deviation.
+Which is essentially on average how far
+do individual measurements
+deviate from the mean.
+Another very important measure
+is something called Kurtosis.
+Kurtosis comes from a Greek word
+that means curved or arching.
+So what does Kurtosis mean?
+Well let me show you.
+Kurtosis tells us about
+the tails of the distribution.
+So the tails are the parts
+out here towards the ends.
+And if we assume that our
+distribution is similar to
+a Gaussian distribution,
+or normal distribution.
+The measure of kurtosis
+tells us how much
+different our histogram isfrom that
+traditional Gaussian distribution.
+So in this case we have
+what are called fat tails.
+We got them over here and over here.
+What that means is that
+there are occasional,
+and more frequent than would happen if
+we had a regular Gaussian distribution.
+There are frequently large
+excursions more frequently than if
+this was a normal distribution.
+If you were to measure
+the kurtosis of this histogram,
+you would get a positive number.
+Meaning that there are more
+occurrences out in these tails.
+Than would be expected if it
+were a normal distribution.
+If you measured a negative kurtosis.
+It would mean that there are many fewer
+occurrences out here on the tails.
+Than would be expected if it
+were a normal distribution.
+So we can plot our data in this sort
+of bar chart called a histogram.
+We can measure statistics on it like
+standard deviation, mean and kurtosis.
+And remember the following
+about kurtosis.
+If we’ve got a positive kurtosis,
+that means we’ve got fat tails,
+like in this example.
+There’s more occurrences
+outside in the tails
+than would normally happen
+with a Gaussian distribution.
+And if we’ve got a negative kurtosis,
+we’ve got skinny tails,
+meaning there’s less out there.
+Now, I’m going to hand it over to Dave,
+and she’s going to show you
+how to make this plot and
+calculate these numbers in Python.
+
+I recently read a post on
+Humans of New York page, and
+this woman mentioned in her
+interview that programming is magic.
+It allows us to make things with words.
+Isn't that true?
+So let's create our own magic.
+Let's make histogram.
+Firstly, let's check out
+the ingredients needed
+to make histogram of daily returns.
+To calculate daily returns,
+we need to get stock prices first.
+To start with, we get stock prices for
+the SPY for a period of three years.
+Next step is to calculate daily return.
+This is similar to what
+we saw in lesson four.
+Now we call this function and
+pass a DataFrame to it.
+We also plot the daily return value
+by passing the daily return DataFrame
+to our plot data_function.
+This graph show the prices of
+the SPY stock over three years.
+And this is the daily return graph for
+SPY.
+Now we have our base ready,
+so let's make our histogram.
+And after five lessons,
+you must have guessed that even
+this can be done in just one line.
+Here is our histogram.
+Professor explained
+the concept about bins.
+We did not mention the number of
+bins while plotting the histogram.
+The default number of bins is 10.
+If you look closely,
+you will observe 10 sets of ranges.
+Can you see this?
+1, 2, 3, 4 and so on.
+If you count, there would be ten.
+But as usual, Python is flexible and
+allows us to change the number of bins,
+using the bin keyword.
+We inform the histogram function that
+we need to empty bins by passing
+a parameter bins and
+assigning it a value 20.
+Now let's check our changed histogram.
+Notice that the width of
+each bar has reduced.
+And the number of bars has increased.
+If you read this graph,
+it would say that
+there are approximately 300
+values which lie near 0.
+Next we compute some statistics
+on the daily return.
+
+Starting with mean and
+standard deviation.
+We call the function mean and
+std on our dataframe to get the values.
+Let's go ahead and check the mean and
+the standard deviation for
+the daily returns of SPY stock.
+So we get the mean and
+the standard deviation.
+Happy with just knowing the mean and
+standard deviation value?
+But I am not.
+I want to see it on the plot,
+just like Professor did.
+So let's learn how to add mean and
+standard deviation line on plot.
+Matplotlib library has
+a function axvline.
+Looking at the substring vline,
+we can guess it will give vertical line.
+Let's check out its parameters.
+First we pass the mean value,
+then just for beautification and so
+that we can differentiate the mean line
+from the rest histogram, we add a color,
+which is white, make it a dashed style
+line and increase the linewidth to two.
+Now let's check our output.
+So this our mean and this is how
+it is plotted on the histogram.
+Now let's go ahead and
+plot standard deviation.
+To plot the standard deviation line,
+it is similar to the mean.
+But as we want the standard deviation
+line on both side of the mean,
+we plot it twice.
+One with the positive value and
+one with the negative value,
+to show standard deviation line
+on either side of the mean.
+Ta dah, we have our standard
+deviation lines on our graph.
+To give the standard
+deviation a red color,
+I have just replaced the parameter
+color of white, with red.
+Now I'm happy with the graph and
+I hope you do are.
+Let's move ahead to kurtosis.
+We can expect that dataframe
+would have a function for
+calculating kurtosis as well.
+So that's it.
+This line will give you
+kurtosis of the daily returns.
+We get a positive value for the SPY
+stock, which means we have fat tails.
+Just for your information,
+you can also get bincounts
+using numpy.histogram function.
+Check instructors notes for
+more information.
+Over to you professor.
+
+A common practice in finance
+is to plot histograms of daily
+returns of different stocks together and
+look at them together and
+assess how they relate to one another.
+So here, we've got a plot of
+an XYZ stock and SPY or S&P 500.
+Now take a look and see what
+difference you can see between them.
+Now to help out, I'll draw what
+the underlying shape is looking like.
+Check which answer you think
+is most correct in terms of
+volatility and return for
+XYZ versus SPY.
+
+This is the correct answer.
+XYZ has a lower return and
+higher volatility than SPY.
+You can tell that if you look
+here at the mean of XYZ,
+you can see it's lower
+than the mean of SPY.
+You can see the shoulders are broad on
+XYZ, meaning it's got a larger standard
+deviation, and therefore,
+higher volatility.
+Dave will show you now how to
+plot histograms like this,
+right next to one another in Python.
+
+I'm back again.
+This time with a really small segment.
+We need to plug two histograms.
+So first we need the values for
+two stocks.
+We get data for two stocks,
+which is SPY and XOM.
+We also go ahead and compute daily
+returns for each of the stock.
+Note that our daily return data frame
+will have daily return values for
+each of the stock prices.
+Now like before, we just call histogram
+function on the daily return data frame,
+and let's see what happens.
+We keep the bins count to be 20.
+Now let's run this.
+Okay, so we got two subplots.
+But we go ahead one step and
+plot them on the same x and
+y axis so that we can compare
+the histogram of SPY and XOM.
+To get two histograms on the same x and
+y axis, we call the histogram
+functions separately on each of
+the stocks daily return values.
+We also add the label parameter so
+that we can differentiate between
+the histogram of the SPY and XOM.
+Now, let's run this.
+Here we go.
+We get two histogram of SPY and
+XOM on the same X and Y axis.
+Now you can compare the histogram and
+see that the teams of XOM is
+thin as compared to the SPY.
+That's it for this coding segment.
+I'll be back soon.
+Over to you professor.
+
+We're now going to take a look
+at another way to visualize
+the differences between daily
+returns of individual stocks.
+Let's get back again to
+our daily return chart.
+We've got S&P 500 here plotted already.
+And let's compare that
+to another stock xyz.
+Now note here that frequently xyz
+moves in the same direction as spy,
+but it also sometimes moves a little bit
+further like in these sections here.
+We'll be able to visualize those
+differences in a scatterplot.
+So on a scatterplot, there are a number
+of individual points or dots.
+And each one represents something
+that happened on a particular day.
+So let's look at this particular day.
+On this day, spy was positive,
+close to +1.
+So we'll look at +1 on spy.
+And xyz was about +1 as well but
+a little bit larger.
+So that day would correspond
+to a point about there.
+Now we look at each day
+one by one individually.
+And populate all of our dots
+based on what happened each day.
+Another interesting day
+is this one where spy and
+xyz were moving in different directions.
+So again we had spy in
+positive territory, but
+xyz was in negative territory, so that
+would represent a dot about like that.
+Now if we were to continue this process
+for very many days over a long period of
+time, for most stocks a trend appears
+which is something like this where you
+can sort of see there's a relationship
+here, maybe a linear relationship.
+And, however the dots
+are somewhat scattered.
+They don't form a perfect line.
+
+It is fairly common practice
+to take this set of data and
+fit a line to it using
+linear regression.
+Let's say we got a line
+something like that.
+And to look at the statistics
+of that linear fit.
+One property is the slope.
+When we fit a line,
+what's the slope of that line?
+Let's assume it turns out to be 1 for
+this particular stock and
+its relationship to the S&P 500.
+This slope, in financial terminology,
+is usually referred to as beta with
+this symbol, or just the word beta.
+And what beta means is how reactive
+is the stock to the market.
+So if beta is 1, and
+we have a slope here of 1, it means,
+on average, when the market goes up 1%,
+that particular stock also goes up 1%.
+If we have, say, a higher number, say,
+2, that would mean that if
+the market were to go up 1%,
+we'd expect on average for
+that stock to go up 2%.
+There's another factor you can see here
+when you look at where that line
+intercepts the vertical axis.
+That is called alpha.
+And you've probably heard about
+alpha in investing circles, and
+what that means is that this stock is
+actually on average performing a little
+bit better than the S&P 500 every day
+if that number, alpha, is positive.
+If it's negative,
+it means on average it's returning a
+little bit less than the market overall.
+That's how you can plot the data,
+fit a line to it, and
+measure a couple aspects of this
+performance with regard to the market or
+with regard to some other stock.
+
+Now add a scatter plot for
+another stock, ABC, and
+again each one of these dots represents
+the daily return of SPY versus ABC, and
+we fit a line to it, and
+it turns out it's got a slope of two, so
+now we're going to ask you
+a couple of questions about it.
+Now add a scatter plot for
+another stock, ABC, and
+again each one of these dots represents
+the daily return of SPY versus ABC, and
+we fit a line to it, and
+it turns out it's got a slope of two, so
+now we're going to ask you
+a couple of questions about it.
+The slope is just the slope.
+Correlation is a measure of
+how tightly do these individual
+points fit that line?
+So you could have a shallow slope but
+the data tightly fitting that line,
+and thus a higher correlation.
+Or you could have a steeper line and
+the data fitting that line
+at a higher correlation.
+Correlation is just a measure of how
+tightly do those dots fit the line.
+And you can have
+a correlation from 0 to 1.
+Now add a scatter plot for
+another stock, ABC, and
+again each one of these dots represents
+the daily return of SPY versus ABC, and
+we fit a line to it, and
+it turns out it's got a slope of two, so
+now we're going to ask you
+a couple of questions about it.
+Now add a scatter plot for
+another stock, ABC, and
+again each one of these dots represents
+the daily return of SPY versus ABC,
+and we fit a line to it, and
+it turns out it's got a slope of two, so
+now we're going to ask you
+a couple of questions about it.
+
+Which of these statements is the most
+true about the relationship between ABC
+and XYZ in terms of beta and
+correlation?
+
+This is the correct answer.
+It's got higher beta because
+the slope is higher and
+higher correlation because the dots
+are closer to the line that fits it.
+Now, Dave is going to show you
+how to create scatter plots and
+make these measurements in Python.
+Here's to you, Dave.
+
+Thank you, Professor.
+So I am back with more Python and
+more graphs.
+This time, let's scatter some data.
+I mean,
+let's learn how to build a scatter plot.
+We will compare scatter plot of
+SPY versus XOM and SPY versus GLD.
+So let's read this data and
+compute daily returns as well.
+As usual, We call get_data
+function with this symbols and
+also compute daily returns.
+Next we first plot scatter plot for
+SPY versus XOM.
+Kind parameter of the plot
+function of the data frame
+will help us achieve this.
+So we mention we need a scatter plot,
+but
+since the data frame daily return
+has values for three stocks.
+We have to mention which should be our
+X axis and which should be our Y axis.
+As we are plotting SPY versus XOM,
+we assign X attribute aas SPY and
+Y attribute as XOM.
+Ready to see the output?
+This is our SPY versus XOM.
+Now let's similarly plot SPY versus GLD.
+Since we want GLD on our y-axis, we just
+replace the y label from XOM to GLD.
+So here are two scatter plots.
+SPY versus XOM and SPY versus GLD.
+But we want to recreate
+the graph that Professor drew.
+So we fit a line to the scatter plots.
+For that, we need the help of
+another good friend of ours.
+Which is numpy.
+So let's import it.
+After importing the numpy library
+we areall set to fit a line to our
+scatter plot.
+So we have a set of points, and
+we want a line which has
+an equation of degree one.
+So we go ahead and
+fit a polynomial of degree one.
+This is what polyfit
+function of the numpy does.
+So let's use it.
+We will first do it for SPY and XOM.
+The polyfit function needs x-coordinates
+and y-coordinates to fit a line.
+For us the x-coordinates
+are the daily return values for
+SPY and the y-coordinates are daily
+return values for the XOM.
+The one denotes the degree
+of our function.
+Calling this function
+will return two things.
+The first is the polynomial coefficient
+and the second is the intercept.
+Since we have a polynomial of degree 1,
+it would be of the form y = mx + b.
+So m is the coefficient and
+b is the intercept.
+We name them as beta and alpha.
+Just as Professor explained.
+Now we finally plot these values.
+The idea for plotting the line is,
+for every value of x that is SPY,
+we find a value of y using the line
+equation, which is mx + b.
+This parameter denotes that we want
+a line plot with the color red.
+Now, let's check our graph.
+Here is the fitted line.
+Let's do it for GLD so
+that we can compare them both.
+We also print the beta and
+alpha values for each.
+Now, let's compare the beta values
+which shows how the stock
+moved with respect to SPY.
+You can see that the beta values for
+the XOM is greater as
+compared to that of GLD.
+Which means that XOM is more reactive
+to market as compared to GLD.
+On the other hand,
+the alpha values denote how well
+it performs with respect to SPY.
+Numbers over here say that
+GLD performed better.
+Let's cross check.
+You can see the upward movement of
+the GLD as compared to the SPY.
+One last thing is to find
+the correlation yet again.
+The data frame has a function
+corr which means correlation, and
+we can define which method to use.
+We use the method pearson.
+It is the most commonly used method
+to calculate the correlation.
+There are other methods as well, check
+the instructor's note for more detail.
+We get the output in the matrix format,
+with correlation of each
+column with each other column.
+You can see that the SPY and
+XOM are highly correlated.
+The value of the correlation for
+GLD and SPY is very small.
+Let's check the graph.
+You can observe that the dots
+do not fit the line closely.
+And that's why the correlation value for
+the SPY versus GLD is less as
+compared to SPY versus XOM.
+For more information on data
+frame scatter plot and polyfit,
+check the link in
+the instructor's notes.
+
+As you have seen in this lesson,
+the distribution of daily returns for
+stocks and the market look
+very similar to a Gaussian.
+This property persists when we
+look at weekly, monthly, and
+annual returns as well.
+If they were really Gaussian we'd say
+the returns were normally distributed.
+In many cases in financial
+research we assume the returns
+are normally distributed.
+But this can be dangerous
+because it ignores kurtosis or
+the probability in the tails.
+In the early 2000s investment banks
+built bonds based on mortgages.
+They assumed that
+the distribution of returns for
+these mortgages was
+normally distributed.
+On that basis they were able
+to show that these bonds had
+a very low probability of default.
+But they made two mistakes.
+First, they assumed that the return of
+each of these mortgages was independent,
+and two that this return would
+be normally distributed.
+Both of these assumptions
+proved to be wrong,
+as massive numbers of homeowners
+defaulted on their mortgages.
+It was these defaults that precipitated
+the great recession of 2008.
