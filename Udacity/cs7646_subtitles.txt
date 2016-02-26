@@ -4838,3 +4838,4508 @@ as massive numbers of homeowners
 defaulted on their mortgages.
 It was these defaults that precipitated
 the great recession of 2008.
+Up until this point we've been computing
+statistics about individual stocks.
+We're going to shift now to
+computing statistics on portfolios.
+We're going to focus on some of the most
+important statistics that are used to
+evaluate the performance of portfolios
+and accordingly portfolio managers.
+We'll define a portfolio as an
+allocation of funds to a set of stocks.
+For the moment, we're going to follow a
+buy-and-hold strategy where we invest in
+a set of stocks with
+a certain allocation and
+then observe how things
+go moving forward.
+We'll assume the allocations sum to 1.0.
+
+We want to be able to calculate
+the total value of a portfolio
+day by day by day.
+Once we have that information,
+then we can compute statistics
+on the overall portfolio.
+So let's start with an example.
+Assume we start with a portfolio
+value of one million dollars, and
+we're going to take a look
+at that portfolio from
+the beginning of 2009
+to the end of 2011.
+And our portfolio consists of
+these three symbols, S & P 500,
+Exxon, Google, and Gold.
+And at the beginning of 2009,
+we're going to allocate .4 or
+40% of our portfolio to SPY,
+40% to Exxon, 10% to Google, and
+10% to Gold, and we'll enter
+those positions in the beginning,
+and we'll hold them,
+and step forward, and
+see what the overall value of
+the portfolio is day by day.
+How do we calculate the total
+value of the portfolio day by day?
+Here's how to do it step by step.
+We start with our prices data frame.
+Remember the four columns with
+prices every day, indexed by date.
+The first step is to
+normalize these prices.
+As we've done before, it is just the
+price values divided by the first row.
+So after we normalize, we have
+a new data frame, normed, which is,
+as we said,
+all the prices divided by the first row.
+That's going to give us now this
+new data frame where the first row
+all 1.0 and then it proceeds after that.
+And these are essentially cumulative
+returns starting from the start date.
+The next step is to multiply
+these normed values
+by the allocations to
+each of the equities.
+So we'll just multiply normed
+times our allocations, allocs, and
+that gives us a new data frame alloced.
+Now as you remember,
+our allocations were 0.4, 0.4, 0.1, 0.1.
+So when we do that multiplication,
+the first row is going to
+represent those numbers.
+And the data after the first
+row will be sized accordingly.
+Our next step is to multiply our
+alloc data frame times start_val.
+And what that'll give us is,
+in this first row the amount of
+cash allocated to each asset and
+then going forward, it'll show us
+the value of that asset over time.
+So we've got now a new data frame,
+pos_vals, what that means is position
+values, that at each day,
+that's how much that position is worth.
+So we started out, for instance, with
+400,000 for the first one, 400,000 for
+the second one, 100,000, 100,000.
+But now as we go forward each day,
+it's as if we invested say
+100,000 in this one, and it reflects how
+much it was worth each day after that.
+Now that we have the value each day for
+the individual assets, we can calculate
+the total value for the portfolio
+each day by summing across each day.
+So on the first day for
+instance the value of the portfolio was
+four hundred thousand plus four hundred
+thousand plus one hundred plus one
+hundred thousand or one million.
+Now those values change of course as
+the stock prices change going forward.
+So each day is a little bit different.
+We can calculate the value for
+each of these days by taking the sum
+of pos_vals,
+position vals using axis=1, so
+that's telling python to sum
+across each row like that.
+So that sums each day
+across into Port_val,
+which now reflects the value each
+day for our total portfolio.
+Let's recap now.
+We start with our prices.
+We normalize that to the first day,
+so the first row here is all ones.
+We multiply it times our allocations,
+and that gives us now in each column,
+the relative value of each
+of those aspects over time.
+We multiply by our initial investment,
+and
+that causes now each row to be
+the real value of that investment
+each day over time,
+starting with our initial allocations.
+If we then sum each row
+we get the value of the portfolio on
+each corresponding day, and that's it.
+That's how you calculate
+daily portfolio value.
+
+We showed a moment ago how to
+go from prices to port-val,
+which is the daily total
+value of the portfolio.
+Now that we have port-val, we can
+compute a number of important statistics
+on the portfolio, and
+thus assess the portfolio and
+the investment style of whoever
+is managing that portfolio.
+An important first calculation
+is to compute daily returns.
+We've talked about how to do that
+before, so I won't go over it here.
+But an important observation is
+whenever you compute daily returns,
+the first value is
+always going to be zero.
+And that's because on the first day,
+of course, there's no change.
+So we want to exclude
+that value from any calculations
+we do across all daily returns.
+It's easy to accomplish this
+with a simple python statement,
+which is just to replace
+daily returns with
+daily returns where we just
+include the second row forward.
+And boom, we're rid of that first zero.
+Now that we have this information,
+we can compute four key statistics that
+everybody wants to know about regarding
+the performance of a portfolio.
+They are cumulative return,
+average daily return,
+standard deviation of daily return and
+sharp ratio.
+Cumulative return is just a measure of
+how much the value of the portfolio has
+gone up from the beginning to the end.
+So to calculate that, we take the last
+val, which is port-val of -1.
+Which is this one divided by
+the beginning and subtract 1.
+Average daily return is just
+the average of these numbers, so
+we just take the mean.
+Very simple.
+And standard deviation of daily return,
+again simple.
+Just use the standard deviation
+function right there.
+Now sharpe ratio is a little bit
+more complex than these other ones.
+So we're going to spend a little bit
+more time diving into sharpe ratio.
+
+The idea for Sharp ratio is
+to consider our return, or
+our rewards in the context of risk.
+As we mentioned before,
+most finance folks consider risk to
+be standard deviation or volatility.
+We're looking for
+a measure that essentially
+adjusts a return for that risk.
+So, here are a couple of examples
+that I want you to think about,
+and we'll have a little
+quiz associated with it.
+But we have three example charts here,
+where we're comparing two
+stocks against one another.
+So in this first one we've got ABC and
+XYZ and both of them have about
+the same volatility, except one returns
+a little bit more than the other.
+In this next question,
+question two, they both return
+exactly the same amount.
+But one of them is more
+volatile than the other.
+And finally,
+we have again these two stocks.
+One, ABC, returns 11%, XYZ returns 9%,
+but ABC is much more volatile than XYZ.
+So I want you to think about this and
+mark which portfolio or
+stock you think is better in
+each one of these examples.
+
+For number one here,
+ABC is the correct answer because
+its volatility is the same but
+its total return is higher,
+so all else being equal,
+higher return is better.
+In this next one,
+the correct answer is XYZ.
+And the reason is, XYZ had the same
+return as ABC, but it was less volatile.
+So, all else being equal,
+less volatility is better.
+Now, number three was a trick question.
+[LAUGH] ABC has higher return, but
+it's offset by a higher volatility.
+XYZ has lower return, but
+that's offset by lower volatility.
+So, you don't really have enough
+information to make the choice here.
+You can sort of stand back and
+squint and look at it, and
+tell you what your gut says, but we
+need a qualitative way to measure this.
+That's what the Sharpe
+ratio is all about.
+
+Sharpe ratio is a metric that
+adjusts return for risk.
+And it enables us in a quantitative way
+to asses each of these
+example compared portfolios.
+So Sharpe ratio will show us for
+instance, that in this case ABC is
+better because It has about the same
+volatility as XYZ, but higher return.
+If it were to assess these two, even
+though they both have the same return,
+it'll say XYZ is better
+because it's got lower risk.
+And finally, in this case where these
+two are very close and it's hard for
+us as humans to determine which
+one is better, Sharpe ratio here
+will give us a number that will
+help us determine between the two.
+So with regard to the numbers that
+Sharpe ratio ends up providing us,
+all else being equal, lower risk is
+better, higher return is better.
+Sharpe ratio also considers something
+called the risk free rate of return.
+That's the interest rate you would get
+on your money if you put it in a risk
+free asset like a bank account or
+a short term treasury.
+The reason that it includes this number,
+is we always need to consider,
+gee, maybe this asset we've got
+isn't performing as well as the return I
+would get it I just put it in the bank.
+Now, lately, as of mid-2015,
+the risk free rate of
+return is about zero.
+In other words, if you were to put
+your money in the bank or to buy
+very short term treasury bonds, that's
+the interest rate they would pay you.
+And this is why lately folks have put so
+much money into the stock market,
+because you can't make money putting
+your money in the bank these days.
+The Sharpe ratio is named for
+William Sharpe.
+And he developed something called
+the Sharpe ratio that accounts for
+all of these.
+Now think about what the form of
+that equation would look like.
+
+Consider that you have
+these three factors.
+Portfolio return,
+risk-free rate of return, and
+standard deviation of portfolio return,
+or volatility, or risk.
+How would you combine these three
+factors into a simple equation
+to create a metric that provides
+a measure of risk adjusted return?
+In other words, like those examples we
+showed you before, all else being equal,
+higher return is better, all else being
+equal, lower volatility is better.
+Which of these three do you
+think is the best metric?
+
+This is the best answer, here's why.
+First of all, observe that
+we're dividing by volatility
+here on the bottom.
+So as things become more volatile,
+the ratio goes down.
+We've got return on
+portfolio here on the top.
+So as return goes up,
+the metric goes up.
+And finally,
+we subtract the risk free return here.
+So as risk free return increases,
+the value of our metric decreases.
+Meaning, essentially we need to have
+a higher return on our portfolio.
+Than the risk free metric in order
+to have a positive number here.
+This is indeed the form
+of the sharp ratio.
+There are a few more details.
+But this is essentially the ratio
+devised by William Sharpe
+
+Here's the equation for
+computing the Sharpe ratio as
+proposed by William Sharpe himself.
+It's the expected value of the return
+on a portfolio, minus the risk free
+rate of return, divided by the standard
+deviation of that same difference.
+This is the ex ante formulation,
+meaning, because we're using expected,
+it's a forward looking measure of
+what the Sharpe ratio should be.
+Now to calculate this in reality,
+we need to look back at those values.
+So, for instance, the expected
+value of this difference is just
+simply the mean of what that
+difference was over time.
+So to calculate this in Python
+using historical data, we just take
+the mean of daily returns minus the
+daily risk-free rate, and divide that
+by the standard deviation of the daily
+returns minus the daily risk-free rate.
+Now you may be wondering,
+what is this risk free rate?
+Where can we get it?
+Traditionally there are a few
+numbers that people use for this.
+One is LIBOR or
+the London Interbank Offer Rate.
+Another is the interest rate
+on the 3-month Treasury bill.
+And finally, a value that
+people have been using a lot
+over the last [LAUGH] few years is 0.
+0 is a good approximation
+to the risk free rate.
+Now I've been presenting this as if
+this risk free rate changes each day.
+And indeed, LIBOR changes each day and
+3-month T-bill changes
+a little bit each day.
+But there's a shortcut people use a lot
+that simplifies this
+equation significantly.
+And this shortcut makes sense
+because usually the risk free rate
+is not given on a daily basis for, for
+instance, putting your money in a bank
+account or a certificate of deposit.
+Usually that's a percentage on
+an annual basis or a six month basis.
+So you can convert that
+annual amount into a daily
+amount using this simple trick.
+Let's suppose our risk free
+rate is 10% per year or 0.1.
+That means if we start at the beginning
+of the year with a value of 1.0,
+at the end of the year we have 1.1,
+so we add 1 here.
+So this is the total value of our
+asset at the end of the year.
+Now, what is the interest rate per
+day that would enable us to get to
+this value?
+It's a number that if we multiple
+it by itself each day for
+each day in the trading year, or
+252 times, would arrive at this number.
+So here's how we do it.
+We take the 252nd root of that sum,
+believe it or not, that's pretty
+easy to do in Python actually,
+and subtract 1, and
+that is our daily risk free rate.
+We are, in most cases in this class,
+just going to approximate the daily
+risk free rate with 0, because that's
+what it's been for such a long time.
+Of course, it may be changing in the
+future, so keep this shortcut in mind.
+Now, suppose we want to use this value,
+which is fine.
+We would plug that in here,
+and also plug it in here.
+So observe that if we
+plug a constant in here,
+in this standard deviation calculation,
+we can just remove it.
+Because a set of values
+minus a constant,
+when you calculate the standard
+deviation, is just as if this were 0.
+Summing it all up, this is
+the equation we typically use for
+calculating Sharpe ratio
+using daily returns.
+We drop the daily risk free rate
+from the standard deviation because
+we treat that as a constant.
+If our daily risk free rate is greater
+than 0, then you need to plug it
+in here, but we can usually
+use a constant there as well.
+
+But wait, there's more!
+The Sharpe ratio for
+the same asset can vary widely,
+depending on how
+frequently you sample it.
+So in other words,
+if you sample the prices every year, and
+compute your Sharpe ratio based on
+yearly statistics you'll get one number,
+if you sample monthly you'll
+get a different number,
+if you sample daily you'll
+get still another number.
+The original vision for the Sharpe
+ratio is that it's an annual measure.
+So if we're sampling at
+frequencies other than annually,
+we need to add an adjustment
+factor to make it all work out.
+So if we have our original
+sharp ratio over here
+we multiply it by an adjustment factor
+called K to get the annualized version.
+Now what is K?
+K is simply the square root of
+the number of samples per year.
+Since if we're using daily data.
+There are 252 trading days per year,
+so K is the square root of 252.
+If we're, say, taking weekly samples,
+it'd be square root of 52.
+Important thing to keep is mind is
+the number in here is the rate at which
+we're sampling.
+So as an example, let's suppose
+we were trading for 85 days.
+Because we're sampling at a daily rate,
+we use this number for our K.
+Square root of 252.
+Even though we only traded for 89 days,
+we use 252 here because
+we're sampling daily.
+It's the frequency at which we sample
+that effects this value for K.
+So, recapping, if we sample
+the value of our portfolio monthly,
+K is the square root of 12,
+if we do it weekly,
+it's the square root of 52 because
+there's 52 weeks in a year, and
+if we sampled daily,
+it's square root of 252.
+Bringing it all together,
+if we're using daily data,
+our Sharpe ratio is square root of 252,
+that's our K,
+times mean of our daily returns
+minus the daily risk free rate,
+divided by standard
+deviation of daily returns.
+
+Assume we've been trading a strategy for
+60 days now, and
+on average, our strategy returns
+one-tenth of a percent per day.
+Another word for
+this is 10 basis points.
+One basis point is
+one-hundredth of a percent.
+So ten bps or
+basis points is one-tenth of a percent.
+Our daily return is,
+on average, 10 basis points.
+Our risk free rate,
+which we'll assume is just a fixed
+number, is 2 basis points per day.
+And the standard deviation of our daily
+return is 10 bips, or 10 basis points.
+What is the Sharpe
+ratio of this strategy?
+
+The correct answer is 12.7.
+That's a really,
+eye-watering Sharpe ratio.
+Anyway, these numbers are just
+made up for example, so
+it's not surprising we might
+get an absurd number here.
+But, here's how we calculate that.
+Remember our Sharpe ratio
+is the square root of 252
+because that's how frequently
+we are sampling the data, daily.
+252 days in a year, square root of 252.
+A lot of people probably saw
+this 60 days of data and
+thought that it should
+be square root of 60.
+It's not correct.
+It's the frequency that you're sampling.
+Anyways, getting back to it, it's square
+root of 252 times the mean of portfolio
+return minus risk free return divided by
+standard deviation of our daily return.
+So that becomes square root of 252 times
+10 bips minus 2 bips divided by 10 bips.
+This just becomes 0.8, and
+multiply it all out, and you get 12.7.
+
+Now you know how to compute daily
+portfolio values and, from there,
+important portfolio statistics.
+The main ones we're going to focus on
+are cumulative return, average daily
+return, standard deviation of daily
+return, or risk, and Sharpe ratio.
+These are the key factors most people
+focus on when evaluating the performance
+of a portfolio.
+The assignment associated
+with this lesson is for
+you to build a function that can
+calculate these values automatically.
+You've got what you need to build this,
+so have at it.
+In this lesson we're
+going to look at optimizers.
+Optimizers sound scary, but
+they're really cool and really fun.
+I'm going to show you all kinds of neat
+things you can do with optimizers.
+What is an optimizer?
+An optimizer is an algorithm that
+can do the following things.
+Optimizers can be used to find
+minimum values for functions.
+So say you have a function
+like f(x)=x2+x3+5 or
+something like that,
+an optimizer can find.
+For what value of x is this
+overall function minimized?
+Another thing that optimizers can
+do is find the parameters for
+parameterized models from data.
+So we might have some data
+from some experiment, and
+we can use optimizers to find
+a polynomial fit to that data.
+And that is actually one thing we
+are going to learn in this lesson.
+Finally, we can use an optimizer
+to refine allocations to
+stocks in portfolios.
+What does that mean?
+Well, that means for instance,
+you can decide what percentage of
+funds should be allocated to
+each stock using an optimizer.
+How do we use an optimizer?
+It's really just as simple
+as three key steps.
+First thing you need to do is define
+a function that you want to minimize.
+As an example you might
+use something like f of x
+is equal to x square plus point five.
+You define that in Python and then the
+minimizer will call this function many,
+many times as it tries to
+find the minimum values for
+x that causes this function
+overall to be smallest.
+You also need to start
+with an initial guess for
+x that you think might be close
+to the solution to the problem.
+If you don't really know,
+then you can choose a random value or
+just some standard value.
+But then the optimizer starts
+with that guess and it repeatedly
+calls a function, tests different
+values, and narrows in on the solution.
+Finally, you call the optimizer
+with these parameters and
+stand back while it searches for
+the minimum.
+Let's take a look at this function,
+f(x) is equal to x minus
+1.5 squared plus 0.5.
+That function is a parabola
+that looks something like this.
+It's centered horizontally at 1.5,
+and its minima is here at 0.5.
+Now, the minimizer doesn't know that.
+We can tell it by looking
+at the equation, but
+the minimizer has to
+figure it out on its own.
+So let's suppose we tell it,
+hey minimizer, why don't you start
+with a guess of 2.0 and see if you
+can figure out from there what it is?
+So the minimizer says,
+okay, I'll give it a go.
+[LAUGH] And here's what it does.
+First thing it does is it
+checks the value at 2.0,
+it turns out that that's about 0.75.
+It then tests the value nearby,
+say here and here.
+And it finds out that this equation has
+a slope about like that, at this point.
+Now, it's trying to minimize, and so
+what it does is it marches downhill,
+it's called gradient descent.
+And it tries another value
+down along that slope.
+Gets a particular value here,
+tries another one, and so on.
+And eventually, it narrows and
+it discovers that 1.5 is the value for
+x at the minima.
+And the value of y there is 0.5.
+Now, the example I gave you for
+sort of marching down this
+gradient descent is one method.
+There are many variations
+on that method,
+that different kinds of minimizers use.
+And Scifi, the library that we're using,
+has many of those options.
+And you can choose different
+ones according to your taste.
+We're going to stick with one particular
+approach through our examples here.
+But you ought to experiment and
+try some of the other ones as well.
+Let's try that same example
+function now in Python code.
+So up here we have our normal imports,
+here is where we define the function
+and again we're simply
+using X-1.5 squared +0.5.
+Now within this function
+we're going to go ahead and
+print what the value
+is when we get called.
+It just is a little bit handier so that
+we can see what exactly is going on.
+But you don't have to
+have that of course.
+And then we return y.
+Now this is going to be the function
+that we're going to Ask SciPy,
+or in particular the optimizer,
+to minimize for us.
+And by the way, we've included
+this optimize package as spo.
+So scipy.optimize as spo.
+This is our call now to the optimizer or
+the minimizer.
+Before we call it we first set
+our guess value to be 2.0.
+And we're using the function minimize so
+we call spo.minimize.
+F, that's our function here,
+so we're saying minimizer,
+please minimize find the minimum for
+this function.
+X guess is our guess.
+Method is, we're directing minimize to
+use a particular minimizing algorithm.
+We'll talk a little bit about
+that a little bit later.
+But this is one of those particular
+algorithms that happens to
+work pretty nicely.
+We send it one more option here,
+disp, which is True.
+Which means we just want it to be
+verbose about things that it discovers.
+Anyways, that's it.
+That calls the minimizer.
+The minimizer repeatedly
+calls our function and
+finds the minimum value,
+then it prints out those results.
+Let's try a test run and
+see what happens.
+Remember, in our function
+that we wanted to minimize,
+we explicitly printed X and Y.
+So here you can see each time it gets
+called it prints these values out.
+And so the minimizer is repeatedly
+calling that function f and
+it's printing these things out.
+So it gets called initially
+with an X of 2 and
+it discovers that the value is 0.75.
+Then a value slightly greater than 2,
+a value slightly less than 2.
+And the minimizer very quickly converges
+on 1.5 as the answer, and here
+it prints out those values and finds the
+minima at 1.5 with a value of 0.5 there.
+So pretty efficient and
+effective discovery of the minimization.
+I added a few more lines of
+code here which I'll highlight,
+merely to plot the answer, so
+all the rest of the code is the same.
+But let's take a look now
+if we plot it as well.
+So, same result as before but nice plot
+with our minima identified right here.
+So, that is how to code up a minimizer,
+it's really very easy and very powerful.
+Let's look at it a little bit further.
+Now that you know how minimizers or
+optimizers work,
+think a little bit about what
+might be hard for them to solve.
+So I'm going to show you four
+example function shapes.
+And I want you to consider whether
+these would be hard or easy for
+the minimizer to solve.
+Here are four function
+shapes to look at.
+If you think that one would be hard for
+the minimizer we just talked about,
+check the box next to it,
+and tell us why.
+Type out a reason in the text box.
+All right, have at it.
+Most of these are hard.
+This one's hard.
+This one's hard, and this one,
+and let me explain why.
+This one is hard because of
+this flat area here and here.
+Suppose the minimizer tested this point
+here and then tried on either side.
+It wouldn't be able to find
+any gradient to follow, so,
+it wouldn't know which direction to go.
+This one is difficult for
+at least two reasons.
+One is it has several local minima that
+aren't necessarily the global minima.
+So, it might iterate and
+find, say, this as a minima.
+But notice that actually there's this
+other two that are actually smaller.
+And then if these two have
+exactly the same value,
+turns out we have two global minima.
+So, those sorts of conditions are tough
+for these minimizers to solve.
+This one is challenging A,
+because of this flat area, but
+also because of this discontinuity.
+So, four examples, three of them would
+be hard for our minimizer to solve.
+Now, I'm not saying that these
+are not solvable by optimizers.
+In fact, there are optimizers that
+can solve these problems with
+varying degrees of success.
+And they're likely to find a minima,
+just not guaranteed to find the minima.
+While we're on the topic of
+problems that are easy or hard for
+optimizers to solve, let's talk for
+a moment about a particular class of
+problems that are indeed the most easy
+for these types of algorithms to solve.
+And those are called convex problems.
+Here's the formal definition
+of a convex function.
+I'm going to read it
+to you from Wikipedia.
+And then I'll show you what it
+means on these graphs here.
+A real valued function f
+of x defined on an interval
+is called convex if
+the line segment between
+any two points on the graph of
+the function lies above the graph.
+A lot of words there.
+Let me show you what
+that means more easily.
+First step, choose two points and
+draw a line between them.
+Now, for each of these lines, if
+the line is above the graph, everywhere
+between those two points, then the
+function is convex between those points.
+So for this function, yes,
+it's convex because the line
+is above the graph everywhere.
+In fact, any two points you chose on
+this graph, we'll have that property.
+So this function is convex everywhere,
+at least where we're looking at.
+Here, notice that this part of
+the graph lies above the line.
+So this is non convex.
+Similarly, this one,
+we've got this region here
+that lies above the line, so
+this one is also non convex.
+And this one is of course convex.
+So a couple things to observe here,
+some properties that emerged.
+One is in order for
+the function to be convex,
+it has to have only one local minima.
+And in other words,
+that local minima is the global minima.
+This one fails for that reason.
+We also can't have any flat regions
+that essentially don't
+have any slope downward.
+Now, if the function you're trying
+to find a minima for is convex,
+then these algorithms will find
+the minima quickly and easily.
+But again, there are algorithms
+that can still find the minima for
+more complicated examples like these.
+But they require a little
+bit of randomness and
+they aren't necessarily guaranteed
+to find the global minima.
+So far, we've been looking at functions
+that just have one dimension in x.
+So for instance,
+the parabola that we looked at.
+It’s just as easy for these optimizers
+to work in multiple dimensions.
+Here’s an example of a function
+that has two dimensions in x.
+It still has its y result.
+But the minimizers can solve these
+problems with gradient descent
+just as easily.
+So instead of just one dimension,
+we can have one,
+two, three, four, as many as we’d like.
+Now we're going to do
+something really cool.
+I'm going to show you how to build
+a parameterized model from data.
+What do I mean by parameterized model?
+This is an example of a parameterized
+model that you're probably familiar with
+from algebra.
+It's a function of x and
+it has these two parameters, m and b.
+In fact, as you're probably aware,
+this is the equation of a line.
+So m and
+b are the parameters of that line.
+Now for convenience in our
+code instead of using m and
+b, I'm going to use C0 and
+C1, just to be consistent.
+Let me motivate this with an example.
+Let's suppose we have some
+data from an experiment.
+Now this can work for
+many sorts of experiments, but for now,
+let's assume we've taken some
+measurements of humidity, and we've
+observed on those particular days we
+measured the humidity how much it rains.
+So each dot here represents one day and
+one sample of data.
+So on this date, it was this humid,
+and it rained that much.
+Now we probably have lots more data,
+one for each day.
+When we look at this data, we see
+there's a kind of relationship here.
+And our intuition is maybe that
+it could be fitted by a line.
+Just sort of by eyeballing it,
+looks like the line might look about
+like that, and so our parameters here
+coefficient 0 is equivalent
+to the slope here,
+and coefficient 1 is the y intercept.
+So our task is to find C sub 0 and
+C sub 1 that provide the equation for
+this line that best fits the data.
+The question here is,
+how do we reframe this problem so
+that it makes sense for our minimizer?
+What is it we're trying to minimize?
+So restating the problem, suppose we
+have our original data points here, and
+we're trying to discover the equation
+of a line that best fits those points.
+Suppose this blue line is a candidate
+line and we want to evaluate it.
+Is this good or bad?
+So the equation for that line is,
+our first coefficient times x
+plus the second coefficient.
+And what the minimizer is going to
+do is it's going to vary this C0 and
+C1 to try and minimize something.
+And so
+we have to come up with an equation that
+gets lower in value as this
+line better fits the data.
+What should we use for that equation?
+So here's one step towards
+solving this problem.
+We can take a look at each one
+of our original data points and
+observe how far away it is from
+this line that we're evaluating.
+Let's call each of these distances e.
+So e sub 0 is that one,
+e sub 1 is that one.
+Can we come up with
+an equation in terms of e or
+error that gets us to this solution?
+Here's a quiz to get you
+thinking about that.
+So again, e is the error at each point.
+In other words,
+this is our original data point.
+This is the line that we're
+hypothesizing might be a good solution.
+And we can test how far off our model or
+our line is at each one of these
+points and measure that as e.
+So which of these formulae might
+be a good overall error measure?
+There could be more than one.
+So these two are reasonable answers.
+The reason that this one
+is not a good answer is because
+some of these e's may be negative.
+In other words, this one is negative,
+these two are positive,
+but you could end up with a negative
+error if you just added them up.
+You can fix that by adding
+absolute value or by squaring it.
+This measure here is one
+of the more famous one.
+Of course it's squared error.
+Let's step through this now with
+an example of how a minimizer
+would try to find the coefficients
+of a line that best fits this data.
+So keep in mind that we have to
+give the minimizer an equation
+that it has to minimize.
+And what we're going to give
+it is that error metric.
+In fact we used squared error.
+So we might guess an initial C0 and
+C1 and that would be a line
+like this, and we would give that
+to the minimizer and let it go.
+So it would measure the error
+with this particular line,
+it would fiddle with these
+values a little bit and
+see how much the error changed, try
+a new set of values see how that works.
+And eventually it's going to iterate,
+and
+eventually it's going to settle on
+what it thinks is the best solution.
+So key points here are that
+we express the problem for
+the minimizer as
+a minimization problem and
+we give it the equation
+to minimize as the error.
+And then, what it finds now instead
+of x is it finds the values for
+these coefficients.
+So, let me show you how
+to do that now in code.
+Now we'll look at some example code that
+can fit a line to data that's given.
+Remember, we're using
+a optimizer to do this.
+And first thing we have
+to do is describe for
+the optimizer what is the function
+it's trying to minimize.
+So we'll call this function error, and
+it takes two parameters, line and data.
+Line is just two coefficients,
+C0 and C1.
+And data is just a list of data,
+of course.
+Well, we've got some nice comments
+here that explain it, but
+really, our error is expressed
+simply in this single equation.
+We have the value of the actual
+data at each point here,
+minus the estimate that the line
+we're currently looking at
+would give at that same point.
+So we use the 0 coefficient, and
+the 1 coefficient, times the x
+value of the data at that point.
+So we take those differences and square
+it, and that's our error function.
+And that's what we're
+trying to minimize.
+We've added some code to illustrate
+how to use the minimizer to
+find the equation of a line.
+We start with our original line
+that the minimizer doesn't know.
+So, it's our secret, [LAUGH] but
+we're testing it to see if the minimizer
+can discover the equation of this line.
+Here's the equation for our line.
+It's just a two element array.
+It'll have a slope of four so
+coefficient zero is four.
+And Y intercept of two.
+So coefficient one of two.
+Here we generate X and Y values.
+Again keep in mind our minimizer doesn't
+know these but we are just generating
+them so we can look at them and we are
+plotting them for looking at it later.
+We take that original line and
+we use from numpie the random
+function to add some noise to it.
+So at each point along the X-axis,
+where we have data, we add some noise.
+So, now we've got our original line,
+plus some noise, and
+we're going to challenge our
+minimizer to find the equation for
+that original line,
+even though there's noise.
+We wrote a separate function
+fit_line that takes the data and
+the error function we defined and
+finds the equation for that line.
+Here's fit_line it does that for us.
+Two parameters the data, remember this
+is noisy data that is approximately
+a line and in other words we took our
+original line and added noise to it.
+And the error function, or
+the function we're trying to minimize.
+We have some nice comments here
+that tell us what those are, but
+now we just follow the steps
+like we've talked about before.
+We start with an initial guess.
+Here our initial guess
+is a slope of zero, and
+a mean of the rest of
+the data as our y intercept.
+It could be anything really,
+but that is a reasonable guess.
+We plot the initial guess so
+we have something to look at, and
+I'll show you that later.
+But here really is
+the meat of the function.
+You've seen it before.
+So we call our minimize
+function with the error_func.
+In other words, this is the function
+we're trying to minimize.
+Our initial guess, and this is
+a parameter you haven't seen before,
+but this is a way by which we can
+pass the data to our error function.
+This is the method that
+we're going to use.
+And finally although it
+goes off the end here.
+We'll set display to true,
+which will mean we'll get to see
+any information as it goes along.
+So that's it.
+I mean really the key here for this is,
+this minimize call right here and
+then it returns the result.
+So let's run it and see what we get.
+There was some additional code that I
+skipped over that generated this plot.
+You can look at that on your own,
+of course.
+Okay, let's take a look.
+Our original line is this blue line.
+Of course the minimizer doesn't
+know anything about that.
+These green dots are our noisy data
+where we just added noise
+values to the blue line.
+Now we're asking our optimizer,
+okay find the equation of a line
+that best fits this data.
+The metric you're trying
+to minimize is error.
+So we passed it in an initial guess
+here of this purple line and this data.
+So that's all it knows right now
+is this initial guess of a purple
+line and this data.
+And then it iterates and tries different
+slopes and different y intercepts.
+Until finally, it converges to this
+red line and that's the solution.
+And I think it looks pretty decent.
+We can check it here, so
+if you look in the code, you'll see that
+our real line had a slope of four and
+a y intercept of 0.5.
+So we've got 4.17 and 0.64, not exactly.
+But if you look at
+the data you can see that
+it's pretty hard to know exactly what
+the underlying line would look like.
+So, I think our equation
+solver did a pretty good job.
+We can fit even more complicated
+functions to data like this.
+I'm going to show you the code of
+how to do that in just a moment.
+But I wanted to start with
+sort of the result, and
+then go back into the code and
+show you how we did it.
+So our original polynomial
+is a blue line.
+It's under here.
+You can't quite see it.
+And the noisy data, or
+the green dots there.
+This purple line is our initial guess.
+And the fitted polynomial, the red line
+here, fits the original pretty closely.
+So let me show you a little more detail.
+Here is output from our program.
+This is our original polynomial.
+It printed in kind of a weird way.
+Our original polynomial
+is 1.5 x to the fourth,
+minus 10 X to the third
+minus 5 X squared and so on.
+Down here are the results
+of our optimization.
+So here's what we got instead of 1.5 for
+the fourth power,
+we got 1.6 Instead of -10 for
+the third power we've got -10.5 and
+so on.
+But overall, pretty close and
+as you can see by that chart I just
+showed you, you know, very nice fitting.
+Let's look now at how
+we do that in code.
+The code here for,
+a higher-degree polynomial is very
+similar to what we had for the line.
+Again, there's an error function
+we're trying to minimize.
+And we take in the coefficients for
+the polynomial and the actual data.
+And our error function is computed here.
+Again it's a sum of the difference
+between the actual data and
+the polynomial value squared.
+We take the sum of all those values and
+that's our error.
+So again very similar to what we did for
+the line.
+Here's our function that finds
+the coefficients of the polynomial
+has just a few parameters.
+The data the we're trying
+to fit our error function.
+In other words, how do we measure error
+and what are we trying to minimize?
+And the degree of the polynomial.
+We created an initial guess.
+In other words, what do we think
+the values of the coefficients are?
+And what we're doing here is we're
+just setting them all to be ones.
+We plot that, and then we call
+our minimizer, just like before.
+We have to tell it, what's the error
+function we're trying to minimize?
+What's our initial guess?
+We have to pass along the data, which
+then gets passed to the error function,
+and again, this method, SLS Q P and
+finally, you can't see it it is
+off to the side there, but same options
+essentially they are verbose options.
+And that's it that's how we use Python
+to create a model based on data.
+Let's review what we learned.
+I showed you how to use a minimizer to
+find x such that f of x is minimized.
+I showed you how to minimize
+in multiple dimensions.
+And how to use a minimizer to
+build a parametrized model.
+Where can you go from here?
+There are a number of ways
+you can carry this forward.
+You can use functions besides
+polynomials, you can model stock prices,
+or you can optimize a portfolio.
+Your final project in this mini course
+is to create a portfolio optimizer.
+That might sound like a tough problem,
+but you've already got
+the tools to do it.
+In this short lesson, we're going to
+lay the groundwork to help you know
+what portfolio optimization is and
+how to build one.
+First, what is portfolio optimization?
+Given a set of assets and a time period,
+find an allocation of funds to
+assets that maximizes performance.
+What is performance?
+We could choose from a number of
+metrics, including cumulative return,
+volatility or risk, and risk adjusted
+return, which is Sharpe ratio [LAUGH].
+You can use any criteria you like,
+but for this assignment,
+we're going to focus on Sharpe ratio.
+Now, let me show you how to use
+a minimizer to optimize a portfolio.
+As an example consider this
+portfolio where we have Google,
+Apple, Gold, and Exxon from the
+beginning of 2010 to the end of 2010.
+This is what the performance of
+that portfolio would look like
+in the blue line, if we had
+an equal allocation to each asset.
+So, we gave 25% to each of those
+stocks at the beginning, and
+then we observed at the end,
+the total performance.
+And we include a chart here for
+S&P 500 for comparison.
+Now, this is an un-optimized portfolio.
+Here's what it would look like
+if we optimized for sharp ratio.
+Look at that.
+Look how much
+higher performance we get compared
+to our benchmark S&P 500.
+And observe over here
+the allocations to the assets.
+60% goes to Gold, 40% to Apple and
+none to Google or Exxon.
+Now, one thing to emphasize here is,
+this is looking back in time,
+so we're looking back historically.
+What happened in 2010 and
+observing at the beginning of 2010,
+if we knew what we knew now,
+how should we best allocate?
+So, there's a question as to
+how much this can help our
+portfolio going forward.
+And I'll give you that
+answer ahead of time.
+Indeed, when we optimize for
+sharp ratio, hold that portfolio,
+rebalance, in other words re-optimize
+that sharp ratio and continue that month
+by month, we very often,
+most frequently see that that improves
+the performance of the portfolio
+versus just an equal allocation.
+But I do want to observe that
+this is computing back in time,
+so, yes, of course we can
+find a better portfolio,
+but indeed it helps
+going forward as well.
+Suppose I were to give you
+the following problem.
+Take these four stocks and
+over a particular time period,
+I want you to find the optimal
+allocation to those four stocks.
+I might ask you to find the optimal
+allocation that maximizes
+cumulative return, minimizes volatility,
+or maximizes Sharpe ratio.
+Which of these optimizers would
+be the easiest to write and why?
+The answer is, it would be easiest to
+write an optimizer that optimizes for
+cumulative return.
+Because all you have to do is find
+the single stock that maximized
+return over that time period.
+If you're going to optimize for
+minimum volatility or Sharpe ratio,
+you actually have to evaluate various
+combinations of those stocks.
+In this case the allocation would just
+be 100% to the highest returning stock.
+We're going to focus here on
+optimizing for Sharpe ratio.
+So solving that problem is not trivial,
+but it's not too hard either.
+What we need to do is frame
+the portfolio optimization problem as
+a minimization problem, and
+then we can solve it using
+the tools you have already.
+As you recall, in order to use
+a optimizer that minimizes,
+we have to do three things.
+First, we have to provide a function
+to minimize f(x) that takes in x, two,
+an initial guess for that x, and three,
+call the optimizer and let it run.
+Now, in this case, x are the allocations
+that we're looking for.
+And we want the optimizer to try
+different allocations in order
+to discover the best set of allocations
+that optimizes this function.
+Well, what is that function exactly?
+We said just a moment ago that we
+want to optimize for Sharpe ratio.
+So, is this just a Sharpe ratio?
+Well not exactly, because what
+the minimizer will do, in this case,
+is try to find
+the smallest Sharpe ratio.
+So it'll find allocations
+that minimize that.
+And we want, of course,
+the largest Sharpe ratio,
+because larger Sharpe ratios are better.
+That's easy to fix.
+All we do is multiply
+this by negative 1.
+So, all that we want our optimizer to do
+is optimize for a negative Sharpe ratio.
+And that'll find the best allocation or
+the best value for
+x to solve this problem.
+And remember,
+x can have multiple dimensions,
+so each dimension of x here is
+an allocation to each of the stocks.
+So, if we're trying to solve for
+a portfolio of four stocks,
+x will have four dimensions, and
+the value for each of those dimensions
+is the percentage of funds to
+allocate to each of those stocks.
+There's two more things you need
+to know about before you start
+optimizing portfolios.
+One of them will help your
+optimization run faster.
+And the other is essential for
+you to get the right answer.
+We'll start with the faster thing first.
+The first thing you can do is
+you can tell the optimizer
+that it should only look
+at certain ranges for X.
+In other words, for this problem,
+for each of the various allocations,
+it's only worth looking at
+values between 0 and 1.
+In other words, the value of
+2 would indicate 200% of your
+fund is in a particular asset and
+that's not possible.
+It's only feasible to have 0% to 100% or
+0 to 1 in each of these assets.
+So, you can tell the optimizer
+only focus on values between 0 and
+1 for each of the dimensions of X.
+And if you do that,
+the optimizer can run much more
+quickly because it knows not to look at
+other values of X outside those bounds.
+It limits the search area significantly.
+Another thing you can do with
+the optimizers in numbpie are provide
+constraints.
+Constraints are properties of
+the values of X that must be true.
+As an example we want the sum of
+our allocations to add up to one.
+So let's say for example we're for
+portfolio of four holdings.
+So we have X0, X1, X2, X3.
+We want the sum of the absolute
+values of those to be equal to 1.0.
+In other words, our total
+allocation should add up to 100%.
+The optimizers we use in this class have
+the ability for you to express that and
+that guarantees that at the end
+when it finds out the values for X,
+you end up with a total of 100%
+allocated to the various assets.
+Now we're going to show you how to do
+these two things in the assignment text
+itself, because the syntax
+is a little bit tricky and
+we want to convey to you
+exactly how to do that.
+So we look forward to seeing
+you solve this problem and
+good luck on your final project.
+Welcome to the first lesson
+of computational investing.
+My assumption in terms of learning goals
+is that you want to be
+a portfolio manager.
+What is it you need to know,
+and what motivates you?
+It depends on what type of fund you
+manage and what your incentives are.
+Your motivation is
+probably compensation.
+And your compensation depends on
+the type of fund you manage and
+how well your fund performs.
+
+As I mentioned, we're assuming that you
+want to be a portfolio manager of some
+sort and there are several different
+sorts of portfolios you might manage.
+So let's take a look at a few of those.
+There are many different types of funds,
+of course, but
+three broad classes that we'll
+take a look at are ETFs or
+exchange-traded funds,
+mutual funds, and hedge funds.
+Let's look at the differences
+between these.
+ETFs, or exchange-traded funds,
+are very much like stocks in the sense
+that you can buy and sell them.
+You can observe their prices intraday.
+You can trade them just like
+stocks on the stock exchange.
+They represent baskets of stocks.
+Sometimes they represent other
+instruments like bonds and so on.
+But it's very well-known and
+they publish what it is they're holding.
+Accordingly, ETFs are very
+transparent and they're very liquid.
+Mutual funds are somewhat similar
+to ETFs in the sense that they have
+a declared goal or mechanism.
+In other words, they're, for instance,
+trying to track the S&P 500 or
+some other such goal, but
+they're a little bit different.
+First of all, you can only buy or
+sell mutual funds at the end of the day.
+So at the end of the day they add
+up all the things they hold and
+compute a net asset value, and
+that's the value at which you can buy or
+sell shares of a mutual fund.
+They don't disclose exactly what they're
+holding except once every quarter, so
+they're accordingly less transparent.
+They're less transparent because
+since their last disclosure,
+you don't know exactly what
+they might have bought or sold.
+Still, they're somewhat transparent
+because they have stated goals and
+you know what they're trying to achieve,
+similar to, say,
+an ETF that might represent the S&P 500.
+There are also mutual funds
+that represent large cap stocks
+like the S&P 500.
+Hedge funds are even less
+transparent than mutual funds.
+In fact,
+even to buy shares in a hedge fund,
+you have to enter into an agreement
+that is usually secret in
+the sense that you're not supposed to
+reveal the contents of that agreement.
+It's hard to exit a hedge fund.
+They usually require you
+to put your money in and
+leave it there for some number
+of months, sometimes years, and
+when you take it out, you can't
+necessarily take it out all at once.
+Hedge funds don't ever have to
+disclose what they're holding,
+not even to the investors
+in the hedge funds.
+Now, that might dissuade
+you from wanting, say,
+to invest in it if you don't
+know what they're holding.
+On the other hand, you know,
+if they show you a good performance,
+you might want to invest.
+They will usually describe to clients
+what their strategy is and so
+on to encourage clients to invest.
+Accordingly, hedge funds
+are not transparent at all.
+
+I mentioned a couple words while I
+was describing these different kinds
+of funds that I wanted to
+touch on real quickly.
+I said liquid a couple times.
+What that means is the ease
+with which one can buy or
+sell shares in a particular holding.
+Stocks are extremely liquid.
+ETFs are liquid in the same way,
+in other words
+you can go to a stock exchange,
+you can buy an ETF and sell an ETF.
+It's priced just like a stock,
+but when you buy it,
+you're buying shares of multiple
+stocks instead of just a single stock.
+But ETFs are liquid because
+they're easy to trade.
+They're also liquid in many
+cases because there's so
+much dollar value trading
+in them each day.
+If you look up an ETF on
+say Google Finance or
+Yahoo Finance, you can see how
+much volume is traded each day.
+And ETFs with higher volumes
+are even more liquid.
+I mentioned large cap.
+What cap means here is capitalization or
+in other words,
+how much is the company
+worth according to
+number of shares that are outstanding,
+times the price of the stock.
+So, some really huge cap stocks,
+say like Apple are worth many,
+many billions of dollars.
+So when I say large cap stocks,
+that's what I'm referring to.
+There's also small cap stocks that
+are similarly, have lower value.
+And one thing to mention as long as
+we're on this topic, is the price of
+a stock really only relates to
+what one share is selling at.
+It doesn't relate to the overall
+value of the company.
+We'll get into all of these
+topics a little bit later.
+Now to recap, there are at least
+these three types of funds.
+There are electronically traded funds,
+which you can trade like
+stocks on a stock market.
+There's mutual funds, that
+are a little bit harder to get in and
+out of, but
+you can trade them on a daily basis.
+You usually have to go
+through a specific broker.
+You can't just trade them on your own,
+and
+finally hedge funds require a specific
+agreement to trade into or out of.
+Okay, those are the three
+major types of funds.
+
+I want you to fire up your web browser,
+and do a little bit of research.
+Take a look at either Yahoo Finance or
+Google Finance, and
+you'll find the answer to this question.
+I want you to look at each
+of these five funds and
+determine is it a ETF,
+a mutual fund, or a hedge fund, and
+fill in the text in each of these
+little boxes with an E if it's an ETF,
+an M if it's a mutual fund,
+and an H if it's a hedge fund.
+Again E, M or H.
+
+Now as you might have discovered,
+these four- or
+five-letter symbols
+represent particular funds.
+So VTINX is a mutual fund.
+DSUM is an ETF.
+FAGIX is another mutual fund.
+You probably discovered the Bridgewater
+Pure Alpha doesn't have one of
+these symbols, and
+that's because it's a hedge fund.
+These guys have symbols, these
+short several-letter abbreviations,
+so that they can trade more easily
+on exchanges that have hundreds and
+thousands of different assets
+that are being traded.
+Whereas when you go to
+engage with a hedge fund,
+it's just a one-on-one relationship.
+Hedge funds typically have no more
+than 100 investors, whereas all these
+other types of symbols have thousands
+and maybe even millions of investors.
+Finally, SPLV is an ETF.
+A couple of other things to mention.
+It's fairly common practice that
+mutual funds have five letters and
+ETFs have four or three.
+Again, you can see this
+mutual fund has five letters.
+And this is another
+ETF with four letters.
+Okay, on to more fun.
+
+We talked already about some
+of the differences between
+Exchange Traded Funds,
+Mutual Funds, and Hedge Funds.
+And those differences that we talked
+about are primarily having to do with
+how they're traded and how visible, what
+their holding is to those who invest.
+Another very,
+very important sort of difference is
+how are the managers of
+these funds compensated?
+In other words,
+there's some sort of rule for
+each one that shows how
+the fund managers make money.
+And that's very, very important because
+the manner in which they're paid
+incentivizes them to trade or
+act in certain ways.
+So let's talk about each
+one of these individually.
+Before I get started, though,
+I have to introduce one concept here.
+It's called assets under management or
+AUM.
+And this is the buzz word that simply
+means how much money is being managed by
+the fund?
+It's important because for
+all of these part of the compensation
+is a percentage of the AUM.
+The managers of ETFs are compensated
+according to an expense ratio
+which is simply some percentage of AUM.
+Expenditure issues for
+ETFs are usually pretty low.
+They vary from as low .01% or,
+one bit as that might be called,
+to as high as 1%.
+But one that's up to 1% is
+fairly high and pretty unusual.
+Mutual fund managers are also
+compensated using an expense ratio.
+These are somewhat higher than ETFs.
+They range from a low of,
+typically, about 0.5%,
+to some that are very high, up to 3%.
+Now, what's the reason for
+this difference?
+Well, mutual fund managers
+will tell you that
+the way they manage funds
+requires much more skill.
+They have much more discretion
+than those who are managing ETFs.
+ETFs usually are tied to an index.
+As an example, a popular ETF, SPY,
+is supposed to track the S&P 500.
+And, all that an ETF manager
+has to do in that case
+is just make sure that they are holding
+all the stocks and the S&P 500.
+Mutual funds, on the other hand,
+supposedly use more skill and therefore,
+they can charge a higher expense ratio
+both were the cost of research and
+also for their skill.
+Finally Hedge funds
+are completely different breed
+in terms of how their
+manager's are compensated.
+You follow the old model called two and
+twenty which means 2 or
+2% of AUM, plus 20% of the profits.
+So as you can see, it's higher
+than both of these other methods.
+And most importantly, it includes this
+component relating to profits, that 20%.
+Now, one or
+two other things to clarify here.
+What I've been talking about is
+the way that the folks who manage
+these funds are compensated.
+Separately, if you are an investor in
+one of these funds, in other words you
+give your money to one of these
+types of funds to be managed,
+your return is based on how much
+the value of that fund increased and
+in most cases that increase is subject
+to what happens to the economy or
+what happens in the markets.
+Let's look at a more detailed example
+of this two and twenty structure.
+
+Consider this example for
+the 2 and 20 situation.
+Assume you're a hedge fund manager and
+that you've been managing a fund of
+$100 million, and that over the course
+of a year your skill has resulted in an
+increase in value of that fund by 15%.
+So over that year, the fund grew in
+value from 100 million to 115 million.
+What would you're compensation be?
+So it's 2% of AUM plus 20% of profit.
+The two component works
+out to be $2 million.
+The 20 component is 20%
+of the $15 million profit
+we made which is 3 million.
+So total compensation for this year for
+the hedge fund manager would
+be about five million dollars.
+Now one question that some people might
+have is, hey is this two component
+2% of 100 million or 2% of 115,
+and it depends on
+the hedge fund of course.
+And it depends on when they take
+snap shots to do accounting.
+The full answer is
+probably it's going to be
+a blend somewhere between
+100 million and 115 million.
+This structure Two and
+Twenty has been assailed lately
+and it's very rare now to find a hedge
+fund that offers rates that high.
+They're much lower now.
+One and Ten.
+Things like that.
+So the Two and Twenty was in the heyday
+of hedge funds in the 90s and
+early 2000s.
+Nowadays they are typically
+a little bit lower.
+There are some Star hedge
+funds that charge more.
+For instance, ASC Capital, which is no
+longer operating to the public anyways,
+that charge as much as 40%,
+so it was 4 and 40.
+However, most hedge funds you find
+today will be somewhere between Two and
+Twenty or lower.
+
+I want you now to think a little
+bit about these incentives
+that we talked about.
+I want you to think about if
+you were a fund manager and
+you had one of these incentives,
+what would it incentivize you to do?
+So for instance,
+think about making profits.
+If you believe that an expense
+ratio compensation structure
+more strongly motivates profits,
+then click there.
+If you think two and twenty is
+a stronger motivation, click there.
+Now it's okay, if you think it's
+about equal or there's no difference,
+for you to click both.
+Give it a go.
+
+With regard to accumulating
+assets under management,
+the expense ratio approach really
+most strongly motivates that.
+Although I wouldn't count too much off
+if you also clicked two and twenty
+because of course the two part of two
+and twenty is assets under management.
+But, if you were strictly
+driven by expense ratio,
+you're going to be applying most of your
+energy towards accumulating assets so
+that you'll have a higher return.
+In other words, as a portfolio manager,
+you'll get more money.
+Profits are different, ETF's and
+mutual fund managers are not
+compensated for making profit.
+Especially when you consider,
+say, ETFs, exchange traded funds.
+They're just supposed to track
+a particular asset or index, and
+they should be good at that.
+It's not up to them whether
+that index goes up or down.
+So two and twenty is the structure
+that most compensates for profit
+because it has this twenty component
+that is indeed part of that profit.
+With regard to risk taking,
+an expense ratio
+based fund really is not
+incentivized to take risks at all.
+If they take risks,
+there's no compensation for it.
+Under the two and twenty model though,
+they are incentivized to take risks
+because that's how they
+can get to profits.
+Also, because they're always
+going to get this two percent,
+even if they take huge risks and
+don't make a profit, they're always
+going to get that two percent.
+So they're incentivized
+to take a risk because A,
+there's not too much of a penalty and
+B, if they take a risk and
+make profits,
+then they'll be compensated more.
+
+>From here on out I'm going to
+assume that you want to be a hedge
+fund manager.
+And one of your first tasks as a hedge
+fund manager is to get investors.
+So who might your investors be?
+There are three major types
+of investors in hedge funds.
+Of course, there's others besides these,
+but these are the three main types.
+Individuals, in other words, a single
+person that wants to invest in a fund.
+Of course,
+these are typically very wealthy folks.
+Keep in mind that hedge funds typically
+can only have up to 100 investors.
+So they want each of those
+investments to be fairly large so
+that they can manage, of course,
+a significant amount of funds.
+So the individuals who invest in
+hedge funds are typically, as I said,
+very wealthy.
+Institutions.
+What do I mean by Institutions?
+These are things like very
+large retirement funds,
+like CalPERS out in California.
+These are university foundations like
+the Harvard University Foundation or
+the Georgia Tech Foundation.
+In other words, institutions,
+very often non-profit
+institutions that have a large sum of
+money that they need to keep somewhere.
+And of course, they'd like to
+see an accrual in value, so
+that's one reason they
+look to hedge funds.
+And finally, funds of funds.
+What funds of funds do is they
+group together the funds of many
+individuals or institutions.
+So for instance, you might be
+an individual that could, say,
+invest in one hedge fund, but
+you'd really like to get the advantage
+of investing in several funds.
+So you might allow your money
+to be collected by a manager of
+funds of funds.
+And then that manager would gather
+together all these assets and
+pick carefully several hedge
+funds to invest that money in.
+So besides knowing who
+your investors might be,
+it's critically important to know
+why they might invest in your fund.
+How can you present the case
+to them that will convince
+them that they should let
+you manage their money?
+Here are at least some of
+the criteria that folks like this
+would consider before
+investing in a hedge fund.
+Track record.
+So if your fund has a great
+track record, that's, of course,
+some of the best evidence that it's
+going to continue to work well.
+Many institutional investors will
+want to see a good track record for
+at least five years before they'll
+invest in a particular fund.
+Now if you're a young whippersnapper
+hedge fund manager and
+you don't have five years yet,
+what are you going to do?
+Well, what you can do is simulate or
+back test your strategy, and
+investors will consider
+these simulations.
+But that simulation has
+to be backed by a very
+compelling story
+describing that strategy.
+In other words, you've gotta have
+a reason for why this method works and
+it needs to make sense.
+And finally, they consider how your
+strategy fits within their portfolio.
+In other words, if your strategy is for
+large cap S&P 500 stocks, and they've
+already got that covered with another
+fund, they might not consider you.
+However, if you, for instance,
+are looking at small cap growth stocks,
+and they don't yet have that
+part of their portfolio filled,
+they'll give you some more thought.
+
+So, when an investor is considering
+a particular hedge fund,
+they want to know,
+what are the goals for the hedge fund?
+And they'll also want to know
+the results of certain metrics.
+Let's take a look at goals first.
+Now, you might say, of course,
+my goal is to make money.
+Well, it's a little bit finer than that,
+or a little bit more subtle than that.
+There are, of course,
+other potential goals, but
+these two are the primary types of
+goals that hedge funds go after.
+One type is to beat a benchmark.
+What does that mean?
+Let's suppose, for instance, that you've
+got a strategy that looks at the stocks
+that are in the S&P 500,
+there's 500 of them of course and
+you're especially smart at
+picking out the good ones.
+So you might build a hedge fund
+who's goal is to beat the S&P
+500 index as a benchmark because
+you're wise at selecting
+among all those,
+which stocks are going to outperform?
+And, of course, the over all index has
+the good stocks and the bad stocks,
+so you're going to do better because
+you picked the specific good ones.
+An important component of
+the benchmark model is
+that many benchmarks,
+like the stock market as a whole, for
+which S&P 500 is a good representative,
+go down.
+And it is of course natural
+that a portfolio consisted of
+stocks from this index
+might go down as well.
+So, even though both the index and
+the fund go down,
+you can outperform the index
+by going down less.
+So, this kind of fund that is
+tagged against a benchmark
+can still meet performance
+goals if it goes down.
+So long as that index
+is going down more.
+That brings us to absolute return funds.
+Their goal is to provide
+positive return no matter what.
+These funds are usually long/short,
+which means they make positive bets in
+stocks they think are going to go up.
+And they make negative bets in
+stocks are going to go down.
+We'll talk about shorting
+a little bit later.
+In any case there objective is to make
+slow gradual positive
+return no matter what.
+Often, these types of funds don't
+make the same percentage gains
+as the beat a benchmark fund, but
+they have very low draw downs.
+In other words, when the market
+takes a bit hit, they often don't.
+The next question is well,
+how do we measure how well that
+fund is meeting those goals?
+We talked about these
+metrics in the mini course
+manipulating financial data in Python,
+but
+we'll repeat it just a little bit here
+to remind you, and also to bring those
+folks up to speed who didn't
+necessarily have the previous course.
+Cumulative return is a measure of,
+given the funds I started with,
+how much more did I end up with
+after a certain amount of time?
+So suppose we have and
+in the array of values of our portfolio,
+where zero is the first value, and
+minus one is the very last one.
+We can easily compute cumulative
+return by dividing that last value
+by the first value and subtracting one.
+So for instance if we made 20% over
+a year this would end up being 0.2.
+Volatility is a measure of how
+rapidly and aggressively the portfolio
+goes up and down in value and
+of course lower volatility is better.
+Volatility is simply measured as
+the standard deviation of daily returns.
+Our last factor here which is a measure
+of the ratio of risk to reward is
+typically measure using sharp ratio, and
+the sharp ratio is calculated like this.
+Sharp ratio is also sometimes
+called risk adjusted reward.
+So, you can consider that to
+be reward divided by risk.
+A reward is our average,
+daily return minus the risk-free rate.
+And our risk is simply a measure of that
+standard deviation of daily returns or
+volatility.
+We multiply that ratio by
+the square root of 252.
+That is how many trading
+days there are in a year and
+remember we're always
+working with daily returns.
+So that's why we use this 252 number.
+So recapping, hedge funds have goals,
+typically either to meet a particular
+bench mark or to gain absolute return.
+And then metrics by which we judge
+how well they accomplish those goals.
+So, cumulative return, how much do
+they make over a period of time?
+Volatility, how volatile
+were they over that time?
+And then risk adjusted reward or
+sharp ratio.
+One thing I want to mention before
+I leave this topic with regard to
+benchmarks is the benchmark you choose
+should depend on the expertise you have.
+So let's suppose you're
+an expert in Eastern Europe.
+And you're great at picking stocks in
+emerging markets in Eastern Europe.
+You should select some
+benchmark that represents
+that similar kind of investing.
+And there are indexes that represent
+emerging markets in eastern Europe.
+There are also other funds who's
+values you might use as a benchmark or
+let's say your expertise is in banks.
+You might choose an index for
+the banking industry and
+show that you can beat that.
+
+Hedge funds are among the most
+computationally demanding environments
+I know of.
+They have infrastructure
+requirements like huge databases,
+significant network connectivity,
+low latency and
+high bandwidth connectivity,
+real-time processing, and so on.
+I want to show you as an example,
+the typical kinds of computing
+that goes on inside a hedge fund
+to motivate you for this class.
+In other words, this isn't exactly
+the way all hedge funds work, but
+this is just to give you a taste for
+how many hedge funds work.
+And you'll see, I think,
+that computing and
+computational capabilities
+are core here.
+So we're going to work
+backwards from the market
+back towards the sort of back
+office of the hedge fund.
+The way things work are we have
+certain portfolio that is which stocks
+we have and whether we're in positive or
+negative positions with regard to them.
+The trading algorithm here is central.
+It's interacting with the market,
+observing the live portfolio.
+And what it's trying to do is
+to get this live portfolio
+to match some target portfolio.
+So somewhere further back
+inside the hedge fund
+we've decided what this target
+portfolio ought to look like.
+In other words,
+how many shares of Apple, how many
+shares of Delta Airlines we should have,
+and so on, and this trading
+algorithm is trying to get us there.
+So it's comparing target with live.
+And then to move this portfolio towards
+that target, it's issuing orders.
+So it sends order like buy 200
+shares of Apple to the market.
+Those orders get executed or not,
+and that updates the live portfolio.
+Now one reason this kind of
+trading algorithm is important
+is you don't want to
+execute everything at once.
+In other words,
+suppose we wanted to take a very,
+very large position in Apple.
+If we were just to send an order, hey,
+buy me 10 million shares of Apple,
+that would affect us detrimentally
+in the sense that the price for
+Apple would probably rise.
+And we would not get a good execution.
+So this training algorithm takes those
+sorts of things into consideration as
+it moves our live portfolio to be
+more close to the target portfolio.
+In fact, sometimes it takes days
+to enter a particular position.
+So this doesn't necessarily
+happen all at once.
+And there's many, many different
+types of trading algorithms that have
+been invented to solve these problems.
+Now let's step one step back into
+the computing of the hedgefund, and
+look at how we arrive at
+this target portfolio.
+Here's that target portfolio,
+and here is some of the data and
+computing that could go into
+computing that target portfolio.
+So from somewhere, machine learning
+perhaps, we have a forecast
+of what stock prices are going to
+be at some time into the future.
+And that can of course drive what our
+target portfolio ought to be for today.
+In other words, if we're forecasting
+that BAC is going to go up,
+this might represent that we
+think it's going to go up 5%.
+We might want to increase
+our holdings in that.
+If we think that Apple, for instance,
+is going to go down,
+we might want to decrease our holdings.
+So this forecast informs this algorithm
+called a Portfolio Optimizer.
+That works to balance the risks and
+rewards for
+a balanced portfolio that
+considers volatility and
+correlation between different stocks and
+so on.
+We're going to talk a lot about
+portfolio optimization later in this
+course.
+Some other considerations that go into
+Portfolio Optimizer are historical data,
+open, high, low, close, and volume.
+We can look at that historical data to
+inform how stocks are correlated or
+uncorrelated to one another, and
+also of critical importance
+is our current portfolio.
+It may be the case that if we're
+holding something, we don't
+want to exit it immediately because
+we'd be penalized by rapidly selling it.
+So this optimizer takes all
+this information into account
+to get to the target portfolio
+that our trading algorithm is
+working to drive us towards.
+Now one more stop along our road here at
+the computing infrastructure of a hedge
+fund is to look at how do we come
+up with this N-day forecast.
+By N, N might be five days or
+ten days or whatever.
+So here's this N-day forecast, and we've
+got some kind of forecasting algorithm.
+This is very often in
+the form of a model, in fact,
+a machine learning based model.
+And creating these sorts of forecasting
+algorithms using machine learning
+is the focus of the last mini-course
+in this group of mini-courses.
+Anyhow, how do we get to this forecast?
+Well, we've usually got some
+sort of proprietary information,
+again, historical data, and
+our forecaster crunches all that data
+to build a model and create a forecast.
+So, bringing it all together,
+that's the computing in a hedge fund.
+And we've also spent some time
+talking about what might motivate you
+as a hedge fund manager.
+That's it for this lesson.
+I'll talk to you again soon.
+
+You may have experienced trading stocks
+over the Internet, using a platform like
+E-Trade, Interactive Brokers,
+or another online broker.
+What happens when you click buy?
+It's probably a lot more
+complicated than you think.
+
+The way that you build a portfolio, or
+buy stocks that you hold in your
+portfolio, is by issuing orders.
+Usually you send those orders
+to a stock broker, and
+they take care of executing them for
+you.
+We're going to dive now into
+the details of what happens
+when you create an order, and
+how it gets to the market and back.
+And how things can go wrong, and
+how they can potentially go right.
+The first stop there is to think
+about what is actually in an order.
+What are the components of an order
+that can go to a stock exchange?
+Here is all the information that
+must go into a well-formed order.
+First of all,
+I need to know are you looking to buy or
+sell shares of a stock?
+Next is the symbol.
+This is an identifier for the stock or
+perhaps ETF that you want to buy or
+sell, for instance IBM or SPLV.
+Next you need to tell your broker how
+many shares you want to buy or sell.
+Stocks and ETFs and
+other assets are sold in units of
+shares, not by amount of money.
+So you don't tell your broker I
+want $100,000 worth of Apple,
+you tell your broker I want
+a thousand shares of Apple.
+Next, you need to tell your broker
+whether this is a limit order or
+a market order.
+Let's start with market first,
+market means you're willing to accept
+a good price but essentially whatever
+price the market is currently bearing.
+And I'll show you in a moment
+how that's determined.
+A limit price means you don't want to
+do any worse than a certain price.
+For instance,
+suppose you're selling some stock.
+You might specify I don't want it to
+be sold below a particular price.
+Or if you're buying stock,
+you might say, I don't want to pay
+more than a certain amount to get it.
+If you're issuing a limit order,
+then you have to say what
+the corresponding price is.
+If it's a market order,
+you're not able to specify that price
+because essentially when you issue
+the market order you're saying I'll
+take whatever price comes back.
+Let's take a look at
+a couple example orders.
+Here's one.
+Buy IBM, 100 shares, limit, 99.95.
+So this means I want to buy 100
+shares of IBM at no more than $99.95.
+Another example, sell Google,
+150 shares, market.
+Notice there's no price
+with this because
+we're going to take whatever
+the market price is.
+So let's look at what happens when
+these orders reach the exchange.
+
+A key construct at most exchanges
+is something called the order book.
+Each exchange keeps an order book for
+every stock that they buy or sell.
+And here's how it works.
+Let's suppose you've just issued
+an order to buy 100 shares of IBM
+with a limit price of 99.95.
+And let's suppose for
+the moment that this arrives at
+the New York Stock Exchange and so
+far today nobody's put in any orders.
+So your order is the first one and
+they'll use it as the basis to
+start building their order book.
+So yours is the first
+entry in the order book.
+And it simply shows somebody has
+bid 99.95 for 100 shares of stock.
+And this is public knowledge.
+People can view this and see, okay,
+there's interest in buying
+shares of this stock.
+Now, they don't know
+who has made this bid.
+The exchange knows that it's
+you that's made that bid.
+But they see that there's
+interest in 100 shares.
+Now others may send
+in orders like yours.
+And this number just keeps
+getting larger depending on
+how many orders come in.
+When this is displayed publicly,
+people just see that okay,
+there's interest maybe
+from various people.
+And 1,000 shares of IBM at 99.95.
+So far nothing's been bought or sold yet
+though because we don't have
+anybody willing to sell.
+Well, let's suppose
+a sell order comes in.
+Sell IBM 1,000 shares, limit of $100.
+Well, there's nobody willing
+to buy 1000 shares at $100.
+So, the exchange again, is going to have
+to add this order to it's order book.
+And this will be our first ask.
+We've got now our first ask
+as part of our order book.
+Now let's say more and
+more orders come in.
+And it fleshes out our order book a bit.
+Here's our order book as it's fleshed
+out a bit, as orders have come in.
+We've got a number of asks,
+which are requests to sell stocks, and
+a number of bids,
+which are requests to buy.
+Suppose now we get a market order
+to buy 100 shares of stock.
+Here's our new order,
+and here's what happens.
+The Exchange looks at
+it's order book and
+it sees, yes,
+we have lots of shares for sale here.
+We have to give the client the lowest
+price so we'll give that client
+100 shares of these that
+are priced at $100.
+So, that means now we've
+only got 900 left here,
+we take that 100, give that to
+the client who put in the order and
+this is the state now of our order
+book after that transaction.
+
+Consider this order book now for
+a moment.
+Look at how many shares we have for sale
+and how many shares people want to buy.
+Do you think the price of this stock,
+in the next few minutes,
+assuming this order book,
+is the price going to go up or down?
+Check the box that you think is correct.
+
+The correct answer is that the stock
+is probably going to go down in price,
+because there's much
+more selling pressure.
+Imagine for
+a moment if we put in two market orders.
+Suppose there was a market
+order to sell 500 shares.
+What would happen?
+Boom, you would sell 100 at 99.95,
+50 at 99.90 and
+so on,
+the price would immediately go down.
+Consider on the other hand if someone
+put in a market order to buy 500 shares,
+well the price wouldn't budge.
+You'd just get 500 of these 1000 for
+sale but
+the price would still remain
+between $100 and 99.95.
+I'll explain that a little bit more as
+we provide some specific examples on
+what happens to the order book
+as different orders come in.
+
+Okay, so to understand better
+how the order book works and
+how exchanges work, let's look
+at a couple more example orders.
+For brevity I'm leaving
+out the symbol IBM.
+This is all about IBM, so
+just keep that in mind.
+Okay, so a market order comes
+in to buy 100 shares at market.
+So again, we see that there's 1,000
+shares that people are willing to sell.
+And the exchange has to give
+the best price to the client, and so
+we give the client 100
+shares at this price.
+So what happens, the order comes in.
+100 shares go away.
+And now the order book
+has changed just so
+that there's 900 shares available
+here now instead of 1,000.
+And the execution price is $100.
+Let's consider now a limit order.
+Someone wants to buy again 100
+shares at a limit of 100.02.
+So, again looking at the order book,
+again,
+we can satisfy that order and,
+again, at $100.
+So we're saying that we want
+to pay no more then $100.02.
+So again, we can execute at 100, and
+now this goes down to 800 shares
+instead of 900 being available.
+And the execution price for
+this transaction again, is $100.
+And note also that that's less
+than that limit price of $100.02.
+Let's look now at one last order,
+a market order,
+where someone wants to sell 175 shares.
+So that comes in.
+And we have 100 shares available
+at 99.95, so those get sold.
+And there's none left
+there at that price.
+So a 100 shares get executed at 99.95.
+So to get this 75 more shares,
+we need to go deeper into the book.
+So we'll take these 50, 0 left there.
+We still need 25 more shares
+to meet this order for 175.
+So we go even deeper into the book and
+take some of these.
+So after all these transactions,
+the order book has been
+changed quite substantially.
+And this client gets
+a 100 shares at 99.95,
+50 at 99.90, and 25 at 99.05.
+So all together, there's some average
+price at which this was executed for
+that client.
+Note now that as time has gone on, the
+executed prices have been decreasing.
+Clearly we're seeing
+that's a consequence of
+there's much more sell
+pressure than buy pressure.
+So that's how the order book works and
+how exchanges
+use order books to facilitate
+transactions between their clients.
+This is what an order book
+looks like in real life.
+Here in the middle, we have prices.
+And on either side here,
+we see the order sizes.
+We're seeing here, sell orders and
+how large they are, and
+on this other side, buy orders and
+how large they are.
+And the prices that they're being
+executed here are in the middle.
+And as you can see,
+it's changing dynamically and
+rapidly as trades are executed.
+Here we see a price chart showing
+how the prices is going up and
+down as these trades are being executed.
+So that's a live order book.
+This is using the trading
+platform called Think or Swim.
+
+We've talked about what orders are and
+we've talked about what happens to
+them when they get to the exchange.
+Let's talk now about how do the orders
+get to the exchange from you.
+Well, here you are with your laptop
+connected to the internet and
+you've just entered
+an order to buy some stock.
+Your buy order goes over
+the internet to your broker.
+Your broker in turn is connected
+to several exchanges and
+the broker determines
+where to route your order
+based on information it
+knows about the exchanges.
+Let's suppose the exchanges we're
+looking at are New York Stock Exchange,
+NASDAQ and BATS.
+For the stocks you want to buy,
+each one of these exchanges
+has its own order book.
+Your broker has a computer located
+at each exchange and it queries
+the computer to say, hey, look at the
+order book and tell me the prices there.
+Query has added all the exchanges and
+your broker gathers and
+examines that information and
+based on that,
+routes your order to the exchange
+that has the best price.
+Let's say that's
+New York Stock Exchange.
+Your order enters the exchange,
+gets executed and the price comes back
+to your broker and forwarded back
+to you and you get a confirmation.
+Now it turns out that because this is
+happening constantly all the time,
+there's multiple brokers,
+hundreds of thousands,
+millions of people making
+orders that the order books at
+each of these exchanges
+tends to be pretty similar.
+In other words,
+the prices don't differ much between
+one or another and it's this
+sort of pressure that keeps prices the
+same across these different exchanges.
+Let's consider another scenario.
+Suppose there's another client
+of this same brokerage, Joe and
+that Joe wants to sell some stock.
+Well, the brokerage can observe, hey,
+I've got some clients who want to sell,
+some clients who want to buy.
+I can just make that
+exchange internally and
+I don't even need to
+go to the exchanges.
+This can be advantageous for the broker,
+because a broker doesn't have to
+pay now fees to the exchanges for
+this transaction to occur.
+However, according to the law,
+both the seller and
+the buyer have to get prices that
+are at least as good as they
+would've gotten if they
+had gone to an exchange.
+And eventually, at the end of the day,
+this transaction has to be registered
+with one of the exchanges.
+Usually, it's recorded at the exchange
+where that particular stock is homed.
+Let's consider one more example.
+In this case,
+Lisa also wants to sell some stock, but
+she uses a different broker than you do.
+There's one more kind of entity
+out there called a Dark Pool
+that acts as an intermediary
+between brokerages and exchanges.
+So the Dark Pool is looking at the order
+books of the various exchanges and
+they're often making predictions about
+which direction stocks are going to go.
+They actually pay the brokers for
+the privilege to look at the orders
+before they go to the exchanges.
+And if they see an advantageous trade,
+they'll go ahead and take it.
+So in this case,
+this cell might be routed through
+the Dark Pool from broker
+two to broker one.
+And again, the transaction never
+makes it to the exchanges.
+In fact, these days,
+80 to 90% of what they
+call retail traders orders
+never make it to the exchanges.
+They're either executed
+internally within a brokerage or
+filled using a Dark Pool.
+The brokerages in the Dark Pools
+argue that, that's just fine,
+because both partners in this
+transaction are getting prices at least
+as good as they would get at
+the exchanges on the order books.
+But they're saving money, because they
+don't have to pay the exchange fees.
+We've talked so
+far about how the exchanges work and
+how the order book facilitates
+transactions at the exchanges.
+Now we've talked about how
+orders get to exchanges or not.
+Now, lets take a look at how hedge funds
+can exploit inefficiencies
+in this system.
+
+Okay, let's suppose you live in
+Seattle and you want to make an order.
+You look at the prices on your computer.
+You see what you think looks like
+the prices are going to go up.
+So you enter a buy order.
+Now your order travels all
+the way across the country.
+And because you use ETrade
+it stops in Atlanta, and
+then it hops to New York City.
+Let's now zoom in and
+see what's happening at
+the Exchange in New York City.
+So, we've zoomed into the New York Stock
+Exchange, and the order book there is
+visible to you over in Seattle, but
+also to computers that are colocated.
+So, let's suppose our hedge
+fund has a colocated computer.
+And it's observing
+the order book as well.
+Now here's the advantage that
+this colocated hedge fund has.
+It's computer is located maybe a 100
+meters away from the main exchange
+computer that holds the order book.
+So that 100 meters amounts to 0.3
+microseconds in terms of how long
+it takes information about the order
+book to reach that hedge fund computer.
+You, on the other hand,
+are located at least 2500 miles away.
+And that means when this
+order book changes,
+it takes 12 milliseconds at least for
+that information to get to you and
+12 milliseconds at least for
+your order to reach the exchange.
+So, here's how what I call
+the order book exploit works.
+The hedge fund is continually
+observing the order book.
+And remember, it takes only 0.3
+microsceconds for it to do that.
+Based on what it sees at the order book,
+it thinks the price is going to go up.
+The hedge fund buys some of that
+stock based on what it sees.
+You're thinking the same thing,
+so you've entered buy.
+And your order starts making
+its way across the country.
+While your order is coming
+across the country, indeed,
+the price is going up, because other
+orders are coming in from other places.
+Eventually, your order makes it to
+the New York Stock Exchange and
+is executed there.
+And, in fact,
+the hedge fund sells it to you.
+And over this few fractions of a second,
+the hedge fund has bought some stock,
+watched it go up and sold it.
+It might have held this 100 shares of
+stock for only a few milliseconds and
+made a profit.
+And the hedge fund is
+exploiting essentially
+all these people remotely located around
+the country observing the order book,
+essentially late sending in orders
+that it can take advantage of because
+it can act much earlier before those
+orders from around the country arrive.
+There's certainly many sorts of
+ways to exploit market mechanics.
+Here's one more.
+I call this one the geographic
+arbitrage exploit.
+Suppose we have exchanges
+located some distance away and
+because they're located distantly prices
+may drift a little bit up or down.
+Now a hedge fund might place their own
+servers at each of these Exchanges and
+connect them with an ultra high
+speed dedicated connection.
+And they're observing the order book,
+the prices at both these locations
+all the time and comparing notes.
+Let's suppose a difference
+emerges that in New York
+the price is a little bit lower,
+in London price is a little bit higher.
+The fund will immediately buy
+in New York, and sell in London.
+They're not necessarily even
+transferring those same shares.
+They might buy some set of
+shares in New York City, and
+sell a different set in London.
+But they're getting that difference
+in price advantage immediately.
+Now, because hedge funds do this,
+because they're monitoring the prices
+that exchanges all over the world, these
+sorts of differences rarely arise and
+when they do it's just
+by fractions of a cent.
+But those differences do arise because
+there are inefficiencies in the markets
+and there are hedge funds there to
+pick those pennies up off the ground.
+Again, this is geographic arbitrage.
+
+Now you may have heard of other
+types of orders besides just buy and
+sell, market and limit.
+It turns out though that the exchanges
+only execute these types of orders.
+They don't execute those other types.
+Well, you might wonder,
+okay, how do those other types
+of orders come into being?
+These other types of orders
+are implemented by your broker.
+The way that works is you
+enter this order type and
+I'll give you a couple
+examples in just a second.
+The broker holds that order and watches
+the market until the conditions that you
+specified are met and
+then when those conditions are met,
+the broker sends your order
+to the market accordingly.
+So here's some examples.
+Stop loss is a kind of order
+where you say when the stock
+drops to a certain price,
+I want you to sell it.
+Stop gain.
+Similarly, when the stock
+reaches a certain higher price,
+I want you to sell it.
+Trailing stop is a combination
+of stop loss but
+also an automatically changing value for
+when that criteria is met.
+So for instance, you might have
+this trailing stop remain say,
+$0.10 behind the price.
+So as the price goes up, the value at
+which you would want to sell the stock
+goes up along with the price,
+but when it drops down below.
+Then that stop loss is triggered.
+But probably the most important and
+most impactful kind of order
+the brokers implement for
+you is something called selling short.
+What selling short allows you to do is
+take a negative position on a stock,
+in other words,
+you sell a stock short if you believe
+its price is going to go down.
+Keep in mind here we're selling
+stock we don't even own.
+So how is that possible?
+Well, again, it's possible because
+the broker facilitates it for you, and
+I'll explain how in just a minute.
+
+Okay, I'm going to step you now through
+the mechanics of short selling.
+Pay attention because it's complicated.
+[LAUGH]
+Okay,
+let's imagine the following scenario.
+You want to take a short
+position in IBM, and
+IBM is currently selling at $100.
+That's the current market price.
+Joe holds 100 shares of IBM.
+He likes IBM, he wants to hold onto it.
+But he's willing to lend
+you those shares of IBM.
+In fact, Joe's broker will
+take care of that for him.
+He may not even know that
+he's lending you the shares.
+Let's suppose Lisa thinks that IBM is
+going to go up and she wants to buy IBM.
+So you want to sell IBM short.
+You don't own any shares of it.
+Lisa wants to buy IBM.
+She thinks it's going to go up.
+So here's what happens.
+You borrow that 100 shares from Joe.
+Now that you have those shares, you
+can turn around and sell them to Lisa.
+And in exchange for
+those 100 shares that you gave Lisa,
+she gives you 100 times $100,
+or $10,000.
+So let me recap that.
+You want to sell IBM short.
+Joe has 100 shares of IBM.
+Lisa wants to buy IBM.
+So you borrow those 100 shares from Joe.
+You immediately turn around and
+sell them to Lisa, and you get $10,000.
+The result of this transaction,
+after everything settles,
+is you have $10,000 in your account but
+you owe Joe 100 shares of stock.
+And of course,
+Lisa has 100 shares of stock and so on.
+Now the problem sort of arises here that
+Joe may decide he wants
+his 100 shares back.
+What you'll have to do is go
+buy them from someone and
+then give them back to Joe.
+But let's deal with that
+a little bit later.
+
+Let's suppose you've been watching IBM.
+It's reached about $100, and
+you'd like to short it because
+you think it's going to go down.
+Suppose you shorted it right
+here when its price was $100.
+Now you're in that short position.
+You watch the stock for a few days.
+It goes down to $90, and
+you decide, okay, I want to exit.
+So you submit an order to your
+broker to close out your position
+by buying out those 100 shares and
+you do it at $90.
+The question is, what's your net return?
+Did you make money?
+Did you lose money?
+What's the total return in dollars of
+this transaction where you short 100
+shares when it's at $100 and
+you buy to close when it's at $90?
+
+The answer is $1000.
+For each $1 the stock drops in price,
+you make $100 because
+you've got 100 shares.
+So altogether,
+the stock dropped in price $10,
+you had 100 shares so
+your net return is $1000.
+
+All right, let's recap what happened.
+You borrowed 100 shares from Joe, so
+that's indicated by this
+sort of empty box here.
+You sold those 100 shares to Lisa.
+So now you have $10,000 in your account,
+but you still owe Joe those 100 shares.
+Let's suppose that since that time,
+IBM has dropped in price and
+now it's selling at $90.
+You can make a profit from that,
+and you want to go ahead and exit.
+So you approach Lisa and say, hey,
+can I buy those 100 shares back?
+And she says, no, I want to keep IBM.
+Well, that's a little bit of a problem,
+but fortunately, there's lots of people
+who have shares of IBM and
+would be willing to sell them to you.
+So Lisa's now out of the picture and
+not part of this transaction anymore.
+But, there is somebody else out there,
+Nate, who's got a hundred shares and
+he's willing to sell them.
+So you buy a hundred shares from
+Nate and give them back to Joe.
+So your obligation to Joe,
+is now completed.
+IBM was selling at $90 so
+you had to give Joe $9000.
+But remember you had $10000, so
+the net result after everything is
+said and done is you've got a $1000.
+And you don't have any
+obligation any longer to Joe.
+So that's how short selling works.
+Now I personalized this story by talking
+about Joe and Lisa and Nate and so on.
+In reality you don't have to make these
+personal agreements with any of these
+people, your broker
+makes all that happen.
+Your broker is sitting here in
+between all those actors and
+making all this happen for you.
+Well this all sounds wonderful
+doesn't it, what can go wrong?
+
+Let's roll back time a little bit.
+Let's go back to where we had
+$10,000 in our account and
+we owed Joe 100 shares of stock.
+What can go wrong?
+What if, instead of going down,
+IBM went up to $150 per share, and
+now you want to exit your position?
+Well, again, you go to Lisa and
+say, hey, Lisa,
+do you want to sell me your shares?
+She says no.
+Well, Nate is still out there,
+he's willing to sell.
+So again, you buy those shares from
+Nate then you return them to Joe.
+But this time it costs you $15,000
+because the price has gone up.
+And remember,
+you've got only $10,000 in your account.
+So the net result after all this is
+said and done is that you're out $5,000.
+So if you bet wrong when you short
+a stock and the price goes up,
+you lose money, and
+it can be significant.
+So to recap,
+we've gone through many of the different
+aspects of the mechanics of the market.
+We've shown you how hedge
+funds exploit the market.
+We've shown you different order types.
+And we've shown you especially
+the details of short selling.
+I'll see you at the next lesson.
+
+I'd like to show you
+this cool machine I have.
+In fact it's one of my most prized
+possessions that my great uncle gave to
+me before he passed away.
+Let's pretend that this
+machine represents a company,
+and that I'm the CEO of that company.
+This company can take raw
+materials like this paper, and
+process them, and
+turn them into dollars.
+Here's how it works.
+So, each year, this company can
+output a dollar bill reliably.
+What is this company worth?
+
+So think about that last segment.
+What is a company worth if it
+provides one dollar every year
+guaranteed every year in the future?
+What is that worth if you
+could own that company?
+So here are a couple
+of potential answers.
+One it's worth one dollar.
+Another at towards $70,
+because after that I'll be dead.
+Not me.
+I'm living beyond that.
+[LAUGH] Another is while I'm
+getting a dollar a year forever, so
+it must be worth an infinity
+number of dollars.
+And, finally, this company that
+produces $1 a year forever
+is somewhere between $10 and
+$25 depending on interest rates.
+
+So all of these answers are possibly
+correct depending on your point of view.
+I think this one is the most correct and
+will be covering that in this lesson.
+But some of these other answers
+could be reasonable as well, so
+don't feel bad if we scored you wrong.
+
+So in a moment,
+we'll address how you estimate the value
+of that company that
+generates $1 per year.
+In other words,
+that dollar bill machine.
+Before we dig into that,
+lets spend a moment considering why does
+it matter how much a company is worth?
+This course is about buying and selling
+stocks, so we're going to look at why
+company value matters with regard
+to buying and selling stocks.
+Of course, we want to buy a stock
+when the price is too low and
+we want to sell it when it's too high.
+In general, the value of
+a company goes up monotonically.
+In other words,
+it is always increasing over time.
+Let's assume for a moment,
+this is the true value of that company.
+We'll address in a little bit what true
+means, but let's assume for the moment
+that we have some understanding of the
+underlying real value of that company.
+Now that true value is distinct and
+different from the value
+estimated by the market.
+In other words, what price
+the stock market says, it's worth?
+So on one particular day, maybe
+the price is higher than the true value.
+On some other day, maybe it's lower and
+on some other day, it's the same.
+Very many trading strategies,
+which is what this course is about,
+focus on identifying
+situations where the current
+stock price is different
+from the true value.
+So in other words,
+if the stock price goes up a lot, but
+we know the actual company is
+only worth a certain amount.
+When it goes up high,
+that might be a selling opportunity.
+In other words,
+if we see the price up here and
+we know the true value of
+the company is down here, sell it.
+And similarly, if we see the price
+really low compared to what the company
+is worth, that could represent
+a buying opportunity.
+There are many, many ways that we can
+estimate the true value of a company.
+We're going to touch on a few
+of them in this lesson.
+One is intrinsic value,
+this is based on the value of
+the company as estimated
+by future dividends.
+In other words,
+companies pay many companies not all,
+pay each year or
+each quarter a dividend.
+So it's a cash payment,
+if you own a share of stock,
+you get a certain amount of dividend.
+For instance, for Apple this year,
+it's about $2 per year.
+So intrinsic value is based on,
+if we own one share of stock, we're
+going to get some amount of dividends
+accumulated over all of the future.
+What's the value of
+the company based on that?
+Another is book value, which is based
+on the assets that the company owns.
+So in other words,
+we add up the value of all
+the factories that they own and so on.
+Finally is market cap.
+This is based on the value of
+the stock on the market and
+how many shares are outstanding.
+So in other words,
+this relates to what is the market
+think the company is worth?
+This relates to what's the value
+of the sum of the assets?
+And this one relates to, well,
+if I own a share of stock,
+how much money am I going to
+get over the future?
+And what's that worth overall
+in the future going forward?
+
+We're going to consider
+now the intrinsic value of
+our one dollar machine.
+In other words, this machine
+generates one dollar every year.
+Now to understand that,
+we need to think about what is
+the future value of a dollar.
+What do I mean by that?
+Well, let's suppose I told you,
+hey look, awesome student,
+I promise I will give you $1 in a year.
+How much would you pay me today
+on the basis of that promise?
+In other words,
+maybe you would pay me 80 cents, and
+then in a year I give you $1,
+maybe you would pay me more.
+Think for
+a moment about how much you would pay me
+given my promise that I'll give
+you a dollar a year from now.
+Okay I want you to consider
+these three assets.
+One of them is a dollar right now,
+in other words I
+pull a dollar bill out of my pocket and
+I give it to you right now.
+Another is, I, Tucker Balch,
+promise to give you a dollar in a year.
+Now that's a promise you can abide by,
+you can trust me, I'm your professor,
+I'm going to give you
+that dollar in a year.
+But what you need to think about is,
+what's the value of that
+promise or that bond, considering
+that it won't happen for a year.
+And finally, consider this
+asset where the US government
+promises to give you a dollar in a year.
+Now I want you to rank each of
+these assets, a one dollar bill,
+a United States of America bond,
+or a Balch promise,
+a Balch bond, to pay you $1 in a year.
+How would you rate these one through
+three where one is the best,
+where three is the worst?
+How would you rank these three assets?
+In other words, which would you rather
+have if you had to choose one or
+the other where one is the best and
+three is the worst?
+
+So the answer is
+a little bit subjective,
+depending on how much you trust me
+versus the United States government,
+[LAUGH] but let's start with number one.
+The absolutely no question
+the most valuable asset among
+these three is number one,
+$1 right now, because you can take it,
+you can go with it, you can spend it.
+These other two are promises for
+a reward in the future.
+Now among these two, I personally
+would value myself as number two,
+but it's probably more correct to
+say that the US government promise
+to give you in a dollar as
+the second most valuable.
+And then of course I am number three.
+
+It should be obvious now that the value
+of a dollar delivered in the future,
+even if it comes from the US government
+is worth less than a real dollar
+right now.
+A real dollar right now is worth $1.
+If I promise to give you a dollar in
+the future it's not worth as much.
+So how should we estimate or
+think about the value of dollars
+delivered in the future?
+I think we've also agreed that
+the United States government,
+promising to give you a dollar in
+the future, is worth a bit more,
+than the promise of Tucker Balch
+giving you a dollar in the future.
+But having a real dollar in your hand
+right now, this one, is worth the most.
+Why is that?
+You know intuitively why that is.
+The deeper reason is there's a chance
+that I won't deliver on that guarantee
+whereas we can be pretty
+sure that the U.S.
+government will deliver
+on that guarantee.
+So it amounts to risk.
+And it all boils down to interest rate.
+We're trying to figure
+out the present value,
+or PV of a dollar that will
+be delivered in the future.
+So it's worth some fraction
+of this future value.
+Present value is worth some
+fraction of the future value.
+So here's the formula in it's entirety.
+Present value is equal to
+future value divided by 1 plus
+interest rate raised to the i.
+So the i is how far into the future
+this payment is going to be delivered.
+So for instance, if it's going to be
+delivered right now i is equal to 0 this
+whole component becomes 1 and present
+value is equal simply to future value.
+In other words, if we're going to
+pay a $1, present value is worth $1,
+if in the future that future is
+going to be 1 year from now.
+It's 1 plus the interest rate,
+raised to the 1th power.
+And that is what the future
+value of that dollar is.
+So, let's work out an example.
+Suppose with the United States
+government, because they're so
+trustworthy, you can
+negotiate a 1% interest rate.
+Actually, as of today, which is 2015,
+this 1 year interest rate is
+only one-quarter of a percent.
+In order words,
+interest rates are very, very low.
+If you work it out, the value of
+a $1 bill paid to you in the future,
+1 year from now,
+at a 1% interest rate is $0.99.
+In other words, today,
+it's worthwhile for you to pay $0.99 to
+the US government for the promise that
+they'll give you a dollar in a year.
+Okay, consider now the Balch Bond.
+So it's hard for me to sell you
+this asset right now for the same
+price as the US government because
+if you had to choose between me and
+the US government for a 1% return, why
+wouldn't you choose the US government?
+You should go with the US
+government because they're
+more trustworthy than I am.
+So, how can I attract you?
+Well, I can offer you
+a higher interest rate.
+Let's say 5%.
+And that works out to
+a value of about $0.95.
+In other words, in order for
+me to attract you to buy my promise for
+$1 in the future,
+I could only charge you $0.95.
+So let's consider this in a chart form.
+So how much is $1 worth if I
+promise to give it to you today.
+Well, in that case,
+this i is equal to 0, so
+the present value is equal to the future
+value of all this divided by 1.
+So in all cases, if the number
+of years we're going to wait for
+the delivery of that dollar is 0,
+the value is $1.
+But what if we talk about promising
+you that dollar in the future.
+If we look at this for the US bond,
+in 1 year we see it's worth $0.99.
+If we carry that forward,
+it's sort of this exponentially
+decreasing value like that.
+If you look at the Balch Bond,
+which is, of course, not as worthwhile
+as the US government, you see one that
+decreases at an even faster rate.
+So in other words, at each year in
+the future, this $1 is worth less.
+In other words, if I promise to give you
+$1 in two years, it's worth less than,
+if I promise to give you $1 in a year,
+it's worth even less than if I
+promise to give you $1 right now,
+and these charts are different
+depending on what the interest rate is.
+In other words, for
+the higher interest rate assets,
+they decrease further into the future.
+In other words, a dollar delivered
+in the future is worth less now
+than the lower interest rate assets.
+
+Think back now to our original problem.
+What is the present value
+of a future dollar, FV,
+delivered some number of years in the
+future, where i is how many years it is?
+And we use IR, or the interest rate,
+as a factor that affects this value.
+The analogy for this to real companies
+is that real companies pay dividends.
+In other words,
+if you own a share of a company,
+you will get some cash payment
+each year or each quarter.
+As an example,
+if you own one share of Apple stock,
+it pays you about $1 a year.
+Consider that you'll get that
+payment every year into the future.
+What is the value of
+that payment over time?
+What this interest rate relates
+to is how risky the company is.
+In other words, you're as sure that it's
+going to pay you that dollar every year
+as you are sure that the US government
+would pay you a dollar on a bond.
+Then, this IR interest rate should be
+the same as the US government bond rate.
+However, if you're less certain
+that this company is going to
+pay you at that rate, this interest
+rate needs to be a little bit higher.
+In other words,
+you need to expect that the company is
+going to pay you more in the future or
+that it's going to be more likely to
+pay you that dollar in the future.
+This is called the discount rate.
+The discount rate is higher if
+you trust the company less or
+you think it's more risky.
+The discount rate is lower
+if it's more certain to
+pay you that dividend every year.
+Let's suppose that after
+considering all the factors,
+you feel that it's
+appropriate that a company
+should pay you a 5% interest
+rate considering its risks.
+Now based on that,
+if you want to calculate
+what the value of the company is
+based on the dividends it's paying,
+you can take that into
+account in the following way.
+Essentially, what you want to
+do is compute what is the value
+of all the future dividends
+that it's going to pay me?
+So that's the sum of the dividend
+it'll pay you in a year.
+The dividend it'll pay you a year after
+that, and the year after that, and
+the year after that.
+In fact, you want to sum those
+all the way out to infinity.
+So what we're looking for
+is the sum of this equation,
+but over all i going into the future.
+We can draw on this infinite sum,
+in other words for i = 1,
+1 year to infinity years,
+of the sum 1 over n to the i.
+So this n here is this value, and
+we can replace 1 here with future value.
+So this is not a math class,
+I'm just going to give you the answer.
+The answer is that this infinite sum,
+in other words,
+some future dollar paid each
+year in the future over
+an infinite number of years,
+is that value divided by n minus one.
+Which is equal to future value
+divided by discount rate.
+So in the case of our dollar machine,
+we're paying one dollar each year
+in the future at 5% interest.
+So the value of our dollar
+machine is $20 overall.
+What we've just described,
+where future value is the dividend
+we're going to pay at regular
+intervals and DR is discount rate.
+In other words,
+what the risk of the stock equates to in
+terms of an interest rate we should pay.
+This equation tells us
+the intrinsic value of the company.
+In other words, if we're
+going to pay that future value or
+dividend every year or
+every quarter going into the future,
+what's the value of the company on
+that basis, this is intrinsic value.
+And in the example of the company
+we were talking about,
+that creates a $1 every year.
+It's the value of the $1 in
+one year from now, next year,
+next year, next year, next year,
+continuing ad infinitum into the future.
+And that's 20 bucks.
+
+Let's check your knowledge now.
+Consider a company that pays
+$2 per year in dividends,
+and a discount rate of 4%.
+What is the intrinsic
+value of this company?
+
+The answer if you recall
+is that the present value
+is equal to the future value
+divided by the discount rate.
+So we've got $2 divided by 4%, or $50.
+Answer is $50.
+
+Now if you recall from
+the beginning of the lesson,
+we talked about three major
+ways to estimate value.
+One is intrinsic value,
+which we just covered.
+Another is book value,
+which we're going to cover now.
+And the other is market capitalization.
+So let's take a look at book value.
+Here's a classic
+definition of book value.
+It's total assets of the company.
+In other words,
+things like property that is owned and
+so on, minus intangible assets and
+liabilities.
+Intangible assets are things that
+are difficult to put a price on.
+They're things like the value
+of a brand, or a pent, or so on.
+Liabilities are a little
+bit easier to calculate,
+those are just things like
+loans that are owed and so on.
+So, let's consider what's the book
+value for an example company.
+Let's say that a company
+owns four factories, and
+that each of these factories
+is worth about $10 million.
+These are assets, and altogether
+they are worth about $40 million.
+Suppose this company also holds
+three very important patents and
+each patent is valued
+at about $5 million.
+The value of these patents
+is about $15 million, but
+these are intangible assets
+that are hard to price exactly.
+Finally, suppose this
+company has one large loan.
+This would be under the liabilities
+column of $10 million.
+If we follow this rule that
+book value's total assets, so
+total assets are this $40 million
+plus the $15 million or $55 million,
+minus intangible assets so we just
+don't count these intangible assets.
+And liabilities.
+So all together we've got our total
+assets minus intangible assets,
+which is $40 million, and
+liabilities minus this $10 million, so
+in this case this company's
+book value is $30 million.
+
+The third way of estimating company
+value is simply to let the market
+decide.
+And that's called Market Capitalization.
+This is a simple calculation,
+Market Capitalization
+is just equal to the number of shares
+that are outstanding times the price.
+So, in other words,
+you can look at the stock market and
+see what the current price is and
+see how many shares are owned by people.
+And it's just one times the other and
+that's the value of the company in
+terms of market capitalization.
+
+If you follow the stock market, you may
+have noticed that when news comes out
+about a particular company its stock
+price can change considerably.
+Why is that?
+Well, the stock price is of course
+the main mechanism by which
+investors can essentially let
+their view of the stock be known.
+In other words, If they think
+that the company is buying less,
+they're going to sell and
+the prices are going to go down.
+If investors think the value
+of the company should go up,
+they're going to buy the stock and
+the prices are going to go up.
+Now, why is it that this information or
+news affects the stock price.
+It's based on these things that we've
+covered up to now in the lesson.
+In other words intrinsic value,
+book value, and
+well of course, market capitalization.
+But let's take a look at how it affects,
+say, intrinsic value.
+Consider a company run by this CEO and
+assume for the moment,
+that his business, his company,
+is to grow and sell coconuts.
+What if the following news comes out?
+The CEO is ill.
+Maybe he has cancer, maybe he has
+something else that prevents him
+from collecting those coconuts as
+effectively as he might otherwise do.
+Well, certainly that should affect
+the stock price downward because
+the probability that we are going to get
+dividends in the future is decreasing.
+Either that or the amount of
+the dividends is going to decrease.
+So, if you think back to the intrinsic
+valuation that we talked about.
+The potential for
+reduced future dividends reduces
+the value of the company significantly.
+Now consider another scenario
+where's there's an island
+with our original company and
+another company.
+And news comes out about the soil
+on the island being contaminated.
+That news is going to affect not
+only our original company, but
+also all the other
+companies on the island.
+So you can think of this sort
+of news as being sector news.
+In other words it relates to the sector
+of growing coconuts on this island and
+it affects all the companies
+in this sector.
+Lets consider one last
+scenario were we have many
+islands with many
+companies on those islands.
+And news that might effect all
+of them like sea level rising,
+that is going to negatively
+impact all of these companies.
+So we have examples here of
+companies specific news that affects
+the price of an individual company.
+Sector-specific news that effects, say,
+the companies on a particular island or
+in a particular industrial segment.
+And market-wide news that affects
+all the companies in the market.
+So that's how news can effect
+the prices of the stock.
+Primarily because they reduce
+the expectation of future dividends.
+We've seen how that can affect
+the intrinsic value and
+accordingly, why people would
+want to pay less for that stock.
+
+Now I want you to try to pull all
+this together that we taught you so
+far in this lesson.
+I'm going to give you some specific
+details about a particular stock and
+I want you to tell me if
+you would buy that stock.
+And give you information
+about the company,
+which has one value and the stock
+which is not necessarily the same.
+And I want you to tell me,
+would you buy that stock.
+We're going to break it into
+a few individual problems,
+three little problems and then we're
+going to ask the big question.
+We'll start with the three
+little problems.
+Consider this company.
+It's an airline.
+It owns ten airlines.
+Each of them is worth 10 million.
+It's got a brand name that's worth
+10 million, and it's got a loan or
+liability of 20 million.
+All those go into the calculation
+of the book value.
+With regard to intrinsic value,
+it pays $1 million
+per year in dividends
+assuming a 5% discount rate.
+What's that intrinsic value?
+Finally, I want you to compute the
+market capitalization assuming there's
+one million shares outstanding and
+$75 stock price.
+
+Okay, for
+book value, brand name doesn't count
+because that's an intangible asset.
+So we've got 10 airplanes at $10
+million each, that's $100 million.
+And we've got a $20
+million loan liability.
+That means the book value for
+this company is $80 million.
+Intrinsic value,
+we calculated that before.
+It's just $1 million divided by 5%.
+The intrinsic value then is $20 million.
+Finally, market capitalization, remember
+that's just the number of shares
+outstanding times the stock price and
+in this case, that's $75 million.
+
+So let's go back to
+that original question.
+Assuming this company has
+a book value of $80 million,
+an intrinsic value of $20 million,
+and a market cap of $75 million.
+And by the way this means that you can
+buy the entire company for $75 million.
+Our question is,
+would you buy this stock?
+And more specifically, would you buy
+this whole company for $75 million.
+Yes or no, would you buy this stock?
+
+So maybe you felt like it
+was a tricky question,
+because the intrinsic value is so low.
+It's not tricky.
+Here's why.
+You should absolutely buy the company.
+You should buy the whole company for
+$75 million.
+And then you should break it apart and
+sell all of its individual assets for
+$80 million.
+And your net return is
+an immediate $5 million.
+This is why stocks very,
+very rarely go below their book value.
+Because if they ever go very
+much below their book value,
+a predatory buyer will
+buy the entire company.
+They'll buy all the stock.
+Break it up and sell it for pieces.
+I know that's kind of depressing,
+but that's the way it is.
+
+Let's wrap up this lesson.
+We've talked about three key ways
+to compute the value of a company.
+Intrinsic value,
+which is based on future dividends.
+In other words, companies pay a certain
+amount to their investors every year,
+based on how many shares they own.
+And this is the value of all future
+dividends going into the future.
+Book value, which is the value of the
+company if we split it up into pieces
+and sold those individual pieces.
+And finally market
+capitalization which is
+simply the value that the market
+is placing on the company.
+So, many stock trading strategies
+look for deviations between say,
+intrinsic value and market cap if
+intrinsic value drops significantly and
+the stock price say is high, it may
+be worthwhile to short that stock.
+Or if say dividends are going up and
+the market capitalization is low it
+might be an opportunity
+to buy the stock.
+And similarly book value
+provides a sort of lowest
+price, when stock price begins
+to approach book value, you
+can pretty much assume that the price
+is not going to go below book value.
+Or not much below it,
+because if it does,
+a predatory buyer would buy the whole
+company, and break it up for parts.
+Anyhow, that's company valuation.
+And I look forward to seeing
+you at the next lesson.
+Bye bye.
+
+In this lesson, we're going to
+cover one of the most significant
+ideas affecting finance
+in the last century.
+It explains how the market
+impacts individual stock prices.
+And it also provides a mathematical
+framework for hedge fund investing.
+It's called the capital asset
+pricing model or CAPM for short.
+It was developed by a number of
+researchers independently in the 1960s.
+William Sharpe, Harry Markowitz and
+Merton Miller jointly received the nobel
+prize for this contribution in 1990.
+The CAPM led to the development
+of index funds and
+the belief that you
+can't beat the market
+
+Before we launch into details of
+the capital assets pricing model,
+we have to lay down
+a little bit of groundwork.
+Let's start with
+the definition of a portfolio.
+A portfolio is a weighted set of assets.
+So as an example, let's suppose
+you've got a portfolio that's got
+three different assets in it,
+Apple, Google, and Oracle.
+And if you look at the entire value
+of your portfolio, let's suppose that
+60% of it is in Apple,
+20% is in Google, and 20% is in Oracle.
+If we consider this as a set of weights,
+that means we've got
+0.6 in Apple, 0.2 in Google and
+0.3 in oracle.
+So, the first part of our
+definition of a portfolio
+is that w sub i is the proportion
+of funds that are an asset i.
+We require that the sum of all
+these w sub i is equal to 1,
+in other words they add up to 100%.
+Now sometimes, for leveraged
+portfolios that we're not going to
+cover in this class,
+this number might be greater than one.
+But skip that for now.
+We do allow that you
+might short some stocks.
+So for instance,
+let's suppose you shorted Google.
+Your allocation there would be,
+minus point two.
+So, let's refine this
+equation a little bit and
+require that the sum of the absolute
+value of the weights is equal to one.
+So, some of them might be short,
+some of them might be long.
+But, if you add up the absolute value
+their weights will require that to be
+1.0.
+So now that we've defined what
+a portfolio is, let's think for
+a moment about what will the returns
+on a portfolio look like.
+So, it's a simple equation, really.
+It's the sum for
+each asset of the weight of
+that asset in the portfolio, times
+the return for that day, of the asset.
+We just add all those up,
+one by one, and boom,
+that's the return on the portfolio for
+that day.
+
+Okay, let's suppose you've got
+two stocks in your portfolio.
+Stock A and Stock B and
+75% of your portfolio is in Stock A and
+-25% is in Stock B.
+In other words, you've taken
+a short position in Stock B.
+Now let's suppose on a particular
+day Stock A goes up 1%,
+and stock B goes down 2%.
+What's the return on your
+portfolio if this occurs
+
+So remember from our equation
+on the previous page
+that the return on
+the portfolio is the sum of
+each return times the respective
+weight added together.
+So the weight for
+Stock A is .75 times 1% and
+the weight for Stock B is negative 25%.
+The return was negative 2% for
+that stock also.
+So because we shorted B and
+it went down, we got a positive
+component there, or .5.
+And our long on A adds up to .75 so
+our total is 1.25.
+
+So a concept that's important to
+the capital assets pricing model
+is this thing called
+The Market Portfolio.
+Now what is that exactly?
+When someone refers to the Market
+what they're usually referring to is
+an index that broadly covers
+a large set of stocks.
+In the US,
+best example of that is the S&P500.
+The S&P 500 represents the 500
+largest companies that
+are traded on exchanges, and
+that index changes each day according
+to the prices of all of its components.
+There's similar indexes in
+the United Kingdom, Japan,
+any country or large market has
+indexes that represent this.
+Now, these indexes are composed of many,
+many individual stocks, and
+the market portfolio is a combination
+of those stocks in a certain weighting.
+Most of the important indexes
+are what we call Cap Weighted.
+And what that means is the individual
+weight of each stock in the portfolio
+is set according to that
+stock's market cap.
+So, market cap, if you recall,
+stands for Market Capitalization, and
+it's simply the number of shares
+available for the stock times its price.
+So to calculate the weight for
+any particular stock, you take its
+market cap and divide it by the sum
+of the market caps of all the stocks.
+Now, if you think back to my example
+of the CEO living on an island
+building his product, and there
+being many islands and an ocean and
+when market forces rise of fall
+that affect all of the islands,
+you can think of these large indexes
+essentially as being an ocean.
+Now within each of these oceans if you
+like, there are a number of sectors.
+For instance, in the US we typically
+break the market into ten different
+sectors, I list four of them here.
+Energy, technology,
+manufacturing, finance and so on.
+And these are essentially the islands.
+So, if some malaise occurs to,
+say, energy stocks,
+you can think of that as something
+bad happening to the energy island.
+These things might be
+Saudi Arabia is pumping more oil,
+so the cost of oil is going to go down.
+That usually would have
+a negative impact on energy, so
+the energy island would
+be negatively impacted.
+Same thing with these other sectors.
+The main point here being that positive
+and negative news can affect each of
+these sectors individually without
+necessarily affecting the others.
+So it's not unusual to break up these
+large markets into individual sectors.
+Now just recapping before we depart,
+when we talk about the market
+portfolio in this class, we are almost
+always talking about the S&P 500.
+And that market portfolio
+consists of 500 stocks,
+the largest stocks in the U.S.
+that are traded publicly,
+with a weighting set like this.
+One thing to keep in mind Is some stocks
+have surprisingly large weightings.
+For instance, Apple and
+Exxon each are about 5% of the S&P 500.
+So those two stocks have a strong
+effect on what happens to this index.
+There are smaller stocks
+that comprise say only
+a tenth of a percent of
+the overall effect on this market.
+
+We're finally able now to get to
+the core of the capital assets pricing
+model, and that's expressed in this
+single equation that's really important.
+You need to memorize it and
+understand it.
+And here's what that equation is.
+So the capital assets pricing
+model says that the return for
+an individual stock on a particular day
+t = beta times the return on the market.
+So, I told you just a moment ago,
+for instance, that the, when we say
+the market in the United States,
+we're usually referring to the S&P 500.
+And this particular stock, i,
+is one of the stocks in the S&P 500.
+So its return on a particular day,
+again, is beta times the return
+on the market of that day + alpha of
+that particular stock on that day.
+So what the capital assets pricing model
+is asserting, and this is important,
+is that a significant
+portion of the return for
+a particular stock is due to the market.
+In other words, the market moving up or
+down strongly affects the change in
+price on every individual stock.
+And the extent to which the market
+affects a particular stock
+is encapsulated in this beta which
+we'll talk about in just a second.
+But every stock has its individual beta
+that specifies how much it's affected.
+Many stocks have a beta near one which
+means when the market goes up or
+down 1%, that stock goes up or down 1%.
+But if you had say a larger beta, say
+two, that means if the market goes up 1%
+we would expect, all else being equal,
+that the stock goes up 2%.
+This other component, alpha,
+is called the residual.
+So of course, if you look at
+all the stocks over one day and
+look at how much the market goes up or
+down, and
+you calculate how much the stock should
+have gone up or down according to beta.
+Well there'll be something left over.
+It won't exactly match
+what beta predicted.
+And that's what this alpha or
+residual component is.
+An important part of
+the capital assets pricing
+model is that the expectation for
+alpha is 0.
+Essentially this is a random variable
+with an expected value of 0.
+It's important to remember that.
+Where do we get this beta and
+this alpha?
+Well, it comes from daily returns and
+essentially how the daily returns for
+a particular stock relate to
+the daily returns of the market.
+So look at returns here for S&P 500, and
+consider the S&P 500 in comparison
+to this other stock xyz.
+So xyz, its daily returns
+are shown here in green.
+And blue shows S&P 500.
+Now look at each day, seems that
+the xyz stock is more reactive.
+In other words, if S&P 500 goes up
+a little, this stock goes up more.
+And, on average, it tends to
+have a higher return each day.
+We can look at what happens with
+the returns on each day and
+plot them over here in a scatter plot.
+So on this particular day,
+the market went up a little bit, and
+xyz went up a little bit more.
+So that would correspond to
+a point right about there.
+Now, if we plotted the results for a lot
+of these days, we would get a scatter
+plot that looks a bit like this,
+where each green dot represents one day.
+And if we fit a line to it, we'd get
+something that looks about like this.
+So beta is simply
+the slope of this line, and
+alpha is simply this area here, in other
+words, the y-intercept of that line.
+Now this is an after
+the fact of calculation.
+In other words, just because
+historically a particular stock,
+looking back at time gave
+you a particular alpha,
+you shouldn't necessarily
+expect that in the future.
+And again, CAPM says that you
+should expect this to be 0.
+In reality though, it's not always 0.
+So, that's the key to the capital
+assets pricing model and where beta and
+alpha come from.
+
+Consider these two scatter plots.
+This one is for
+stock XYZ versus S and P 500.
+This one is for
+stock ABC versus S and P 500.
+And each one of these dots
+represents the return for S and
+P 500 versus ABC or XYZ for
+that particular day.
+Okay.
+So look at these two plots and tell me,
+which one has higher alpha and
+which one has higher beta?
+
+So recall that beta is
+the slope of the line and
+alpha is where it hits
+the y-intercept there.
+So, higher alpha.
+Well ABC is intersecting
+the y-axis there
+much further up than XYZ so
+ABC's got higher alpha.
+In terms of beta, look,
+the slope of ABC is much higher than XYZ
+so ABC also wins on
+the higher beta question.
+
+Now you may have heard
+about the debate of
+passive investing versus
+active investing.
+This question about passive versus
+active didn't really exist before
+the capital assets
+pricing model came out.
+And I'll explain why in just a moment.
+But let me just briefly tell you
+about passive versus active.
+So passive essentially says that you
+should just buy an index portfolio.
+Like buy something that
+represents the S&P 500, and hold.
+Just sit on it and let it grow.
+Active portfolio managers don't
+just buy the index portfolio,
+they pick individual stocks.
+Another way you can think of this is
+if you compare the active managers
+portfolio to the index.
+You'll find that he or
+she has higher weights for
+some stocks and
+lowers weights for other stocks.
+Of course those weights could be zero,
+or even negative.
+But the general idea here is that
+the active portfolio manager's portfolio
+differs from the market portfolio
+by selecting different
+weights on different stocks.
+Let's return now to the capital
+asset pricing model here, and
+consider passive versus
+active in that context.
+Both active managers and
+passive managers agree with
+this part of the equation.
+In other words,
+however the stock moves each day is most
+significantly influenced by the market,
+and that the amount that it moves
+is strongly related to beta.
+Where they differ is with regard
+to their treatment of alpha.
+The CAPM says two important
+things about alpha.
+First, it's random.
+You can't predict it, and
+the expected value is zero.
+Some days it'll be positive,
+some days it'll be negative.
+It may be large, it may be small,
+but it's random.
+And on average,
+it's value is going to be zero.
+Active managers, on the other hand,
+believe they can predict alpha.
+In other words,
+they can compare two stocks and
+they say I think this one is going to
+go up relative to the market.
+Remember, this alpha is market-relative.
+Or, I think this other stock is going to
+go down relative to the market.
+Now, they might not be exactly
+right on every single pick.
+But they believe on average they're
+better than just flipping a coin.
+So if you believe what active managers
+say, you can use information and perhaps
+machine learning to find stocks that
+have either positive or negative alpha.
+And you can use that information
+to select your stock picks.
+And we'll show some
+examples of that later on.
+Anyways, if you believe the capital
+assets pricing model, in other words
+this alpha is fully random,
+then you should be a passive investor.
+Just buy an index and hold it.
+If you believe active managers,
+that they can find alpha,
+then you should consider
+being an active investor.
+
+Suppose now that instead of
+just looking at one stock,
+you want to think about a portfolio.
+And remember that a portfolio is
+defined by the various weights
+that indicate how much of your funds
+you've allocated to each stock.
+So recall that for
+an individual stock, i,
+it's return on any particular day is
+Bi times return on the market for
+that day plus alpha for
+that particular day.
+So, to compute the return for the entire
+portfolio, we compute this return for
+each individual stock, multiply it
+by the weight for that stock and
+then we take the sum
+across all the stocks.
+And that's what we get for
+the entire portfolio.
+Now if you note we can
+calculate beta for
+the entire portfolio
+simply by doing this.
+Beta for the overall portfolio
+is simply a weighted sum
+of the individual betas for
+each of the stocks.
+So the capital assets pricing model
+tells us that we can simplify
+the expected overall return for
+a portfolio by computing a beta for
+that portfolio, multiplying it
+by the return on the market and
+then there's some alpha.
+So that alpha is composed
+of multiple example.
+So this alpha, remember capital assets
+pricing models says that all of these
+are on average going to be zero, so we
+don't need to bother necessarily adding
+them up, we can just approximate
+it by an overall portfolio alpha.
+So again, this is what the CAPM tells us
+we can expect on any particular day, and
+again, CAPM asserts that this
+alpha is random with mean 0.
+The active portfolio manager will say,
+okay, yes,
+I agree that the beta component is
+the same as CAPM at pricing model says.
+But I think I can find
+value in this alpha and
+it needs to be broken out individually.
+So the active portfolio manager
+is going to have this formulation
+of what they could expect in return
+each day compared to the CAPM,
+which is a little bit simpler.
+
+So I want you to consider a little
+bit the implications of the CAPM, and
+I want you to consider implications in
+upward markets and downward markets.
+So here's the question.
+If we're in upward markets, do you
+want a larger beta or a smaller beta?
+And if we're in downward markets, do you
+want a larger beta or a smaller beta?
+And remember,
+CAPM says that alpha doesn't matter.
+
+So for upward markets we want larger
+beta, because that means we'll go up
+even more than the market
+if beta is greater than 1.
+If we have a smaller,
+that means we're not getting the full
+advantage of the market going up.
+In downward markets
+we want smaller beta.
+So for instance if the market goes down
+1% and our beta is much less than one,
+that means our portfolio
+will go down less than 1%.
+So on a downward market,
+the smaller the beta the better.
+
+Let's summarize now
+the implications of CAPM.
+Let's start first with the equation.
+So the CAPM tells us that the expected
+return on our portfolio is the veta
+of the portfolio times the return on
+the market plus alpha of the portfolio.
+The first point, an important point,
+is that alpha is random, and
+the expected value of alpha is zero.
+So that excludes alpha from our
+toolbox of ways to make money.
+What's left?
+So the only way we can beat the market
+now is by cleverly choosing beta, so
+that when the market is going up,
+we choose a positive beta, and
+when a markets going down we choose
+a lower or even negative beta.
+So CAPM says the only way we can beat
+the market is with high beta and
+up markets and
+low beta and down markets.
+The only problem with that is
+the efficient markets hypothesis.
+We haven't covered that yet,
+but it's coming soon.
+But anyways,
+the efficient markets hypothesis
+says you can't predict the market.
+So, these avenues are not
+available to you, either.
+So, all these things taken together
+say that you can't beat the market.
+If the capital assets pricing model
+is true, we can't beat the market.
+Now, I don't believe that, and
+this whole course is about ways that
+you can potentially beat the market.
+So, we're going to get
+to those eventually,
+but we had to present
+the capital assets pricing model
+as a framework in which to
+consider all these other things.
+
+Now before we close, there's one
+other thing I want to touch on.
+It's called Arbitrage Pricing Theory.
+Arbitrage Pricing Theory was
+developed by Stephen Ross and
+first published in 1976.
+So Dr. Ross observed the CAPM as it was.
+But he said look,
+we have this single beta
+that represents a particular
+stock's relationship to the market.
+Maybe really we ought
+to have multiple betas.
+The CAPM is really only allowing us to
+consider a stock in the entire ocean.
+And his idea, if you continue the sort
+of analogy we've been doing in this
+class, is that we ought to
+consider the different islands.
+In other words,
+a particular stock might have exposure
+to different aspects of the market.
+So, the stock might have
+some exposure to finance, so
+we could compute the component of
+return due to finance via the beta
+with regard to finance and
+the return for finance of that day.
+So we could compute for each stock,
+for each sector, and individual beta.
+And so his assertion was that
+by breaking out the betas
+into these different factors,
+we could get a more accurate forecast of
+what the return's going to look like.
+And of course we still
+have our alpha over here.
+We're not going to use APT in this
+class, but since we've been going
+forward with this analogy of oceans and
+islands and so on, I wanted to bring
+it to your attention because I
+thought you might find it interesting.
+Okay, that's it for
+the capital assets pricing model.
+I'll see you again soon.
+
